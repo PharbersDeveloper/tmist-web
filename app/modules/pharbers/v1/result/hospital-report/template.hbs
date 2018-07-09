@@ -1,0 +1,153 @@
+<div local-class="detail-container">
+	{{!-- <div local-class="title-bar">
+		<span local-class="date">2月份计划部署</span>
+		<span local-class="setting"> <img src="/assets/images/hosp-setting.png" alt=""> </span>
+	</div>
+	<div local-class="menu-bar">
+		<div local-class="menu menu-left">
+			<span>通知</span>
+			<span>信息库</span>
+			<span>当前部署分析</span>
+		</div>
+		<div local-class="menu menu-right">
+			<span local-class="budget" {{action 'budget'}}>预算 <span class="glyphicon glyphicon-triangle-bottom"></span> </span>
+			<span local-class="human" {{action 'human'}}>人力 <span class="glyphicon glyphicon-triangle-bottom"></span> </span>
+			<span local-class="btn-submit">提交执行 <span class="glyphicon glyphicon-menu-right"></span> </span>
+		</div>
+		{{#if budgetTip}}
+			<div local-class="budget-tip">
+				<div local-class="triangle"></div>
+				<div local-class="rectangle">
+					<p local-class="budget-text"> <span>预算</span> <span>600000/800000</span> <span>5%</span> </p>
+					<div local-class="self-progress" class="progress">
+						<div local-class="self-progress-bar" class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
+							<span class="sr-only">40% 完成</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		{{/if}}
+		{{#if humanTip}}
+			<div local-class="human-tip">
+				<div local-class="triangle"></div>
+				<div local-class="rectangle">
+					<p local-class="human-text"> <span>代表1</span> <span>20/30天</span> <span>5%</span> </p>
+					<div local-class="self-progress" class="progress">
+						<div local-class="self-progress-bar" class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%;">
+							<span class="sr-only">95% 完成</span>
+						</div>
+					</div>
+					<p local-class="human-text"> <span>代表1</span> <span>20/30天</span> <span>25%</span> </p>
+					<div local-class="self-progress" class="progress">
+						<div local-class="self-progress-bar" class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;">
+							<span class="sr-only">75% 完成</span>
+						</div>
+					</div>
+					<p local-class="human-text"> <span>代表1</span> <span>20/30天</span> <span>60%</span> </p>
+					<div local-class="self-progress" class="progress">
+						<div local-class="self-progress-bar" class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
+							<span class="sr-only">40% 完成</span>
+						</div>
+					</div>
+					<p local-class="human-text"> <span>代表1</span> <span>20/30天</span> <span>5%</span> </p>
+					<div local-class="self-progress" class="progress">
+						<div local-class="self-progress-bar" class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
+							<span class="sr-only">40% 完成</span>
+						</div>
+					</div>
+					<p local-class="human-text"> <span>代表1</span> <span>20/30天</span> <span>5%</span> </p>
+					<div local-class="self-progress" class="progress">
+						<div local-class="self-progress-bar" class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
+							<span class="sr-only">80% 完成</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		{{/if}}
+	</div> --}}
+    <div local-class="content">
+		<div local-class="hosp-nav" class="container"></div>
+		<div local-class="hosp-detail" class="container">
+			<div local-class="basic-info" class="row">
+                <div local-class="select">
+                    <span local-class="title"  {{action 'tab'}}>医院-产品销售报告</span>
+                    <span class="glyphicon glyphicon-triangle-bottom"  {{action 'tab'}}></span>
+					{{#if tabLi}}
+                    <div local-class="drop">
+                        <ul>
+                            <li>
+                                {{#link-to "pharbers.v1.result.whole"}}
+                                    整体销售表现
+                                {{/link-to}}
+                            </li>
+                            <li>
+								{{#link-to "pharbers.v1.result.represent-report"}}
+								代表-产品销售报告
+								{{/link-to}}
+							</li>
+                            <li>
+								{{#link-to "pharbers.v1.result.resource"}}
+								资源投入与产出
+								{{/link-to}}
+							</li>
+                            <li>
+								{{#link-to "pharbers.v1.result.represent"}}
+								代表指标与资源
+								{{/link-to}}
+							</li>
+                        </ul>
+                    </div>
+					{{/if}}
+                </div>
+                <div local-class="overview">
+					{{#each overviewData as |item|}}
+						{{overview-number itemData=item}}
+					{{/each}}
+                    {{!-- <div local-class="block">
+                        <p local-class="head">表现最佳</p>
+                        <p local-class="center">医院1-产品1</p>
+                        <div local-class="tab">
+                            <p local-class="share">份额12%</p>
+                            <p local-class="num"> <span class="glyphicon glyphicon-triangle-top"></span> 7%</p>
+                        </div>
+                    </div>
+					<div local-class="block">
+                        <p local-class="head">表现最差</p>
+                        <p local-class="center">医院1-产品1</p>
+                        <div local-class="tab">
+                            <p local-class="share">份额12%</p>
+                            <p local-class="num"> <span class="glyphicon glyphicon-triangle-bottom" local-class="red"></span> 7%</p>
+                        </div>
+                    </div>
+                    <div local-class="block">
+                        <p local-class="head">销售增长最快</p>
+                        <p local-class="center">医院1-产品1</p>
+                        <div local-class="tab">
+                            <p local-class="share">6，039,535</p>
+                            <p local-class="num"> <span class="glyphicon glyphicon-triangle-top"></span> 7%</p>
+                        </div>
+                    </div>
+                    <div local-class="block">
+                        <p local-class="head">贡献度最高</p>
+                        <p local-class="center">医院1-产品1</p>
+                        <div local-class="tab">
+                            <p local-class="share">份额12%</p>
+                            <p local-class="num"> 7%</p>
+                        </div>
+                    </div>
+                    <div local-class="block hosp" style="top:85px;">
+                        <p local-class="head">平均指标达成</p>
+                        <p local-class="data">120%</p>
+                    </div> --}}
+                </div>
+			</div>
+			<div local-class="medicine-info">
+				<div local-class="medicine">
+					<div local-class="right-content">
+						{{self-table model=columnsHospitalValue columns=columnsHospital selfheight='480px'}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,17 @@
+<div local-class="login-container">
+    <div local-class="login-content">
+        <div local-class="login-left">
+            <img src="/assets/images/logo_login.png" alt="">
+            <p local-class="login-title">铁马区域管理模拟平台</p>
+            <p local-class="login-title-en">Territory Management Interactive Simulation</p>
+        </div>
+        <div local-class="login-right">
+            <p>登入/Login</p>
+            {{input type="text" name="accout" value=accout placeholder="帐号"}}
+            {{input type="text" name="password" value=password placeholder="密码"}}
+            <p local-class="foget-password">忘记密码？</p>
+            <button type="button" name="button" {{action 'login'}}>登入</button>
+        </div>
+    </div>
+</div>
+{{outlet}}

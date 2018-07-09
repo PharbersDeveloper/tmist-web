@@ -1,0 +1,94 @@
+.block {
+	display: inline-block;
+	position: relative;
+	z-index: 2;
+	top: 70px;
+	vertical-align: top;
+	margin: 0 8px;
+	width: 200px;
+	height: 100px;
+	background: #FFFFFF;
+	box-shadow: 0 4px 6px 0 rgba(161,161,161,0.56);
+	border-radius: 5px;
+
+	.head {
+		font-family: PingFangTC-Regular;
+		font-size: 14px;
+		color: #4A4A4A;
+		letter-spacing: 1px;
+		text-align: left;
+		padding: 10px;
+		float: left;
+	}
+
+	.data {
+		font-family: PingFangTC-Regular;
+		font-size: 18px;
+		color: #4A4A4A;
+		letter-spacing: 1.5px;
+		padding-top: 10px;
+		clear: both;
+
+		span {
+			margin-right: 10px;
+		}
+
+		span.up {
+			color: #50E3C2;
+		}
+
+		span.down {
+			color: #D0021B;
+		}
+	}
+
+	.small {
+		font-family: PingFangTC-Regular;
+		font-size: 12px;
+		color: #9B9B9B;
+		letter-spacing: 1.12px;
+		text-align: left;
+		display: inline-block;
+		margin: 10px;
+	}
+
+	.center {
+		clear: both;
+		text-align: center;
+		font-family: "Microsoft YaHei";
+		font-size: 14px;
+		color: #4A4A4A;
+		letter-spacing: 0.27px;
+	}
+
+	.tab {
+		width: 165px;
+		height: 25px;
+		line-height: 26px;
+		opacity: 0.67;
+		background: #E6EBF0;
+		border-radius: 100px;
+		margin: 10px auto;
+
+		p {
+			display: inline-block;
+			padding: 0 10px;
+		}
+
+		.share {
+			float: left;
+		}
+
+		.num {
+			float: right;
+
+			.red {
+				color: red;
+			}
+		}
+
+		span {
+			color: #50E3C2;
+		}
+	}
+}
