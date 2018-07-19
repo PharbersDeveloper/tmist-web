@@ -6,7 +6,7 @@ import {
 	computed
 } from '@ember/object';
 export default Controller.extend({
-
+	cookies: inject(),
 	ajax: inject(),
 	// budgetTip: false,
 	// humanTip: false,

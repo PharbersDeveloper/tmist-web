@@ -13,7 +13,7 @@
 			{{#if (eq itemData.ext.change 'down')}}
 				<span class="glyphicon glyphicon-triangle-bottom" local-class="down"></span>
 			{{/if}}
-			{{float-to-percent itemData.value}}%</p>
+			{{number-to-percent itemData.value}}%</p>
 	{{/if}}
 	{{#if (eq itemData.type 'info')}}
 		<p local-class="center">{{itemData.value}}</p>
@@ -33,14 +33,14 @@
 						{{number-format itemData.ext.sub.ext.value}}
 					{{/if}}
 					{{#if (eq itemData.ext.sub.ext.type 'percent')}}
-						{{float-to-percent  itemData.ext.sub.ext.value}}%
+						{{number-to-percent  itemData.ext.sub.ext.value}}%
 					{{/if}}
 				</p>
 			{{/if}}
 			{{#if (eq itemData.ext.sub.type 'percent')}}
 				<p local-class="share">
 					{{itemData.ext.sub.title}}
-					{{float-to-percent  itemData.ext.sub.value}}%
+					{{number-to-percent  itemData.ext.sub.value}}%
 				</p>
 				<p local-class="num">
 					{{#if (eq itemData.ext.sub.ext.change 'up')}}
@@ -53,7 +53,7 @@
 						{{number-format itemData.ext.sub.ext.value}}
 					{{/if}}
 					{{#if (eq itemData.ext.sub.ext.type 'percent')}}
-						{{float-to-percent  itemData.ext.sub.ext.value}}%
+						{{number-to-percent  itemData.ext.sub.ext.value}}%
 					{{/if}}
 				</p>
 			{{/if}}

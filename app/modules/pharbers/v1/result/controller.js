@@ -7,6 +7,7 @@ import {
 } from '@ember/object';
 
 export default Controller.extend({
+	cookies: inject(),
 	ajax: inject(),
 	budgetTip: false,
 	humanTip: false,
@@ -51,7 +52,7 @@ export default Controller.extend({
 	 */
 	queryBudget() {
 		let condition = {
-			"token": "token123456789",
+			"token": this.get('cookies').read('user_token'),
 			"timestamp": 1530689119000,
 			"version": {
 				"major": 1,
@@ -60,7 +61,7 @@ export default Controller.extend({
 			"data": {
 				"type": "budget_progress",
 				"condition": {
-					"scenario_id": "scenario_id"
+					"proposal_id": "5b42fd43ed925c05565b5bdb"
 				}
 			}
 		};
@@ -68,7 +69,7 @@ export default Controller.extend({
 		// let value = 'budget';
 		// this.sendAjax(url, condition, value);
 
-		this.get('ajax').request('/api/scenario/budget/info', this.getAjaxOpt(condition))
+		this.get('ajax').request('api/proposal/budget/info', this.getAjaxOpt(condition))
 			.then(({
 				status,
 				result,
@@ -88,7 +89,7 @@ export default Controller.extend({
 	 */
 	queryManpower() {
 		let condition = {
-			"token": "token123456789",
+			"token": this.get('cookies').read('user_token'),
 			"timestamp": 1530689119000,
 			"version": {
 				"major": 1,
@@ -97,7 +98,7 @@ export default Controller.extend({
 			"data": {
 				"type": "budget_progress",
 				"condition": {
-					"scenario_id": "scenario_id"
+					"proposal_id": "5b42fd43ed925c05565b5bdb"
 				}
 			}
 		}
@@ -105,7 +106,7 @@ export default Controller.extend({
 		// let value = 'manpower';
 		// this.sendAjax(url, condition, value);
 
-		this.get('ajax').request('/api/scenario/humans/info', this.getAjaxOpt(condition))
+		this.get('ajax').request('api/proposal/humans/info', this.getAjaxOpt(condition))
 			.then(({
 				status,
 				result,

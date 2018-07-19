@@ -62,7 +62,7 @@ export default Controller.extend({
 			"data": {
 				"type": "report_detail",
 				"condition": {
-					"report_id":"5b4828e315899e014cb74e38"
+					"report_id": "5b4828e315899e014cb74e38"
 				}
 			}
 		};
@@ -100,7 +100,7 @@ export default Controller.extend({
 			"data": {
 				"type": "report_detail",
 				"condition": {
-					"report_id":"5b4828e315899e014cb74e38"
+					"report_id": "5b4828e315899e014cb74e38"
 				}
 			}
 		}
@@ -111,8 +111,8 @@ export default Controller.extend({
 				error,
 			}) => {
 				if (status === "ok") {
-					console.log('it is ok');
-					console.info(result.data.attribute.overview);
+					// console.log('it is ok');
+					// console.info(result.data.attribute.overview);
 					this.set('overviewData', result.data.attribute.overview);
 
 					this.set('columnsHospitalValue', result.data.attribute.value)
@@ -135,7 +135,7 @@ export default Controller.extend({
 			"data": {
 				"type": "budget_progress",
 				"condition": {
-					"report_id":"5b4828e315899e014cb74e38"
+					"report_id": "5b4828e315899e014cb74e38"
 				}
 			}
 		}
