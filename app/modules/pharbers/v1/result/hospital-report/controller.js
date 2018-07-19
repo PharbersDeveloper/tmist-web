@@ -41,7 +41,7 @@ export default Controller.extend({
 			"data": {
 				"type": "report_detail",
 				"condition": {
-					"report_id":"5b4828e315899e014cb74e38"
+					"report_id": "5b4828e315899e014cb74e38"
 				}
 			}
 		}
@@ -121,6 +121,7 @@ export default Controller.extend({
 				valuePath: 'market_growth',
 				width: '90px',
 				align: 'center',
+				cellComponent: 'table-number-percent'
 			}, {
 				label: '当期销售额',
 				valuePath: 'sales',
@@ -167,21 +168,21 @@ export default Controller.extend({
 			},
 		];
 		this.columnsHospitalValue = [
-		// 	{
-		// 	'hospital': 'aaa',
-		// 	'prod': 'ccc',
-		// 	'market_potential': 4444,
-		// 	'market_growth': 444,
-		// 	'current_sales': 444,
-		// 	'sales_growth': 444,
-		// 	'ev_value': 444,
-		// 	'share': 444,
-		// 	'share_growth': 444,
-		// 	'target': 444,
-		// 	'achievement_rate': 44,
-		// 	'contribution_rate': 44
-		// }
-	];
+			// 	{
+			// 	'hospital': 'aaa',
+			// 	'prod': 'ccc',
+			// 	'market_potential': 4444,
+			// 	'market_growth': 444,
+			// 	'current_sales': 444,
+			// 	'sales_growth': 444,
+			// 	'ev_value': 444,
+			// 	'share': 444,
+			// 	'share_growth': 444,
+			// 	'target': 444,
+			// 	'achievement_rate': 44,
+			// 	'contribution_rate': 44
+			// }
+		];
 	},
 	actions: {
 		budget() {
