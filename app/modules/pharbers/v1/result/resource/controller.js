@@ -3,6 +3,7 @@ import {
 	inject
 } from '@ember/service';
 export default Controller.extend({
+	cookies:inject(),
 	ajax: inject(),
 	budgetTip: false,
 	humanTip: false,
@@ -27,7 +28,7 @@ export default Controller.extend({
 	 */
 	queryResource() {
 		let condition = {
-			"token": "token123456789",
+			"token": this.get('cookies').read('user_token'),
 			"timestamp": 1530689119000,
 			"version": {
 				"major": 1,
@@ -36,11 +37,11 @@ export default Controller.extend({
 			"data": {
 				"type": "report_detail",
 				"condition": {
-					"scenario_id": "scenario_id"
+					"report_id":"5b4828e315899e014cb74e38"
 				}
 			}
 		}
-		this.get('ajax').request('/api/report/resource_in_out', this.getAjaxOpt(condition))
+		this.get('ajax').request('/api/report/reso_allocation', this.getAjaxOpt(condition))
 			.then(({
 				status,
 				result,
@@ -49,8 +50,8 @@ export default Controller.extend({
 				if (status === "ok") {
 					// console.log('it is ok');
 					// console.info(result.data.attribute);
-					this.set('overviewData', result.data.attribute.res_io.overview);
-					this.set('columnsResourceValue', result.data.attribute.res_io.value)
+					this.set('overviewData', result.data.attribute.overview);
+					this.set('columnsResourceValue', result.data.attribute.value)
 				} else {
 					this.set('errorMessage', error.message);
 				}
@@ -63,17 +64,17 @@ export default Controller.extend({
 
 		this.columnsResource = [{
 			label: '医院名称',
-			valuePath: 'hospital',
+			valuePath: 'hosp_name',
 			width: '90px',
 			align: 'center',
 		}, {
 			label: '产品名称',
-			valuePath: 'prod',
+			valuePath: 'brand_name',
 			width: '90px',
 			align: 'center',
 		}, {
 			label: '分配代表',
-			valuePath: 'rep',
+			valuePath: 'rep_name',
 			width: '90px',
 			align: 'center',
 		}, {
@@ -88,18 +89,18 @@ export default Controller.extend({
 			align: 'center',
 		}, {
 			label: '市场潜力',
-			valuePath: 'market_potential',
+			valuePath: 'potential',
 			width: '90px',
 			align: 'center',
 
 		}, {
 			label: '潜力增长(%)',
-			valuePath: 'potential_growth',
+			valuePath: 'market_growth',
 			width: '90px',
 			align: 'center',
 		}, {
 			label: '销售额',
-			valuePath: 'current_sales',
+			valuePath: 'sales',
 			width: '90px',
 			align: 'center',
 		}, {
@@ -114,12 +115,12 @@ export default Controller.extend({
 			align: 'center',
 		}, {
 			label: '份额增长(%)',
-			valuePath: 'share_growth',
+			valuePath: 'share_change',
 			width: '90px',
 			align: 'center',
 		}, {
 			label: '销售贡献率(%)',
-			valuePath: 'contribution_rate',
+			valuePath: 'contri_rate',
 			width: '90px',
 			align: 'center',
 		}, ];

@@ -3,6 +3,7 @@ import {
 	inject
 } from '@ember/service';
 export default Controller.extend({
+	cookies: inject(),
 	ajax: inject(),
 	budgetTip: false,
 	humanTip: false,
@@ -27,7 +28,7 @@ export default Controller.extend({
 	 */
 	queryRepresent() {
 		let condition = {
-			"token": "token123456789",
+			"token": this.get('cookies').read('user_token'),
 			"timestamp": 1530689119000,
 			"version": {
 				"major": 1,
@@ -36,11 +37,11 @@ export default Controller.extend({
 			"data": {
 				"type": "report_detail",
 				"condition": {
-					"scenario_id": "scenario_id"
+					"report_id":"5b4828e315899e014cb74e38"
 				}
 			}
 		}
-		this.get('ajax').request('/api/report/repr_product', this.getAjaxOpt(condition))
+		this.get('ajax').request('/api/report/rep_goods', this.getAjaxOpt(condition))
 			.then(({
 				status,
 				result,
@@ -49,8 +50,8 @@ export default Controller.extend({
 				if (status === "ok") {
 					// console.log('it is ok');
 					// console.info(result.data.attribute);
-					this.set('overviewData', result.data.attribute.rep_prod_report.overview);
-					this.set('columnsRepreReportValue', result.data.attribute.rep_prod_report.value)
+					this.set('overviewData', result.data.attribute.overview);
+					this.set('columnsRepreReportValue', result.data.attribute.value)
 				} else {
 					this.set('errorMessage', error.message);
 				}
@@ -67,12 +68,12 @@ export default Controller.extend({
 			align: 'center',
 		}, {
 			label: '产品名称',
-			valuePath: 'prod',
+			valuePath: 'brand_name',
 			width: '150px',
 			align: 'center',
 		}, {
 			label: '当期销售额',
-			valuePath: 'current_sales',
+			valuePath: 'sales',
 			width: '150px',
 			align: 'center',
 		}, {
@@ -87,12 +88,12 @@ export default Controller.extend({
 			align: 'center',
 		}, {
 			label: '指标达成率(%)',
-			valuePath: 'achievement_rate',
+			valuePath: 'achieve_rate',
 			width: '150px',
 			align: 'center',
 		}, {
 			label: '销售贡献率(%)',
-			valuePath: 'contribution_rate',
+			valuePath: 'contri_rate',
 			width: '150px',
 			align: 'center',
 		}, ];

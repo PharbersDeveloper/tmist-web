@@ -23,6 +23,7 @@
             {{#each checkpoints as |item|}}
                 <div local-class="checkpoint">
                     <span local-class="title">{{item.name}}</span>
+
                     <span local-class="btn-simulation" {{action 'simulation' item.id}}>进入模拟<span class="glyphicon glyphicon-menu-right"></span></span>
                 </div>
             {{/each}}

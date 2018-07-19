@@ -346,12 +346,12 @@
 									<div class="tab-content" local-class="right-content">
 										{{#tab.pane local-class="medicine-detail" elementId=medic.detail.id title="Tab 1" }}
 											<p><span></span>药品详情</p>
-											{{self-table model=model}}
+											{{self-table model=medic.detail.value}}
 										{{/tab.pane}}
 
 										{{#tab.pane local-class="medicine-detail" elementId=medic.history.id title="Tab 2" }}
 											<p><span></span>历史部署</p>
-											{{self-table model=columnsHospitalValue columns=columnsHospital}}
+											{{self-table model=medic.history.value columns=columnsHospital}}
 										{{/tab.pane}}
 
 										{{#tab.pane local-class="medicine-detail" elementId=medic.competitionproducts.id title="Tab 3" }}

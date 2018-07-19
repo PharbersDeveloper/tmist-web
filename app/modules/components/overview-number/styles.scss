@@ -41,7 +41,6 @@
 			color: #D0021B;
 		}
 	}
-
 	.small {
 		font-family: PingFangTC-Regular;
 		font-size: 12px;
@@ -82,13 +81,12 @@
 		.num {
 			float: right;
 
-			.red {
-				color: red;
-			}
 		}
-
-		span {
+		span.up {
 			color: #50E3C2;
+		}
+		span.down {
+			color: #D0021B;
 		}
 	}
 }

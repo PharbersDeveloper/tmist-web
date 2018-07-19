@@ -46,8 +46,8 @@
 					{{/menu.item}}
 				{{/dd.menu}}
 			{{/bs-dropdown}}
-			{{!-- <span local-class="budget" {{action 'budget'}}>预算 <span class="glyphicon glyphicon-triangle-bottom"></span> </span> --}}
-			{{!-- <span local-class="human" {{action 'human'}}>人力 <span class="glyphicon glyphicon-triangle-bottom"></span> </span> --}}
+			{{!-- <span local-class="budget" {{action 'budget'}}>é¢ç® <span class="glyphicon glyphicon-triangle-bottom"></span> </span> --}}
+			{{!-- <span local-class="human" {{action 'human'}}>äººå <span class="glyphicon glyphicon-triangle-bottom"></span> </span> --}}
 			<span local-class="btn-submit">提交执行 <span class="glyphicon glyphicon-menu-right"></span> </span>
 		</div>
 		{{!-- {{#if budgetTip}}
@@ -62,8 +62,8 @@
 					</div>
 				</div>
 			</div>
-		{{/if}} --}}
-		{{!-- {{#if humanTip}}
+		{{/if}}
+		{{#if humanTip}}
 			<div local-class="human-tip">
 				<div local-class="triangle"></div>
 				<div local-class="rectangle">
@@ -98,12 +98,14 @@
 					<p local-class="highlight"> <span>门诊人次/年</span> <span>{{number-format item.outpatient}}</span> </p>
 					<p local-class="highlight"> <span>手术台数/年</span> <span>{{number-format item.surgery}}</span> </p>
 					<div local-class="user-info">
-						<p>{{item.representive.name}}</p>
-						<img src= {{item.representive.avatar}} alt="">
+						{{#each item.representives as |value|}}
+							<p>{{value.name}}</p>
+							<img src= {{value.avatar}} alt="">
+						{{/each}}
 					</div>
 				</div>
 				<div local-class="medicine-container">
-					{{#each item.medicine as |medic|}}
+					{{#each item.medicines as |medic|}}
 						<div local-class="medicine-item">
 							<p local-class="title">{{medic.name}}</p>
 							<p local-class="potential"><span>药品潜力</span><span>{{number-format medic.potential}}</span></p>

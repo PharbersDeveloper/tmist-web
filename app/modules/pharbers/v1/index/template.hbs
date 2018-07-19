@@ -7,10 +7,12 @@
         </div>
         <div local-class="login-right">
             <p>登入/Login</p>
-            {{input type="text" name="accout" value=accout placeholder="帐号"}}
-            {{input type="text" name="password" value=password placeholder="密码"}}
-            <p local-class="foget-password">忘记密码？</p>
-            <button type="button" name="button" {{action 'login'}}>登入</button>
+            <form action="#">
+                {{input type="text" name="accout" value=accout placeholder="帐号" autofocus="true"}}
+                {{input type="text" name="password" value=password placeholder="密码"}}
+                <p local-class="foget-password">忘记密码？</p>
+                <button type="button" name="button" {{action 'sbtInfo'}}>登入</button>
+            </form>
         </div>
     </div>
 </div>

@@ -6,6 +6,7 @@ import {
 	computed
 } from '@ember/object';
 export default Controller.extend({
+	cookies:inject(),
 	ajax: inject(),
 	budgetTip: false,
 	humanTip: false,
@@ -68,7 +69,7 @@ export default Controller.extend({
 	 */
 	queryDetail() {
 		let condition = {
-			"token": "token123456789",
+			"token": this.get('cookies').read('user_token'),
 			"timestamp": 1530689119000,
 			"version": {
 				"major": 1,
@@ -77,11 +78,12 @@ export default Controller.extend({
 			"data": {
 				"type": "hosp_detail",
 				"condition": {
-					"scenario_id": "scenario_id"
+					"proposal_id":"5b42fd43ed925c05565b5bdb",
+        			"hospital_id": "5b43118fed925c05565b5bfc"
 				}
 			}
 		};
-		this.get('ajax').request('/api/scenario/hospital/detail', this.getAjaxOpt(condition))
+		this.get('ajax').request('/api/proposal/hospital/detail', this.getAjaxOpt(condition))
 			.then(({
 				status,
 				result,
@@ -101,7 +103,7 @@ export default Controller.extend({
 	 */
 	queryBudget() {
 		let condition = {
-			"token": "token123456789",
+			"token": this.get('cookies').read('user_token'),
 			"timestamp": 1530689119000,
 			"version": {
 				"major": 1,
@@ -110,11 +112,11 @@ export default Controller.extend({
 			"data": {
 				"type": "budget_progress",
 				"condition": {
-					"scenario_id": "scenario_id"
+						"proposal_id":"5b42fd43ed925c05565b5bdb"
 				}
 			}
 		};
-		let url = '/api/scenario/budget/info';
+		let url = '/api/proposal/budget/info';
 		let value = 'budget';
 		this.sendAjax(url, condition, value);
 
@@ -124,7 +126,7 @@ export default Controller.extend({
 	 */
 	queryManpower() {
 		let condition = {
-			"token": "token123456789",
+			"token": this.get('cookies').read('user_token'),
 			"timestamp": 1530689119000,
 			"version": {
 				"major": 1,
@@ -133,11 +135,11 @@ export default Controller.extend({
 			"data": {
 				"type": "budget_progress",
 				"condition": {
-					"scenario_id": "scenario_id"
+					"proposal_id":"5b42fd43ed925c05565b5bdb"
 				}
 			}
 		}
-		let url = 'api/scenario/humans/info';
+		let url = 'api/proposal/humans/info';
 		let value = 'manpower';
 		this.sendAjax(url, condition, value);
 	},

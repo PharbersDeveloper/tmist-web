@@ -6,6 +6,7 @@ import {
 	computed
 } from '@ember/object';
 export default Controller.extend({
+
 	ajax: inject(),
 	// budgetTip: false,
 	// humanTip: false,
@@ -52,6 +53,7 @@ export default Controller.extend({
 				error,
 			}) => {
 				if (status === "ok") {
+					// console.log('it is ok');
 					// console.info(result);
 					this.set(value, result.data.attribute)
 				} else {
@@ -66,7 +68,7 @@ export default Controller.extend({
 	 */
 	queryHospList() {
 		let condition = {
-			"token": "token123456789",
+			"token": this.get('cookies').read('user_token'),
 			"timestamp": 1530689119000,
 			"version": {
 				"major": 1,
@@ -75,12 +77,12 @@ export default Controller.extend({
 			"data": {
 				"type": "hosp_lst",
 				"condition": {
-					"scenario_id": "scenario_id"
+					"proposal_id": "5b42fd43ed925c05565b5bdb"
 				}
 			}
 		}
-
-		this.get('ajax').request('/api/scenario/hospital/lst', this.getAjaxOpt(condition))
+		// console.info(this.get('cookies').read('user_token'))
+		this.get('ajax').request('/api/proposal/hospital/lst', this.getAjaxOpt(condition))
 			.then(({
 				status,
 				result,
@@ -89,7 +91,7 @@ export default Controller.extend({
 				if (status === "ok") {
 					// console.log('it is ok');
 					this.set('currentMonth', result.data.attribute.currentMonth)
-					this.set('hospitalList', result.data.attribute.hospitalList)
+					this.set('hospitalList', result.data.attribute.hospitals)
 				} else {
 					this.set('errorMessage', error.message);
 				}
@@ -100,7 +102,7 @@ export default Controller.extend({
 	 */
 	queryBudget() {
 		let condition = {
-			"token": "token123456789",
+			"token": this.get('cookies').read('user_token'),
 			"timestamp": 1530689119000,
 			"version": {
 				"major": 1,
@@ -109,11 +111,11 @@ export default Controller.extend({
 			"data": {
 				"type": "budget_progress",
 				"condition": {
-					"scenario_id": "scenario_id"
+					"proposal_id": "5b42fd43ed925c05565b5bdb"
 				}
 			}
 		};
-		let url = '/api/scenario/budget/info';
+		let url = 'api/proposal/budget/info';
 		let value = 'budget';
 		this.sendAjax(url, condition, value);
 		/**
@@ -136,7 +138,7 @@ export default Controller.extend({
 	 */
 	queryManpower() {
 		let condition = {
-			"token": "token123456789",
+			"token": this.get('cookies').read('user_token'),
 			"timestamp": 1530689119000,
 			"version": {
 				"major": 1,
@@ -145,11 +147,11 @@ export default Controller.extend({
 			"data": {
 				"type": "budget_progress",
 				"condition": {
-					"scenario_id": "scenario_id"
+					"proposal_id": "5b42fd43ed925c05565b5bdb"
 				}
 			}
 		}
-		let url = 'api/scenario/humans/info';
+		let url = 'api/proposal/humans/info';
 		let value = 'manpower';
 		this.sendAjax(url, condition, value);
 		/**
@@ -241,14 +243,17 @@ export default Controller.extend({
 	},
 	actions: {
 		// body
-		// budget() {
-		// 	this.toggleProperty('budgetTip');
-		// 	this.hidden('humanTip');
-		// },
-		// human() {
-		// 	this.toggleProperty('humanTip');
-		// 	this.hidden('budgetTip');
-		// },
+		budget() {
+			// console.log('budget');
+			this.toggleProperty('budgetTip');
+			this.hidden('humanTip');
+		},
+		human() {
+			// console.log('human');
+			// this.queryManpower();
+			this.toggleProperty('humanTip');
+			this.hidden('budgetTip');
+		},
 		hospDetail() {
 			this.transitionToRoute('pharbers.v1.hosp-detail')
 		}

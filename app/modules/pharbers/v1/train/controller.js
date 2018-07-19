@@ -32,7 +32,7 @@ export default Controller.extend({
 	 */
 	queryTrains() {
 		let condition = {
-			"token": "token123456789",
+			"token": this.get('cookies').read('user_token'),
 			"timestamp": 1530689119000,
 			"version": {
 				"major": 1,
@@ -40,13 +40,10 @@ export default Controller.extend({
 			},
 			"data": {
 				"type": "checkpoints",
-				"condition": {
-					name: "前"
-				}
+				"condition": {}
 			}
 		}
-
-		this.get('ajax').request('/api/checkpoint/query/multi', this.getAjaxOpt(condition))
+		this.get('ajax').request('/api/proposal/lst', this.getAjaxOpt(condition))
 			.then(({
 				status,
 				result,

@@ -39,20 +39,15 @@
 	background: #FDFDFD;
 	box-shadow: 0 2px 4px 0 rgba(162,162,162,0.50);
 
-	.tips-container {
-		height: auto;
-		padding: 0;
-		border: 0;
-	}
-
-	.budget-tips {
+	.budget-tip {
 		position: absolute;
-		top: 20px;
-		height: 110px;
+		top: 50px;
+		right: 20px;
+		z-index: 2;
 		font-size: 0;
+		box-shadow: 0 2px 4px 0 rgba(133,132,132,0.50);
 
 		.rectangle {
-			margin-left: -80px;
 			padding: 20px;
 			width: 350px;
 			height: 90px;
@@ -78,6 +73,8 @@
 		}
 
 		.triangle {
+			position: absolute;
+			left: 95px;
 			margin-top: -20px;
 			padding: 0;
 			width: 0;
@@ -87,60 +84,16 @@
 			border-color: transparent transparent #FFF;
 		}
 	}
-	// .budget-tip {
-	// 	position: absolute;
-	// 	top: 50px;
-	// 	right: 20px;
-	// 	z-index: 2;
-	// 	font-size: 0;
-	// 	box-shadow: 0 2px 4px 0 rgba(133,132,132,0.50);
-	//
-	// 	.rectangle {
-	// 		padding: 20px;
-	// 		width: 350px;
-	// 		height: 90px;
-	// 		background-color: #FFF;
-	// 		box-shadow: 0 2px 4px 0 rgba(133,132,132,0.50);
-	// 		border-radius: 5px;
-	//
-	// 		.budget-text {
-	// 			height: 17px;
-	// 			line-height: 17px;
-	// 			font-size: 12px;
-	// 			letter-spacing: 1px;
-	//
-	// 			span:first-child {
-	// 				margin-right: 30px;
-	// 			}
-	//
-	// 			span:last-child {
-	// 				float: right;
-	// 				margin-right: 20px;
-	// 			}
-	// 		}
-	// 	}
-	//
-	// 	.triangle {
-	// 		position: absolute;
-	// 		left: 95px;
-	// 		margin-top: -20px;
-	// 		padding: 0;
-	// 		width: 0;
-	// 		height: 0;
-	// 		border-width: 10px;
-	// 		border-style: solid;
-	// 		border-color: transparent transparent #FFF;
-	// 	}
-	// }
-	.human-tips {
+
+	.human-tip {
 		position: absolute;
-		top: 20px;
-		left: -40px;
+		top: 50px;
+		right: 20px;
 		z-index: 2;
 		font-size: 0;
-		// box-shadow: 0 2px 4px 0 rgba(133,132,132,0.50);
+		box-shadow: 0 2px 4px 0 rgba(133,132,132,0.50);
+
 		.rectangle {
-			margin-left: -100px;
 			padding: 20px;
 			width: 350px;
 			height: 325px;
@@ -166,9 +119,8 @@
 		}
 
 		.triangle {
-			// position: absolute;
-			// left: 155px;
-			margin-left: 50px;
+			position: absolute;
+			left: 155px;
 			margin-top: -20px;
 			padding: 0;
 			width: 0;
@@ -178,52 +130,7 @@
 			border-color: transparent transparent #FFF;
 		}
 	}
-	//
-	// .human-tip {
-	// 	position: absolute;
-	// 	top: 50px;
-	// 	right: 20px;
-	// 	z-index: 2;
-	// 	font-size: 0;
-	// 	box-shadow: 0 2px 4px 0 rgba(133,132,132,0.50);
-	//
-	// 	.rectangle {
-	// 		padding: 20px;
-	// 		width: 350px;
-	// 		height: 325px;
-	// 		background-color: #FFF;
-	// 		box-shadow: 0 2px 4px 0 rgba(133,132,132,0.50);
-	// 		border-radius: 5px;
-	//
-	// 		.human-text {
-	// 			height: 17px;
-	// 			line-height: 17px;
-	// 			font-size: 12px;
-	// 			letter-spacing: 1px;
-	//
-	// 			span:first-child {
-	// 				margin-right: 30px;
-	// 			}
-	//
-	// 			span:last-child {
-	// 				float: right;
-	// 				margin-right: 20px;
-	// 			}
-	// 		}
-	// 	}
-	//
-	// 	.triangle {
-	// 		position: absolute;
-	// 		left: 155px;
-	// 		margin-top: -20px;
-	// 		padding: 0;
-	// 		width: 0;
-	// 		height: 0;
-	// 		border-width: 10px;
-	// 		border-style: solid;
-	// 		border-color: transparent transparent #FFF;
-	// 	}
-	// }
+
 	.self-progress {
 		margin-top: 6px;
 		height: 16px;
@@ -262,8 +169,8 @@
 	.menu-right {
 		float: right;
 
-		.budget a,
-		.human a {
+		.budget span,
+		.human span {
 			color: #8695BD;
 		}
 
