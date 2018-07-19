@@ -7,8 +7,8 @@ import {
 } from '@ember/object';
 export default Controller.extend({
 	ajax: inject(),
-	budgetTip: false,
-	humanTip: false,
+	// budgetTip: false,
+	// humanTip: false,
 	currentMonth: 1,
 	budgetPerc: computed('budget', function() {
 		let budget = this.get('budget');
@@ -52,7 +52,6 @@ export default Controller.extend({
 				error,
 			}) => {
 				if (status === "ok") {
-					// console.log('it is ok');
 					// console.info(result);
 					this.set(value, result.data.attribute)
 				} else {
@@ -242,17 +241,14 @@ export default Controller.extend({
 	},
 	actions: {
 		// body
-		budget() {
-			// console.log('budget');
-			this.toggleProperty('budgetTip');
-			this.hidden('humanTip');
-		},
-		human() {
-			// console.log('human');
-			// this.queryManpower();
-			this.toggleProperty('humanTip');
-			this.hidden('budgetTip');
-		},
+		// budget() {
+		// 	this.toggleProperty('budgetTip');
+		// 	this.hidden('humanTip');
+		// },
+		// human() {
+		// 	this.toggleProperty('humanTip');
+		// 	this.hidden('budgetTip');
+		// },
 		hospDetail() {
 			this.transitionToRoute('pharbers.v1.hosp-detail')
 		}
