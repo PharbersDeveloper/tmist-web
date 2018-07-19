@@ -14,11 +14,11 @@
 			{{#bs-dropdown tagName="span" local-class="budget" as |bb|}}
 				{{#bb.toggle}}预算 <span class="caret"></span>{{/bb.toggle}}
 				{{#bb.menu local-class='tips-container' as |menu|}}
-					{{#menu.item local-class='budget-tips' }}
+					{{#menu.item local-class='budget-tip' }}
 						<div local-class="triangle"></div>
 						<div local-class="rectangle">
 							<p local-class="budget-text"> <span>预算</span> <span>{{number-format budget.used}}/{{number-format budget.total}}</span> <span>{{budgetPerc}}%</span> </p>
-							<div local-class="self-progress" class="progress">
+				 			<div local-class="self-progress" class="progress">
 								{{#bs-progress as |p|}}
 									{{p.bar value=budgetPerc local-class="self-progress-bar"}}
 								{{/bs-progress}}
@@ -30,7 +30,7 @@
 			{{#bs-dropdown tagName="span" local-class="human" as |dd|}}
 				{{#dd.toggle}}人力 <span class="caret"></span>{{/dd.toggle}}
 				{{#dd.menu local-class='tips-container' as |menu|}}
-					{{#menu.item local-class='human-tips' }}
+					{{#menu.item local-class='human-tip' }}
 						<div local-class="triangle"></div>
 						<div local-class="rectangle">
 							{{#each manpowerPerc as |item|}}
