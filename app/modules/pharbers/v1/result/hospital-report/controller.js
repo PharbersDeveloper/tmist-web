@@ -46,14 +46,8 @@ export default Controller.extend({
 			}
 		}
 		this.get('ajax').request('/api/report/dests_goods', this.getAjaxOpt(condition))
-			.then(({
-				status,
-				result,
-				error,
-			}) => {
+			.then(({ status, result, error }) => {
 				if (status === "ok") {
-					// console.log('it is ok');
-					// console.info(result.data.attribute);
 					this.set('overviewData', result.data.attribute.overview);
 					this.set('columnsHospitalValue', result.data.attribute.value)
 				} else {
@@ -64,42 +58,7 @@ export default Controller.extend({
 	init() {
 		this._super(...arguments);
 		this.queryHospital();
-		this.overviewData = [
-			/**
-				{
-					"index": 0,
-					"title": "zhengti",
-					"type": "sales",
-					"value": 5467913,
-					"des": 'up',
-				}, {
-					"index": 1,
-					"title": 'baifeibi',
-					"type": 'percent',
-					"value": 12,
-					"ext": {
-						"change": "down", // down,stable,none
-					}
-				}, {
-					"index": 2,
-					"title": '表现最佳',
-					"type": 'info',
-					"value": "医院1-产品1",
-					"ext": {
-						"sub": {
-							"title": '份额',
-							"type": 'sales', // percent
-							"value": 6525423, // 12
-							"ext": {
-								"type": 'percent',
-								"change": "up", // down,stable,none
-								"value": 7,
-							}
-						}
-					}
-				}
-			*/
-		];
+		this.overviewData = [];
 		this.columnsHospital = [{
 				label: '医院名称',
 				valuePath: 'hosp_name',
@@ -127,80 +86,68 @@ export default Controller.extend({
 				valuePath: 'sales',
 				width: '90px',
 				align: 'center',
+				cellComponent: 'table-number-thousands'
 			}, {
 				label: '销售增长',
 				valuePath: 'sales_growth',
 				width: '90px',
 				align: 'center',
+				cellComponent: 'table-number-percent'
 			}, {
 				label: 'EV值(%)',
 				valuePath: 'ev_value',
 				width: '80px',
 				align: 'center',
+				cellComponent: 'table-number-percent'
 			}, {
 				label: '份额(%)',
 				valuePath: 'share',
 				width: '90px',
 				align: 'center',
+				cellComponent: 'table-number-percent'
 			}, {
 				label: '份额增长(%)',
 				valuePath: 'share_growth',
 				width: '90px',
 				align: 'center',
+				cellComponent: 'table-number-percent'
 			},
 			{
 				label: '指标',
 				valuePath: 'target',
 				width: '90px',
 				align: 'center',
+				cellComponent: 'table-number-thousands'
 			},
 			{
 				label: '指标达成率(%)',
 				valuePath: 'achieve_rate',
 				width: '90px',
 				align: 'center',
+				cellComponent: 'table-number-percent'
 			},
 			{
 				label: '销售贡献率(%)',
 				valuePath: 'contri_rate',
 				width: '90px',
 				align: 'center',
+				cellComponent: 'table-number-percent'
 			},
 		];
-		this.columnsHospitalValue = [
-			// 	{
-			// 	'hospital': 'aaa',
-			// 	'prod': 'ccc',
-			// 	'market_potential': 4444,
-			// 	'market_growth': 444,
-			// 	'current_sales': 444,
-			// 	'sales_growth': 444,
-			// 	'ev_value': 444,
-			// 	'share': 444,
-			// 	'share_growth': 444,
-			// 	'target': 444,
-			// 	'achievement_rate': 44,
-			// 	'contribution_rate': 44
-			// }
-		];
+		this.columnsHospitalValue = [];
 	},
 	actions: {
 		budget() {
-			// console.log('budget');
 			this.toggleProperty('budgetTip');
 			this.hidden('humanTip');
 		},
 		human() {
-			// console.log('human');
 			this.toggleProperty('humanTip');
 			this.hidden('budgetTip');
 		},
 		tab() {
-			// console.log('tabLi');
 			this.toggleProperty('tabLi');
 			this.hidden('tabLi');
 		},
-
-
 	}
 });

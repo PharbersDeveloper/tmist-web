@@ -37,7 +37,7 @@ export default Controller.extend({
 			"data": {
 				"type": "report_detail",
 				"condition": {
-					"report_id":"5b4828e315899e014cb74e38"
+					"report_id": "5b4828e315899e014cb74e38"
 				}
 			}
 		}
@@ -48,8 +48,6 @@ export default Controller.extend({
 				error,
 			}) => {
 				if (status === "ok") {
-					// console.log('it is ok');
-					// console.info(result.data.attribute);
 					this.set('overviewData', result.data.attribute.overview);
 					this.set('columnsRepreReportValue', result.data.attribute.value)
 				} else {
@@ -76,26 +74,31 @@ export default Controller.extend({
 			valuePath: 'sales',
 			width: '150px',
 			align: 'center',
+			cellComponent: 'table-number-thousands'
 		}, {
 			label: '销售增长',
 			valuePath: 'sales_growth',
 			width: '150px',
 			align: 'center',
+			cellComponent: 'table-number-percent'
 		}, {
 			label: '指标',
 			valuePath: 'target',
 			width: '150px',
 			align: 'center',
+			cellComponent: 'table-number-thousands'
 		}, {
 			label: '指标达成率(%)',
 			valuePath: 'achieve_rate',
 			width: '150px',
 			align: 'center',
+			cellComponent: 'table-number-percent'
 		}, {
 			label: '销售贡献率(%)',
 			valuePath: 'contri_rate',
 			width: '150px',
 			align: 'center',
+			cellComponent: 'table-number-percent'
 		}, ];
 		this.columnsRepreReportValue = [{
 			'rep': 'aa name',
@@ -109,17 +112,14 @@ export default Controller.extend({
 	},
 	actions: {
 		budget() {
-			// console.log('budget');
 			this.toggleProperty('budgetTip');
 			this.hidden('humanTip');
 		},
 		human() {
-			// console.log('human');
 			this.toggleProperty('humanTip');
 			this.hidden('budgetTip');
 		},
 		tab() {
-			// console.log('tabLi');
 			this.toggleProperty('tabLi');
 			this.hidden('tabLi');
 		},
