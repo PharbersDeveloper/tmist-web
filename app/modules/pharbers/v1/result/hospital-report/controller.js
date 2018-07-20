@@ -4,6 +4,7 @@ import {
 } from '@ember/service';
 
 export default Controller.extend({
+	cookies: inject(),
 	ajax: inject(),
 	budgetTip: false,
 	humanTip: false,
@@ -31,7 +32,7 @@ export default Controller.extend({
 	 */
 	queryHospital() {
 		let condition = {
-			"token": "token123456789",
+			"token": this.get('cookies').read('user_token'),
 			"timestamp": 1530689119000,
 			"version": {
 				"major": 1,
@@ -40,11 +41,11 @@ export default Controller.extend({
 			"data": {
 				"type": "report_detail",
 				"condition": {
-					"scenario_id": "scenario_id"
+					"report_id": "5b4828e315899e014cb74e38"
 				}
 			}
 		}
-		this.get('ajax').request('/api/report/hosp_product', this.getAjaxOpt(condition))
+		this.get('ajax').request('/api/report/dests_goods', this.getAjaxOpt(condition))
 			.then(({
 				status,
 				result,
@@ -53,8 +54,8 @@ export default Controller.extend({
 				if (status === "ok") {
 					// console.log('it is ok');
 					// console.info(result.data.attribute);
-					this.set('overviewData', result.data.attribute.hosp_prod_report.overview);
-					this.set('columnsHospitalValue', result.data.attribute.hosp_prod_report.value)
+					this.set('overviewData', result.data.attribute.overview);
+					this.set('columnsHospitalValue', result.data.attribute.value)
 				} else {
 					this.set('errorMessage', error.message);
 				}
@@ -101,17 +102,17 @@ export default Controller.extend({
 		];
 		this.columnsHospital = [{
 				label: '医院名称',
-				valuePath: 'hospital',
+				valuePath: 'hosp_name',
 				width: '90px',
 				align: 'center',
 			}, {
 				label: '产品名称',
-				valuePath: 'prod',
+				valuePath: 'brand_name',
 				width: '90px',
 				align: 'center',
 			}, {
 				label: '市场潜力',
-				valuePath: 'market_potential',
+				valuePath: 'potential',
 				width: '90px',
 				align: 'center',
 
@@ -120,9 +121,10 @@ export default Controller.extend({
 				valuePath: 'market_growth',
 				width: '90px',
 				align: 'center',
+				cellComponent: 'table-number-percent'
 			}, {
 				label: '当期销售额',
-				valuePath: 'current_sales',
+				valuePath: 'sales',
 				width: '90px',
 				align: 'center',
 			}, {
@@ -154,31 +156,33 @@ export default Controller.extend({
 			},
 			{
 				label: '指标达成率(%)',
-				valuePath: 'achievement_rate',
+				valuePath: 'achieve_rate',
 				width: '90px',
 				align: 'center',
 			},
 			{
 				label: '销售贡献率(%)',
-				valuePath: 'contribution_rate',
+				valuePath: 'contri_rate',
 				width: '90px',
 				align: 'center',
 			},
 		];
-		this.columnsHospitalValue = [{
-			'hospital': 'aaa',
-			'prod': 'ccc',
-			'market_potential': 4444,
-			'market_growth': 444,
-			'current_sales': 444,
-			'sales_growth': 444,
-			'ev_value': 444,
-			'share': 444,
-			'share_growth': 444,
-			'target': 444,
-			'achievement_rate': 44,
-			'contribution_rate': 44
-		}];
+		this.columnsHospitalValue = [
+			// 	{
+			// 	'hospital': 'aaa',
+			// 	'prod': 'ccc',
+			// 	'market_potential': 4444,
+			// 	'market_growth': 444,
+			// 	'current_sales': 444,
+			// 	'sales_growth': 444,
+			// 	'ev_value': 444,
+			// 	'share': 444,
+			// 	'share_growth': 444,
+			// 	'target': 444,
+			// 	'achievement_rate': 44,
+			// 	'contribution_rate': 44
+			// }
+		];
 	},
 	actions: {
 		budget() {

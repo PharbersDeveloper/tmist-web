@@ -25,12 +25,11 @@ export default Component.extend({
 	columns: computed('columns', function() {
 		return [{
 			label: '商品名',
-			valuePath: 'id',
+			valuePath: 'product_name',
 			width: '100px',
 			align: 'center',
-			className: 'testname',
 			sortable: true,
-			sorted: true,
+			sorted: true
 		}, {
 			label: '类别',
 			valuePath: 'type',

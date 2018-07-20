@@ -3,6 +3,7 @@ import {
 	inject
 } from '@ember/service';
 export default Controller.extend({
+	cookies:inject(),
 	ajax: inject(),
 	budgetTip: false,
 	humanTip: false,
@@ -27,7 +28,7 @@ export default Controller.extend({
 	 */
 	queryRepTarget() {
 		let condition = {
-			"token": "token123456789",
+			"token": this.get('cookies').read('user_token'),
 			"timestamp": 1530689119000,
 			"version": {
 				"major": 1,
@@ -36,11 +37,11 @@ export default Controller.extend({
 			"data": {
 				"type": "report_detail",
 				"condition": {
-					"scenario_id": "scenario_id"
+					"report_id":"5b4828e315899e014cb74e38"
 				}
 			}
 		}
-		this.get('ajax').request('/api/report/repr_ind_resource', this.getAjaxOpt(condition))
+		this.get('ajax').request('/api/report/rep_ind_resos', this.getAjaxOpt(condition))
 			.then(({
 				status,
 				result,
@@ -49,9 +50,9 @@ export default Controller.extend({
 				if (status === "ok") {
 					// console.log('it is ok');
 					// console.info(result.data.attribute);
-					this.set('overviewData', result.data.attribute.rep_ind_resources.overview);
+					this.set('overviewData', result.data.attribute.overview);
 
-					this.set('columnsRepreValue', result.data.attribute.rep_ind_resources.value)
+					this.set('columnsRepreValue', result.data.attribute.value)
 				} else {
 					this.set('errorMessage', error.message);
 				}
@@ -63,7 +64,7 @@ export default Controller.extend({
 		this.overviewData = [];
 		this.columnsRepre = [{
 			label: '代表名称',
-			valuePath: 'rep',
+			valuePath: 'rep_name',
 			width: '100px',
 			align: 'center',
 		}, {
@@ -73,27 +74,27 @@ export default Controller.extend({
 			align: 'center',
 		}, {
 			label: '销售额',
-			valuePath: 'current_sales',
+			valuePath: 'sales',
 			width: '120px',
 			align: 'center',
 		}, {
 			label: '指标达成(%)',
-			valuePath: 'indicator_achievement',
+			valuePath: 'achieve_rate',
 			width: '100px',
 			align: 'center',
 		}, {
 			label: '预算比例(%)',
-			valuePath: 'target_rate',
+			valuePath: 'budget_proportion',
 			width: '120px',
 			align: 'center',
 		}, {
 			label: '销售贡献率(%)',
-			valuePath: 'contribution_rate',
+			valuePath: 'contri_rate',
 			width: '120px',
 			align: 'center',
 		}, {
 			label: '工作天数',
-			valuePath: 'workdays',
+			valuePath: 'time',
 			width: '100px',
 			align: 'center',
 		}, {

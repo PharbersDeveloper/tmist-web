@@ -7,6 +7,7 @@ import {
 } from '@ember/object';
 
 export default Controller.extend({
+	cookies: inject(),
 	ajax: inject(),
 	budgetTip: false,
 	humanTip: false,
@@ -52,24 +53,25 @@ export default Controller.extend({
 	 */
 	queryBudget() {
 		let condition = {
-			"token": "token123456789",
+			"token": this.get('cookies').read('user_token'),
 			"timestamp": 1530689119000,
 			"version": {
 				"major": 1,
 				"minor": 0
 			},
 			"data": {
-				"type": "budget_progress",
+				"type": "report_detail",
 				"condition": {
-					"scenario_id": "scenario_id"
+					"report_id": "5b4828e315899e014cb74e38"
 				}
 			}
 		};
+		console.info(this.get('cookies').read('user_token'))
 		// let url = '/api/scenario/budget/info';
 		// let value = 'budget';
 		// this.sendAjax(url, condition, value);
 
-		this.get('ajax').request('/api/scenario/budget/info', this.getAjaxOpt(condition))
+		this.get('ajax').request('/api/report/total', this.getAjaxOpt(condition))
 			.then(({
 				status,
 				result,
@@ -88,7 +90,8 @@ export default Controller.extend({
 	 */
 	queryTotal() {
 		let condition = {
-			"token": "token123456789",
+			"token": this.get('cookies').read('user_token'),
+			// "token": "bearerc82ae46113f5f344987d3328b985f82d",
 			"timestamp": 1530689119000,
 			"version": {
 				"major": 1,
@@ -97,7 +100,7 @@ export default Controller.extend({
 			"data": {
 				"type": "report_detail",
 				"condition": {
-					"scenario_id": "scenario_id"
+					"report_id": "5b4828e315899e014cb74e38"
 				}
 			}
 		}
@@ -109,10 +112,10 @@ export default Controller.extend({
 			}) => {
 				if (status === "ok") {
 					// console.log('it is ok');
-					// console.info(result.data.attribute.total_report.overview);
-					this.set('overviewData', result.data.attribute.total_report.overview);
+					// console.info(result.data.attribute.overview);
+					this.set('overviewData', result.data.attribute.overview);
 
-					this.set('columnsHospitalValue', result.data.attribute.total_report.value)
+					this.set('columnsHospitalValue', result.data.attribute.value)
 				} else {
 					this.set('errorMessage', error.message);
 				}
@@ -123,7 +126,7 @@ export default Controller.extend({
 	 */
 	queryManpower() {
 		let condition = {
-			"token": "token123456789",
+			"token": this.get('cookies').read('user_token'),
 			"timestamp": 1530689119000,
 			"version": {
 				"major": 1,
@@ -132,7 +135,7 @@ export default Controller.extend({
 			"data": {
 				"type": "budget_progress",
 				"condition": {
-					"scenario_id": "scenario_id"
+					"report_id": "5b4828e315899e014cb74e38"
 				}
 			}
 		}
@@ -140,7 +143,7 @@ export default Controller.extend({
 		// let value = 'manpower';
 		// this.sendAjax(url, condition, value);
 
-		this.get('ajax').request('/api/scenario/humans/info', this.getAjaxOpt(condition))
+		this.get('ajax').request('/api/report/total', this.getAjaxOpt(condition))
 			.then(({
 				status,
 				result,
@@ -199,14 +202,14 @@ export default Controller.extend({
 		];
 		this.columnsHospital = [{
 				label: '产品名称',
-				valuePath: 'prod',
+				valuePath: 'brand_name',
 				width: '100px',
 				align: 'center',
 				sorted: false,
 
 			}, {
 				label: '市场销售额',
-				valuePath: 'market_sale',
+				valuePath: 'potential',
 				width: '100px',
 				align: 'center',
 			}, {
@@ -217,7 +220,7 @@ export default Controller.extend({
 
 			}, {
 				label: '当期销售额',
-				valuePath: 'current_sales',
+				valuePath: 'sales',
 				width: '100px',
 				align: 'center',
 			}, {
@@ -237,7 +240,7 @@ export default Controller.extend({
 				align: 'center',
 			}, {
 				label: '份额增长(%)',
-				valuePath: 'share_growth',
+				valuePath: 'share_change',
 				width: '100px',
 				align: 'center',
 			}, {
@@ -248,13 +251,13 @@ export default Controller.extend({
 			},
 			{
 				label: '指标达成率(%)',
-				valuePath: 'achievement_rate',
+				valuePath: 'achieve_rate',
 				width: '100px',
 				align: 'center',
 			},
 			{
 				label: '销售贡献率(%)',
-				valuePath: 'contribution_rate',
+				valuePath: 'contri_rate',
 				width: '100px',
 				align: 'center',
 			}

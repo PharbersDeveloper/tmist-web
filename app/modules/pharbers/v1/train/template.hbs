@@ -22,13 +22,13 @@
         {{#if checkpoints}}
             {{#each checkpoints as |item|}}
                 <div local-class="checkpoint">
-                    <span local-class="title">{{item.name}}</span>
+                    <span local-class="title">{{item.proposal_name}}</span>
 
                     <span local-class="btn-simulation" {{action 'simulation' item.id}}>进入模拟<span class="glyphicon glyphicon-menu-right"></span></span>
                 </div>
             {{/each}}
         {{else}}
-            <h2>Error</h2>
+            <h2>网络繁忙，请稍后重试。</h2>
         {{/if}}
 
     </div>
