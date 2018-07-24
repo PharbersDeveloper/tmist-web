@@ -40,16 +40,14 @@ module.exports = function(defaults) {
 		},
 		sassOptions: {
 			includePaths: [
-				'node_modules/bootstrap-sass/assets/stylesheets',
-				'node_modules/ember-power-select/app/styles',
-				'node_modules/ember-basic-dropdown/app/styles'
+				'node_modules/bootstrap-sass/assets/stylesheets'
 			]
 		},
 		babel: {
 			sourceMaps: sourceMap
 		}
 	});
-    //第三方静态文件导入
+	//第三方静态文件导入
 	app.import("vendor/echarts/echarts.js")
 	return app.toTree();
 };
