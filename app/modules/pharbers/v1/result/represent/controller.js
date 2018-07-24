@@ -72,26 +72,31 @@ export default Controller.extend({
 			valuePath: 'target',
 			width: '120px',
 			align: 'center',
+			cellComponent: 'table-number-thousands'
 		}, {
 			label: '销售额',
 			valuePath: 'sales',
 			width: '120px',
 			align: 'center',
+			cellComponent: 'table-number-thousands'
 		}, {
 			label: '指标达成(%)',
 			valuePath: 'achieve_rate',
 			width: '100px',
 			align: 'center',
+			cellComponent: 'table-number-percent'
 		}, {
 			label: '预算比例(%)',
 			valuePath: 'budget_proportion',
 			width: '120px',
 			align: 'center',
+			cellComponent: 'table-number-percent'
 		}, {
 			label: '销售贡献率(%)',
 			valuePath: 'contri_rate',
 			width: '120px',
 			align: 'center',
+			cellComponent: 'table-number-percent'
 		}, {
 			label: '工作天数',
 			valuePath: 'time',
@@ -102,11 +107,13 @@ export default Controller.extend({
 			valuePath: 'reward',
 			width: '100px',
 			align: 'center',
+			cellComponent: 'table-number-thousands'
 		}, {
 			label: '能力值1',
 			valuePath: 'ability',
 			width: '100px',
 			align: 'center',
+			cellComponent: 'table-number-thousands'
 		}, {
 			label: '能力值变化',
 			valuePath: 'ability_change',

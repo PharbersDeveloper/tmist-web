@@ -70,34 +70,26 @@
 		<div local-class="hosp-detail" class="container">
 			<div local-class="basic-info" class="row">
                 <div local-class="select">
-					<span local-class="title" {{action 'tab'}}>资源投入与产出</span>
-                    <span class="glyphicon glyphicon-triangle-bottom" {{action 'tab'}}></span>
-					{{#if tabLi}}
-                    <div local-class="drop">
-                        <ul>
-                            <li>
-                                {{#link-to "pharbers.v1.result.whole"}}
-                                    整体销售表现
-                                {{/link-to}}
-                            </li>
-                            <li>
-								{{#link-to "pharbers.v1.result.hospital-report"}}
-								医院-产品销售报告
-								{{/link-to}}
-							</li>
-                            <li>
-								{{#link-to "pharbers.v1.result.represent-report"}}
-								代表-产品销售报告
-								{{/link-to}}
-							</li>
-                            <li>
-								{{#link-to "pharbers.v1.result.represent"}}
-								代表指标与资源
-								{{/link-to}}
-							</li>
-                        </ul>
-                    </div>
-					{{/if}}
+                    {{#bs-dropdown local-class="title" tagName="span" as |dd|}}
+					  {{#dd.toggle}}资源投入与产出<span class="caret"></span>{{/dd.toggle}}
+					  {{#dd.menu local-class="ull" as |menu|}}
+					    {{#menu.item}}
+					      {{#menu.link-to "pharbers.v1.result.whole"}}整体销售表现{{/menu.link-to}}
+					    {{/menu.item}}
+					    {{menu.divider}}
+					    {{#menu.item}}
+					      {{#menu.link-to "pharbers.v1.result.hospital-report"}}医院-产品销售报告{{/menu.link-to}}
+					    {{/menu.item}}
+					    {{menu.divider}}
+					    {{#menu.item}}
+					      {{#menu.link-to "pharbers.v1.result.represent-report"}}代表-产品销售报告{{/menu.link-to}}
+					    {{/menu.item}}
+						{{menu.divider}}
+						{{#menu.item}}
+					      {{#menu.link-to "pharbers.v1.result.represent"}}代表指标与资源{{/menu.link-to}}
+					    {{/menu.item}}
+					  {{/dd.menu}}
+					{{/bs-dropdown}}
                 </div>
                 <div local-class="overview">
 					{{#each overviewData as |item|}}

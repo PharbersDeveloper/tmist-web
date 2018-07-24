@@ -1,82 +1,29 @@
 <div local-class="detail-container">
-	{{!-- <div local-class="title-bar">
-		<span local-class="date">2月份销售结果</span>
-		<span local-class="setting"> <img src="/assets/images/hosp-setting.png" alt=""> </span>
-	</div>
-	<div local-class="menu-bar">
-		<div local-class="menu menu-left">
-			<span>通知</span>
-			<span>信息库</span>
-			<span>当前部署分析</span>
-		</div>
-		<div local-class="menu menu-right">
-			<span local-class="budget" {{action 'budget'}}>预算 <span class="glyphicon glyphicon-triangle-bottom"></span> </span>
-			<span local-class="human" {{action 'human'}}>人力 <span class="glyphicon glyphicon-triangle-bottom"></span> </span>
-			<span local-class="btn-submit">提交执行 <span class="glyphicon glyphicon-menu-right"></span> </span>
-		</div>
-		{{#if budgetTip}}
-			<div local-class="budget-tip">
-				<div local-class="triangle"></div>
-				<div local-class="rectangle">
-					<p local-class="budget-text"> <span>预算</span> <span>{{budget.used}}/{{budget.total}}</span> <span>{{budgetPerc}}%</span> </p>
-
-					<div local-class="self-progress" class="progress">
-						{{#bs-progress as |p|}}
-							{{p.bar value=budgetPerc local-class="self-progress-bar"}}
-						{{/bs-progress}}
-					</div>
-				</div>
-			</div>
-		{{/if}}
-		{{#if humanTip}}
-			<div local-class="human-tip">
-				<div local-class="triangle"></div>
-				<div local-class="rectangle">
-					{{#each manpowerPerc as |item|}}
-						<p local-class="human-text"> <span>{{item.name}}</span> <span>{{item.used}}/{{item.total}}天</span> <span>{{item.percent}}%</span> </p>
-						<div local-class="self-progress" class="progress">
-							{{#bs-progress as |p|}}
-								{{p.bar value=item.percent local-class="self-progress-bar"}}
-							{{/bs-progress}}
-						</div>
-					{{/each}}
-				</div>
-			</div>
-		{{/if}}
-	</div> --}}
 	<div local-class="content">
 		<div local-class="hosp-nav" class="container"></div>
 		<div local-class="hosp-detail" class="container">
 			<div local-class="basic-info" class="row">
 				<div local-class="select">
-					<span local-class="title" {{action 'tab'}}>整体销售表现</span>
-					<span class="glyphicon glyphicon-triangle-bottom" {{action 'tab'}}></span>
-					{{#if tabLi}}
-						<div local-class="drop">
-							<ul>
-								<li>
-									{{#link-to "pharbers.v1.result.hospital-report"}}
-										医院-产品销售报告
-									{{/link-to}}
-								</li>
-								<li>
-									{{#link-to "pharbers.v1.result.represent-report"}}
-										代表-产品销售报告
-									{{/link-to}}
-								</li>
-								<li>
-									{{#link-to "pharbers.v1.result.resource"}}
-										资源投入与产出
-									{{/link-to}}
-								</li>
-								<li>
-									{{#link-to "pharbers.v1.result.represent"}}
-										代表指标与资源
-									{{/link-to}}
-								</li>
-							</ul>
-						</div>
-					{{/if}}
+					{{#bs-dropdown local-class="title" tagName="span" as |dd|}}
+					  {{#dd.toggle}}整体销售表现<span class="caret"></span>{{/dd.toggle}}
+					  {{#dd.menu local-class="ull" as |menu|}}
+					    {{#menu.item}}
+					      {{#menu.link-to "pharbers.v1.result.hospital-report"}}医院-产品销售报告{{/menu.link-to}}
+					    {{/menu.item}}
+					    {{menu.divider}}
+					    {{#menu.item}}
+					      {{#menu.link-to "pharbers.v1.result.represent-report"}}代表-产品销售报告{{/menu.link-to}}
+					    {{/menu.item}}
+					    {{menu.divider}}
+					    {{#menu.item}}
+					      {{#menu.link-to "pharbers.v1.result.resource"}}资源投入与产出{{/menu.link-to}}
+					    {{/menu.item}}
+						{{menu.divider}}
+						{{#menu.item}}
+					      {{#menu.link-to "pharbers.v1.result.represent"}}代表指标与资源{{/menu.link-to}}
+					    {{/menu.item}}
+					  {{/dd.menu}}
+					{{/bs-dropdown}}
 				</div>
 				<div local-class="overview">
 					{{#each overviewData as |item|}}

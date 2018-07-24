@@ -310,8 +310,23 @@
 							<div local-class="properties">
 								{{#each medic.overview as |ov|}}
 									<div local-class="property">
+										{{#if (eq ov.key '增长潜力')}}
 										<p>{{ov.key}}</p>
-										<p>{{number-format ov.value}}</p>
+										<p>{{number-to-percent ov.value}}%</p>
+											{{else if (eq ov.key '上期增长')}}
+											<p>{{ov.key}}</p>
+											<p>{{number-to-percent ov.value}}%</p>
+											{{else if (eq ov.key '份额')}}
+											<p>{{ov.key}}</p>
+											<p>{{number-to-percent ov.value}}%</p>
+											{{else if (eq ov.key '上期贡献率')}}
+											<p>{{ov.key}}</p>
+											<p>{{number-to-percent ov.value}}%</p>
+											{{else}}
+											<p>{{ov.key}}</p>
+											<p>{{number-format ov.value}}</p>
+										{{/if}}
+
 									</div>
 								{{/each}}
 								{{!-- <div local-class="property">
