@@ -1,6 +1,7 @@
 import Controller from '@ember/controller';
 import { inject } from '@ember/service';
 import { computed } from '@ember/object';
+
 export default Controller.extend({
 	cookies: inject(),
 	ajax: inject(),
@@ -128,12 +129,51 @@ export default Controller.extend({
 		this._super(...arguments);
 		this.budget = {};
 		this.manpower = [];
-		this.columnsHospital = [{
+		this.productDetails = [{
+			label: '商品名',
+			valuePath: 'product_name',
+			width: '100px',
+			align: 'center',
+			sortable: true,
+			sorted: true
+		}, {
+			label: '类别',
+			valuePath: 'type',
+			width: '100px',
+			align: 'center',
+
+		}, {
+			label: '治疗领域',
+			valuePath: 'treatmentarea',
+			width: '100px',
+			align: 'center',
+
+		}, {
+			label: '上市时间',
+			valuePath: 'selltime',
+			width: '80px',
+			align: 'center',
+		}, {
+			label: '医保类型',
+			valuePath: 'medicalinsurance',
+			width: '80px',
+			align: 'center',
+		}, {
+			label: '研发类型',
+			valuePath: 'development',
+			width: '80px',
+			align: 'center',
+		}, {
+			label: '公司考核价',
+			valuePath: 'companyprice',
+			width: '100px',
+			align: 'center',
+		}];
+		this.columnsHistory = [{
 			label: '时间',
 			valuePath: 'time',
 			width: '80px',
 			align: 'center',
-			className: 'testname',
 			sortable: true,
 			sorted: true,
 		}, {
@@ -146,7 +186,6 @@ export default Controller.extend({
 			valuePath: 'timemanagement',
 			width: '80px',
 			align: 'center',
-
 		}, {
 			label: '预算分配',
 			valuePath: 'budgetallocation',
@@ -173,7 +212,8 @@ export default Controller.extend({
 			width: '100px',
 			align: 'center',
 		}];
-		this.columnsHospitalValue = [];
+		// this.columnsHospitalValue = [];
+		// this.columnsProducts = [];
 	},
 
 	actions: {
@@ -186,11 +226,13 @@ export default Controller.extend({
 			this.hidden('budgetTip');
 		},
 		submit() {
-			this.transitionToRoute('pharbers.v1.result.whole')
+			this.get('hospitalinput').getAllInput();
+			// this.transitionToRoute('pharbers.v1.result.whole')
 		},
 		backHospList() {
-			const model = this.get("model")
-			this.transitionToRoute('pharbers.v1.hospital', model.pid, model.uuid)
+			this.get('hospitalinput').pushInput();
+			// const model = this.get("model")
+			// this.transitionToRoute('pharbers.v1.hospital', model.pid, model.uuid)
 		},
 		changeTabsInfo() {
 			this.set('showBaseInfo', true);
