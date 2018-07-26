@@ -1,4 +1,3 @@
-{{!-- {{outlet}} --}}
 <div local-class="train-container">
     <div local-class="menu">
         <div local-class="title">
@@ -14,22 +13,16 @@
         </ul>
     </div>
     <div local-class="content">
-        {{!-- <div local-class="checkpoint">
-            <span local-class="title">关卡名称</span>
-
-            <span local-class="btn-simulation" {{action 'simulation'}}>进入模拟<span class="glyphicon glyphicon-menu-right"></span></span>
-        </div> --}}
         {{#if checkpoints}}
             {{#each checkpoints as |item|}}
                 <div local-class="checkpoint">
                     <span local-class="title">{{item.proposal_name}}</span>
-
-                    <span local-class="btn-simulation" {{action 'simulation' item.id}}>进入模拟<span class="glyphicon glyphicon-menu-right"></span></span>
+                    <span local-class="btn-simulation" {{action 'simulation' item.proposal_id item.uuid}}>进入模拟<span class="glyphicon glyphicon-menu-right"></span></span>
                 </div>
             {{/each}}
         {{else}}
             <h2>网络繁忙，请稍后重试。</h2>
         {{/if}}
-
     </div>
 </div>
+{{outlet}}
