@@ -140,34 +140,35 @@
 								{{/each}}
 							</div>
 							<div local-class="compare">
-
-								{{#bs-tab customTabs=true tagName="" as |tab| }}
+									{{#bs-tab customTabs=true tagName="" as |tab| }}
 									{{#bs-nav type="pills" local-class="left-tabs" stacked=true as |nav|}}
 										{{#nav.item local-class="tab" active=(bs-eq tab.activeId medic.detail.id)}}
-											<a local-class="tabsa" href= {{medic.href}} class="nav-link" role="tab" {{action tab.select medic.detail.id}}>Tab 1 <span class="badge">{{badge}}</span></a>
+											<a local-class="tabsa" class="nav-link" role="tab" {{action tab.select medic.detail.id}}>
+												<span class="badge"></span>
+											</a>
 										{{/nav.item}}
 										{{#nav.item local-class="tab" active=(bs-eq tab.activeId medic.history.id)}}
-											<a local-class="tabsa" href= {{medic.href}} class="nav-link" role="tab" {{action tab.select medic.history.id}}>Tab 2</a>
+											<a local-class="tabsa" class="nav-link" role="tab" {{action tab.select medic.history.id}}>
+												<span class="badge"></span>
+											</a>
 										{{/nav.item}}
 										{{#nav.item local-class="tab" active=(bs-eq tab.activeId medic.competitionproducts.id)}}
-											<a local-class="tabsa" href= {{medic.href}} class="nav-link" role="tab" {{action tab.select medic.competitionproducts.id}}>Tab 2</a>
+											<a local-class="tabsa" class="nav-link" role="tab" {{action tab.select medic.competitionproducts.id}}></a>
 										{{/nav.item}}
 									{{/bs-nav}}
 
 									<div class="tab-content" local-class="right-content">
 										{{#tab.pane local-class="medicine-detail" elementId=medic.detail.id title="Tab 1" }}
 											<p><span></span>药品详情</p>
-											{{self-table model=medic.detail.value}}
+											{{self-table model=medic.detail.value tableColumns=productDetails}}
 										{{/tab.pane}}
-
 										{{#tab.pane local-class="medicine-detail" elementId=medic.history.id title="Tab 2" }}
 											<p><span></span>历史部署</p>
-											{{self-table model=medic.history.value columns=columnsHospital}}
+											{{self-table model=medic.history.value tableColumns=columnsHistory }}
 										{{/tab.pane}}
-
 										{{#tab.pane local-class="medicine-detail" elementId=medic.competitionproducts.id title="Tab 3" }}
 											<p><span></span>竞品销售分析</p>
-											{{self-table model=columnsProductsValue columns=columnsProducts}}
+											{{!-- {{self-table model=columnsProductsValue tableColumns=columnsProducts }} --}}
 										{{/tab.pane}}
 									</div>
 								{{/bs-tab}}

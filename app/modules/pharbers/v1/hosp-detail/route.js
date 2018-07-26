@@ -7,5 +7,17 @@ export default Route.extend({
 		controller.queryBudget(model.uuid);
 		controller.queryManpower(model.uuid);
 	},
-
+	actions: {
+		willTransition: function(transition) {
+			console.info("fuck")
+			if (!confirm("Are you sure you want to abandon progress?")) {
+				//retry
+				//abort
+				transition.abort();
+			} else {
+				console.info(123)
+				return true;
+			}
+		}
+	}
 });
