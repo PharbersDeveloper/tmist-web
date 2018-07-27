@@ -23,7 +23,9 @@ Router.map(function() {
             this.route('represent');
 
           });
-          this.route('talent-train');
+          this.route('talent-train', function() {
+            this.route('talent-detail');
+          });
         });
         this.route('v2', { path: 'v2/tm' });
     });

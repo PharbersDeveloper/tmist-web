@@ -1,5 +1,6 @@
-.container { min-width: 1140px !important;}
-
+.container {
+	min-width: 1200px !important;
+}
 
 .talent-container {
 	overflow-y: hidden;
@@ -208,20 +209,17 @@
 	flex: 1;
 	display: flex;
 	flex-direction: column;
-	padding: 0 40px;
+	padding: 0 20px;
 	height: 100%;
 	background: #fff;
 	.close {
-		margin: 10px 20px;
+		img {
+		margin-top: 10px;
+		display: block;
 		float: right;
-		// display: block;
-		border: 1px solid #979797;
-		background: #7F8AA9;
-		border-radius: 2px;
 		width: 30px;
 		height: 30px;
-		span {
-			margin: 0 auto;
+
 		}
 	}
 	.contain {
@@ -229,19 +227,48 @@
 	.lump {
 		height: 100%;
 	}
+	.title {
+		font-family: PingFangSC-Medium;
+		font-size: 14px;
+		color: #4A90E2;
+		letter-spacing: 2px;
+	}
     .con-left {
         min-height: 620px;
 		height: 100%;
+		overflow: auto;
         background: #FBFBFB ;
-        margin-top: 20px;
+        margin-top: 10px;
         padding: 20px;
+		.left-lump-input {
+			width: 220px;
+			height: 80px;
+			background: red;
+			margin: 10px 0;
+		}
+		.left-lump-show {
+			width: 220px;
+			height: 80px;
+			background: yellow;
+			margin: 10px 0;
+		}
+		.title {
+			margin-bottom: 20px;
+		}
     }
     .con-right {
         min-height: 620px;
 		height: 100%;
+		overflow: auto;
         background: #FBFBFB ;
-        margin-top: 20px;
+        margin-top: 10px;
         padding: 20px;
+		.right-lump {
+			width: 800px;
+			height: 100px;
+			background: green;
+			margin: 10px 0;
+		}
     }
   }
  }
