@@ -26,6 +26,16 @@ Router.map(function() {
           this.route('talent-train', function() {
             this.route('talent-detail');
           });
+          this.route('hosp-list');
+          this.route('hosp-list-detail');
+          this.route('imitate-train');
+          this.route('reports', function() {
+            this.route('hosp-product');
+            this.route('represent-product');
+            this.route('resource');
+            this.route('represent-target');
+            this.route('represent-ability');
+          });
         });
         this.route('v2', { path: 'v2/tm' });
     });
