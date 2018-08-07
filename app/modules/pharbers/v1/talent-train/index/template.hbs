@@ -54,6 +54,8 @@
             <img src="/assets/images/talent-close.jpg" alt="">
         </div>
         <div class="row" local-class="contain">
+            {{manager-times }}
+            {{all-rep model isShowList showDetail=(action "showDetail") hideDetail=(action 'hideDetail') }}
             {{!-- <div class="col-md-3 col-sm-3 col-xs-3" local-class="lump">
                 <div local-class="con-left">
                     <p local-class="title">经理时间分配</p>
