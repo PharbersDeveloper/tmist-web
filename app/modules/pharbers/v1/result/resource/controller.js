@@ -3,7 +3,7 @@ import {
 	inject
 } from '@ember/service';
 export default Controller.extend({
-	cookies:inject(),
+	cookies: inject(),
 	ajax: inject(),
 	budgetTip: false,
 	humanTip: false,
@@ -37,7 +37,7 @@ export default Controller.extend({
 			"data": {
 				"type": "report_detail",
 				"condition": {
-					"report_id":"5b4828e315899e014cb74e38"
+					"report_id": "5b4828e315899e014cb74e38"
 				}
 			}
 		}
@@ -48,8 +48,6 @@ export default Controller.extend({
 				error,
 			}) => {
 				if (status === "ok") {
-					// console.log('it is ok');
-					// console.info(result.data.attribute);
 					this.set('overviewData', result.data.attribute.overview);
 					this.set('columnsResourceValue', result.data.attribute.value)
 				} else {
@@ -82,47 +80,55 @@ export default Controller.extend({
 			valuePath: 'time',
 			width: '90px',
 			align: 'center',
+			cellComponent: 'table-number-percent'
 		}, {
 			label: '预算分配',
 			valuePath: 'budget',
 			width: '90px',
 			align: 'center',
+			cellComponent: 'table-number-thousands'
 		}, {
 			label: '市场潜力',
 			valuePath: 'potential',
 			width: '90px',
 			align: 'center',
-
+			cellComponent: 'table-number-thousands'
 		}, {
 			label: '潜力增长(%)',
 			valuePath: 'market_growth',
 			width: '90px',
 			align: 'center',
+			cellComponent: 'table-number-percent'
 		}, {
 			label: '销售额',
 			valuePath: 'sales',
 			width: '90px',
 			align: 'center',
+			cellComponent: 'table-number-thousands'
 		}, {
 			label: '销售增长(%)',
 			valuePath: 'sales_growth',
 			width: '90px',
 			align: 'center',
+			cellComponent: 'table-number-percent'
 		}, {
 			label: '份额(%)',
 			valuePath: 'share',
 			width: '90px',
 			align: 'center',
+			cellComponent: 'table-number-percent'
 		}, {
 			label: '份额增长(%)',
 			valuePath: 'share_change',
 			width: '90px',
 			align: 'center',
+			cellComponent: 'table-number-percent'
 		}, {
 			label: '销售贡献率(%)',
 			valuePath: 'contri_rate',
 			width: '90px',
 			align: 'center',
+			cellComponent: 'table-number-percent'
 		}, ];
 		this.columnsResourceValue = [{
 			'hospital': 'aa name',

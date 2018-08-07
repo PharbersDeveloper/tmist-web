@@ -1,3 +1,10 @@
+.tips-container {
+	background: none;
+	background-color: rgba(0,0,0,0) !important;
+	border: none;
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0);
+	background-clip: padding-box;
+}
 .detail-container {
 	display: flex;
 	flex-direction: column;
@@ -35,9 +42,9 @@
 	box-shadow: 0 2px 4px 0 rgba(162,162,162,0.50);
 
 	.budget-tip {
-		position: absolute;
-		top: 50px;
-		right: 20px;
+		// position: relative;
+		margin-top: 20px;
+		margin-left: -180px;
 		z-index: 2;
 		font-size: 0;
 		box-shadow: 0 2px 4px 0 rgba(133,132,132,0.50);
@@ -69,7 +76,7 @@
 
 		.triangle {
 			position: absolute;
-			left: 95px;
+			left: 5px;
 			margin-top: -20px;
 			padding: 0;
 			width: 0;
@@ -81,12 +88,13 @@
 	}
 
 	.human-tip {
-		position: absolute;
-		top: 50px;
-		right: 20px;
+		// position: relative;
+		margin-top: 20px;
+		margin-left: -180px;
 		z-index: 2;
 		font-size: 0;
 		box-shadow: 0 2px 4px 0 rgba(133,132,132,0.50);
+
 
 		.rectangle {
 			padding: 20px;
@@ -115,7 +123,7 @@
 
 		.triangle {
 			position: absolute;
-			left: 155px;
+			left: 10px;
 			margin-top: -20px;
 			padding: 0;
 			width: 0;

@@ -1,87 +1,23 @@
 import Route from '@ember/routing/route';
 
 export default Route.extend({
-	// model() {
-	// 	return [{
-	// 		id: '霉素1',
-	// 		type: "口服抗生素",
-	// 		treatmentarea: "抗生素",
-	// 		selltime: "2000",
-	// 		medicalinsurance: "甲类",
-	// 		development: "首仿",
-	// 		companyprice: 46,
-	// 	}, {
-	// 		id: "霉素",
-	// 		type: "口服抗生素",
-	// 		treatmentarea: "抗生素",
-	// 		selltime: "2000",
-	// 		medicalinsurance: "甲类",
-	// 		development: "首仿",
-	// 		companyprice: 88,
-	// 	}, {
-	// 		id: "霉素",
-	// 		type: "口服抗生素",
-	// 		treatmentarea: "抗生素",
-	// 		selltime: "2000",
-	// 		medicalinsurance: "甲类",
-	// 		development: "首仿",
-	// 		companyprice: 95,
-	// 	}, {
-	// 		id: "霉素",
-	// 		type: "口服抗生素",
-	// 		treatmentarea: "抗生素",
-	// 		selltime: "2000",
-	// 		medicalinsurance: "甲类",
-	// 		development: "首仿",
-	// 		companyprice: 26,
-	// 	}, {
-	// 		id: "霉素",
-	// 		type: "口服抗生素",
-	// 		treatmentarea: "抗生素",
-	// 		selltime: "2000",
-	// 		medicalinsurance: "甲类",
-	// 		development: "首仿",
-	// 		companyprice: 45,
-	// 	}, {
-	// 		id: "霉素",
-	// 		type: "口服抗生素",
-	// 		treatmentarea: "抗生素",
-	// 		selltime: "2000",
-	// 		medicalinsurance: "甲类",
-	// 		development: "首仿",
-	// 		companyprice: 87,
-	// 	}, {
-	// 		id: "霉素",
-	// 		type: "口服抗生素",
-	// 		treatmentarea: "抗生素",
-	// 		selltime: "2000",
-	// 		medicalinsurance: "甲类",
-	// 		development: "首仿",
-	// 		companyprice: 456,
-	// 	}, {
-	// 		id: "霉素",
-	// 		type: "口服抗生素",
-	// 		treatmentarea: "抗生素",
-	// 		selltime: "2000",
-	// 		medicalinsurance: "甲类",
-	// 		development: "首仿",
-	// 		companyprice: 4565,
-	// 	}, {
-	// 		id: "霉素",
-	// 		type: "口服抗生素",
-	// 		treatmentarea: "抗生素",
-	// 		selltime: "2000",
-	// 		medicalinsurance: "甲类",
-	// 		development: "首仿",
-	// 		companyprice: 2,
-	// 	}, {
-	// 		id: "霉素",
-	// 		type: "口服抗生素",
-	// 		treatmentarea: "抗生素",
-	// 		selltime: "2000",
-	// 		medicalinsurance: "甲类",
-	// 		development: "首仿",
-	// 		companyprice: 144,
-	// 	}];
-	// }
+	setupController(controller, model) {
+		this._super(controller, model);
+		controller.queryDetail(model.uuid, model.hospid);
+		controller.queryBudget(model.uuid);
+		controller.queryManpower(model.uuid);
+	},
+	actions: {
+		willTransition: function(transition) {
+			console.info("fuck")
+			if (!confirm("Are you sure you want to abandon progress?")) {
+				//retry
+				//abort
+				transition.abort();
+			} else {
+				console.info(123)
+				return true;
+			}
+		}
+	}
 });

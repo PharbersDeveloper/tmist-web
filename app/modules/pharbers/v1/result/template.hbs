@@ -9,6 +9,46 @@
 		<span>当前部署分析</span>
 	</div>
 	<div local-class="menu menu-right">
+		{{#bs-dropdown tagName="span" local-class="budget" as |bb|}}
+			{{#bb.toggle}}预算 <span class="caret"></span>{{/bb.toggle}}
+			{{#bb.menu local-class='tips-container' as |menu|}}
+				{{#menu.item local-class='budget-tip' }}
+					<div local-class="triangle"></div>
+					<div local-class="rectangle">
+						<p local-class="budget-text"> <span>预算</span> <span>{{number-format budget.used}}/{{number-format budget.total}}</span> <span>{{budgetPerc}}%</span> </p>
+						<div local-class="self-progress" class="progress">
+							{{#bs-progress as |p|}}
+								{{p.bar value=budgetPerc local-class="self-progress-bar"}}
+							{{/bs-progress}}
+						</div>
+					</div>
+				{{/menu.item}}
+			{{/bb.menu}}
+		{{/bs-dropdown}}
+		{{#bs-dropdown tagName="span" local-class="human" as |dd|}}
+			{{#dd.toggle}}人力 <span class="caret"></span>{{/dd.toggle}}
+			{{#dd.menu local-class='tips-container' as |menu|}}
+				{{#menu.item local-class='human-tip' }}
+					<div local-class="triangle"></div>
+					<div local-class="rectangle">
+						{{#each manpowerPerc as |item|}}
+							<p local-class="human-text"> <span>{{item.name}}</span> <span>{{item.used}}/{{item.total}}天</span> <span>{{item.percent}}%</span> </p>
+							<div local-class="self-progress" class="progress">
+								{{#bs-progress as |p|}}
+									{{p.bar value=item.percent local-class="self-progress-bar"}}
+								{{/bs-progress}}
+							</div>
+						{{/each}}
+
+					</div>
+				{{/menu.item}}
+			{{/dd.menu}}
+		{{/bs-dropdown}}
+		{{!-- <span local-class="budget" {{action 'budget'}}>é¢ç® <span class="glyphicon glyphicon-triangle-bottom"></span> </span> --}}
+		{{!-- <span local-class="human" {{action 'human'}}>äººå <span class="glyphicon glyphicon-triangle-bottom"></span> </span> --}}
+		<span local-class="btn-submit">提交执行 <span class="glyphicon glyphicon-menu-right"></span> </span>
+	</div>
+	{{!-- <div local-class="menu menu-right">
 		<span local-class="budget" {{action 'budget'}}>预算 <span class="glyphicon glyphicon-triangle-bottom"></span> </span>
 		<span local-class="human" {{action 'human'}}>人力 <span class="glyphicon glyphicon-triangle-bottom"></span> </span>
 		<span local-class="btn-submit">提交执行 <span class="glyphicon glyphicon-menu-right"></span> </span>
@@ -40,6 +80,6 @@
 				{{/each}}
 			</div>
 		</div>
-	{{/if}}
+	{{/if}} --}}
 </div>
 {{outlet}}
