@@ -1,10 +1,10 @@
-:global(.ember-view) {
-	height: 100%;
-}
-
 .train-container {
 	height: 100%;
 	display: flex;
+
+	:global(.ember-view) {
+		height: 100%;
+	}
 }
 
 .menu {
