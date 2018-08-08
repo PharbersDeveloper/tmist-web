@@ -1,6 +1,6 @@
 <div local-class="evalution-container">
     <div local-class="title-bar" class="col-md-12">
-        <span local-class="date">什么什么测评报告</span>
+        <span local-class="date">测评报告</span>
         <span local-class="setting"> <img src="/assets/images/hosp-setting.png" alt=""> </span>
     </div>
     <div local-class="content">
@@ -10,9 +10,10 @@
                 <p local-class="tab-title">多维能力分析</p>
             </div>
             <div local-class="radar">
-                <p local-class="title">能力维度分析</p>
+                {{!-- <p local-class="title">能力维度分析</p>
                 <div local-class="radar-map">
-                </div>
+                </div> --}}
+                <img src="/assets/images/leidatu.jpg" alt="">
             </div>
             {{#each model as |item|}}
                 {{evaluation-ability item}}
@@ -48,7 +49,7 @@
                 </div>
             </div> --}}
             <div local-class="detail">
-                <p local-class="title">态势与发展分析</p>
+                {{!-- <p local-class="title">态势与发展分析</p>
                 <div local-class="line">
                 </div>
                 <div local-class="analyze">
@@ -56,7 +57,9 @@
                 <div local-class="analyze">
                 </div>
                 <div local-class="analyze">
-                </div>
+                </div> --}}
+                <img src="/assets/images/zhexiantu.jpg" alt="">
+
             </div>
         </div>
     </div>

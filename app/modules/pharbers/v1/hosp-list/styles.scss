@@ -4,6 +4,7 @@
 	min-width: 1200px;
 	height: 100%;
 	background: #EEF1FA;
+
 	.title-bar {
 		flex: 0 0 40px;
 		height: 40px;
@@ -30,6 +31,7 @@
 		overflow-y: hidden;
 		white-space: nowrap;
 		min-height: 650px;
+
 		.hosp-item {
 			position: relative;
 			display: inline-block;
@@ -37,7 +39,8 @@
 			width: 260px;
 			height: 100%;
 			border-radius: $default-radius;
-			background-color:#fff;
+			background-color: #fff;
+
 			.hosp-intro {
 				height: 230px;
 				width: 260px;
@@ -46,6 +49,7 @@
 				background-image: linear-gradient(110deg, #4D608F 0%, #8F9CC3 100%);
 				box-shadow: 0 1px 3px 0 rgba(134,134,134,0.50);
 			}
+
 			.medicine-container {
 				position: absolute;
 				top: 230px;
@@ -70,6 +74,5 @@
 				}
 			}
 		}
-
 	}
 }

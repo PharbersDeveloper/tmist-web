@@ -1,10 +1,8 @@
-:global(.ember-view) {
-	height: 100%;
-}
 .train-container {
 	height: 100% !important;
 	display: flex;
 }
+
 .menu {
 	flex: 0 0 185px;
 	height: 100%;
@@ -50,12 +48,14 @@
 		list-style: none;
 
 		li {
+			margin: 5px 0;
 			padding: 0 18px;
 			height: 35px;
 			line-height: 35px;
 			font-family: AppleSDGothicNeo-Regular;
 			font-size: 14px;
 			letter-spacing: 5px;
+			cursor: pointer;
 
 			&:first-child {
 				background-color: rgba(255,255,255,.12);

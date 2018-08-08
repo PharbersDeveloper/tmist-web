@@ -20,30 +20,81 @@ export default Route.extend({
                 "key": "data-show-card",
                 "values": [{
                     "index": 1,
-                    "title": "总销售额",
-                    "type": "sales",
-                    "value": 6039535
+                    "title": "预算投入最多",
+                    "type": "info",
+                    "value": "医院3-产品3",
+                    "ext": {
+                        "sub": {
+                            "type": "title",
+                            "value": "预算占比",
+                            "ext": {
+                                "type": "percent",
+                                "change": "none",
+                                "value": 0.41
+                            }
+                        }
+                    },
                 }, {
                     "index": 2,
-                    "title": "整体销售增长",
-                    "type": "percent",
-                    "value": 12,
+                    "title": "时间投入最多",
+                    "type": "info",
+                    "value": "医院1-产品3",
                     "ext": {
-                        "change": "up"
-                    }
+                        "sub": {
+                            "type": "title",
+                            "value": "小宋",
+                            "ext": {
+                                "type": "percent",
+                                "change": "none",
+                                "value": 0.26
+                            }
+                        }
+                    },
                 }, {
                     "index": 3,
-                    "title": "平均指标达成",
-                    "type": "percent",
-                    "value": 0.6,
-                    // "ext": {
-                    //     "change": "up"
-                    // }
+                    "title": "表现最佳",
+                    "type": "info",
+                    "value": "医院1-产品1",
+                    "ext": {
+                        "sub": {
+                            "title": "份额",
+                            "type": "percent",
+                            "value": 0.12,
+                            "ext": {
+                                "type": "percent",
+                                "change": "up",
+                                "value": 0.07
+                            }
+                        }
+                    },
+                }, {
+                    "index": 4,
+                    "title": "贡献度最高",
+                    "type": "info",
+                    "value": "医院3-产品3",
+                    "ext": {
+                        "sub": {
+                            "type": "title",
+                            "value": 658432,
+                            "ext": {
+                                "type": "percent",
+                                "change": "none",
+                                "value": 0.11
+                            }
+                        }
+                    },
                 }, ]
             }, {
                 "key": "result-table",
                 "values": {
                     "columns": [{
+                            "label": '医院名称',
+                            "valuePath": 'hosp_name',
+                            "width": '100px',
+                            "align": 'center',
+                            "sorted": false,
+
+                        }, {
                             "label": '产品名称',
                             "valuePath": 'brand_name',
                             "width": '100px',
@@ -100,13 +151,7 @@ export default Route.extend({
                             "align": 'center',
                             "cellComponent": 'table-number-thousands'
                         },
-                        {
-                            "label": '指标达成率(%)',
-                            "valuePath": 'achieve_rate',
-                            "width": '100px',
-                            "align": 'center',
-                            "cellComponent": 'table-number-percent'
-                        },
+
                         {
                             "label": '销售贡献率(%)',
                             "valuePath": 'contri_rate',
@@ -116,18 +161,61 @@ export default Route.extend({
                         }
                     ],
                     "columnsValue": [{
-                        "brand_name": "aaaa",
-                        "potential": 1349755,
-                        "market_growth": 0.2,
-                        "sales": 5861795,
-                        "sales_growth": 0.66,
-                        "ev_value": 0.1,
-                        "share": 0.56,
-                        "share_change": 0.1,
-                        "target": 56874486,
-                        "achieve_rate": 1,
-                        "contri_rate": 0.2
-                    }],
+                            "hosp_name": "医院001",
+                            "brand_name": "测试产品1",
+                            "potential": 30178,
+                            "market_growth": 0.1,
+                            "sales": 26045,
+                            "sales_growth": 0.11,
+                            "ev_value": 0.1,
+                            "share": 0.11,
+                            "share_change": 0.1,
+                            "target": 11709,
+                            "contri_rate": 0.1
+                        },
+                        {
+                            "hosp_name": "医院002",
+
+                            "brand_name": "测试产品2",
+                            "potential": 17803,
+                            "market_growth": 0.2,
+                            "sales": 48850,
+                            "sales_growth": 0.22,
+                            "ev_value": 0.2,
+                            "share": 0.22,
+                            "share_change": 0.2,
+                            "target": 37416,
+                            "contri_rate": 0.2
+                        },
+                        {
+                            "hosp_name": "医院003",
+
+                            "brand_name": "测试产品3",
+                            "potential": 16415,
+                            "market_growth": 0.3,
+                            "sales": 4032,
+                            "sales_growth": 0.33,
+                            "ev_value": 0.3,
+                            "share": 0.33,
+                            "share_change": 0.3,
+                            "target": 561318,
+                            "contri_rate": 0.3
+                        },
+                        {
+                            "hosp_name": "医院004",
+
+                            "brand_name": "测试产品4",
+                            "potential": 42369,
+                            "market_growth": 0.4,
+                            "sales": 26549,
+                            "sales_growth": 0.44,
+                            "ev_value": 0.4,
+                            "share": 0.44,
+                            "share_change": 0.4,
+                            "target": 26299,
+                            "contri_rate": 0.4
+                        }
+                    ],
                 }
             }, ],
 

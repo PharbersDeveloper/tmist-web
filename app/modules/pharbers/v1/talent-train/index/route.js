@@ -7,8 +7,8 @@ export default Route.extend({
             "title": "成员能力概况",
             "reps": [{
                 "id": "thisisxiaosong",
-                "avatar": "http://img.informer.com/icons_mac/png/128/422/422255.png",
-                "name": '小松',
+                "avatar": "/assets/images/a1.jpeg",
+                "name": '小赵',
                 "self": ['28岁', '研究生', '英语专业', '3年工作经验', '入职一年'],
                 "square": [{
                     "title": "业务经验",
@@ -45,8 +45,8 @@ export default Route.extend({
                 }]
             }, {
                 "id": "this-is-bigzhang",
-                "avatar": "http://img.informer.com/icons_mac/png/128/422/422255.png",
-                "name": '大张',
+                "avatar": "/assets/images/a2.jpeg",
+                "name": '小钱',
                 "self": ['38岁', '研究生', '英语专业', '8年工作经验', '入职八年'],
                 "square": [{
                     "title": "业务经验",

@@ -1,94 +1,106 @@
-.container { min-width: 1140px !important;}
+.container {
+	min-width: 1140px !important;
+}
+
 .evalution-container {
-    // overflow: scroll;
+	// overflow: scroll;
 	display: flex;
 	flex-direction: column;
 	min-width: 1200px;
 	height: auto;
 	background: #EEF1FA;
-    .title-bar {
-    	flex: 0 0 40px;
-    	height: 40px;
-    	line-height: 40px;
-    	color: #FFF;
-    	background-image: linear-gradient(90deg, #4B6693 0%, #8F9CC3 100%);
 
-    	span:first-child {
-    		margin: 0 15px;
-    		font-family: PingFangTC-Regular;
-    		font-size: 12px;
-    		letter-spacing: 2px;
-    	}
+	.title-bar {
+		flex: 0 0 40px;
+		height: 40px;
+		line-height: 40px;
+		color: #FFF;
+		background-image: linear-gradient(90deg, #4B6693 0%, #8F9CC3 100%);
 
-    	span:last-child {
-    		float: right;
-    	}
-    }
-    .content {
-    	flex: 1;
-    	display: flex;
-    	flex-direction: column;
-    	padding: 25px;
-        min-width: 1200px;
-        font-family: PingFangSC-Regular;
-        .tab {
-            padding: 20px 30px;
-            height: 60px;
-            background: #fff;
-            .tab-title {
-                font-size: 18px;
-                color: #485465;
-                letter-spacing: 1.5px;
-                line-height: 25px;
-            }
-        }
-        .title {
-            font-size: 20px;
-            color: #4A90E2;
-            letter-spacing: 2px;
-        }
-        .radar {
-            margin: 20px 0;
-            padding: 20px 30px;
-            height: 570px;
-            background: #fff;
-            .radar-map {
-                margin: 0 auto;
-                background: red;
-                width: 500px;
-                height: 500px;
+		span:first-child {
+			margin: 0 15px;
+			font-family: PingFangTC-Regular;
+			font-size: 12px;
+			letter-spacing: 2px;
+		}
 
-            }
+		span:last-child {
+			float: right;
+		}
+	}
 
+	.content {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		padding: 25px;
+		min-width: 1200px;
+		font-family: PingFangSC-Regular;
 
-        }
-        .detail {
-            padding: 30px;
-            margin: 20px 0;
-            background: #fff;
-            .status {
-                padding: 5px 0 10px 0;
-                font-size: 14px;
-                color: #767A80;
-                letter-spacing: 2px;
-                line-height: 25px;
-            }
-            .abs {
-                background: green;
-                min-height: 200px;
-                margin: 15px 0;
+		.tab {
+			padding: 20px 30px;
+			height: 60px;
+			background: #fff;
 
-            }
-            .line {
-                height: 600px;
-                background: yellow;
-                margin: 35px 0 20px 0;
-            }
-            .analyze {
-                min-height: 200px;
-                background: blue;
-                margin: 20px 0;
-            }
-        }
-    }
+			.tab-title {
+				font-size: 18px;
+				color: #485465;
+				letter-spacing: 1.5px;
+				line-height: 25px;
+			}
+		}
+
+		.title {
+			font-size: 20px;
+			color: #4A90E2;
+			letter-spacing: 2px;
+		}
+
+		.radar {
+			margin: 20px 0;
+			// padding: 20px 30px;
+			height: 570px;
+			background: #fff;
+			box-shadow: 0 2px 14px 0 rgba(192,192,192,0.50);
+
+			.radar-map {
+				margin: 0 auto;
+				background: red;
+				width: 500px;
+				height: 500px;
+			}
+		}
+
+		.detail {
+			// padding: 30px;
+			margin: 20px 0;
+			background: #fff;
+
+			.status {
+				padding: 5px 0 10px;
+				font-size: 14px;
+				color: #767A80;
+				letter-spacing: 2px;
+				line-height: 25px;
+			}
+
+			.abs {
+				background: green;
+				min-height: 200px;
+				margin: 15px 0;
+			}
+
+			.line {
+				height: 600px;
+				background: yellow;
+				margin: 35px 0 20px;
+			}
+
+			.analyze {
+				min-height: 200px;
+				background: blue;
+				margin: 20px 0;
+			}
+		}
+	}
 }

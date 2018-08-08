@@ -1,15 +1,16 @@
 <div local-class="detail-container">
 	{{!-- <div local-class="title-bar">
 	</div> --}}
-	{{nav-title month}}
-	{{!-- {{nav-tool dropdownData}} --}}
-	<div local-class="menu-bar">
-	</div>
+	{{nav-title data=month}}
+	{{nav-tool data=dropdownData submit=(action "submitRun") onclick=(action "talent")}}
+	{{!-- <div local-class="menu-bar">
+	</div> --}}
 	<div local-class="content">
-		<div local-class="hosp-nav" class="container">
-		</div>
-		{{log model}}
+		{{!-- <div local-class="hosp-nav" class="container">
+		</div> --}}
+		{{hospital-nav backHospList=(action 'backH')}}
 		{{hospital-detail model}}
+
 		{{!-- <div local-class="hosp-detail" class="container">
 			<div local-class="basic-info" class="row">
 			</div>

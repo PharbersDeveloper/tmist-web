@@ -20,114 +20,192 @@ export default Route.extend({
                 "key": "data-show-card",
                 "values": [{
                     "index": 1,
-                    "title": "总销售额",
-                    "type": "sales",
-                    "value": 6039535
+                    "title": "指标最重",
+                    "type": "info",
+                    "value": "代表1",
+                    "ext": {
+                        "sub": {
+                            "type": "title",
+                            "value": "指标",
+                            "ext": {
+                                "type": "sales",
+                                "change": "none",
+                                "value": 5156544
+                            }
+                        }
+                    },
                 }, {
                     "index": 2,
-                    "title": "整体销售增长",
-                    "type": "percent",
-                    "value": 12,
+                    "title": "资源最多",
+                    "type": "info",
+                    "value": "代表3",
                     "ext": {
-                        "change": "up"
-                    }
+                        "sub": {
+                            "type": "title",
+                            "value": "预算占比",
+                            "ext": {
+                                "type": "percent",
+                                "change": "none",
+                                "value": 0.15
+                            }
+                        }
+                    },
                 }, {
                     "index": 3,
-                    "title": "平均指标达成",
-                    "type": "percent",
-                    "value": 0.6,
-                    // "ext": {
-                    //     "change": "up"
-                    // }
+                    "title": "达成率最高",
+                    "type": "info",
+                    "value": "代表2",
+                    "ext": {
+                        "sub": {
+                            "type": "title",
+                            "value": "达成率",
+                            "ext": {
+                                "type": "percent",
+                                "change": "none",
+                                "value": 0.27
+                            }
+                        }
+                    },
+                }, {
+                    "index": 4,
+                    "title": "贡献度最高",
+                    "type": "info",
+                    "value": "代表5",
+                    "ext": {
+                        "sub": {
+                            "type": "title",
+                            "value": "贡献度",
+                            "ext": {
+                                "type": "percent",
+                                "change": "none",
+                                "value": 0.07
+                            }
+                        }
+                    },
                 }, ]
             }, {
                 "key": "result-table",
                 "values": {
                     "columns": [{
-                            "label": '产品名称',
+                            "label": '代表名称',
                             "valuePath": 'brand_name',
-                            "width": '100px',
+                            "width": '180px',
                             "align": 'center',
                             "sorted": false,
 
                         }, {
-                            "label": '市场销售额',
+                            "label": '负责指标',
                             "valuePath": 'potential',
-                            "width": '100px',
+                            "width": '120px',
                             "align": 'center',
                             "cellComponent": 'table-number-thousands'
-                        }, {
-                            "label": '市场增长(%)',
-                            "valuePath": 'market_growth',
-                            "width": '100px',
-                            "align": 'center',
-                            "cellComponent": 'table-number-percent'
-
                         }, {
                             "label": '当期销售额',
                             "valuePath": 'sales',
-                            "width": '100px',
-                            "align": 'center',
-                            "cellComponent": 'table-number-thousands'
-                        }, {
-                            "label": '销售增长(%)',
-                            "valuePath": 'sales_growth',
-                            "width": '100px',
-                            "align": 'center',
-                            "cellComponent": 'table-number-percent'
-                        }, {
-                            "label": 'EV值(%)',
-                            "valuePath": 'ev_value',
-                            "width": '80px',
-                            "align": 'center',
-                            "cellComponent": 'table-number-percent'
-                        }, {
-                            "label": '份额(%)',
-                            "valuePath": 'share',
-                            "width": '80px',
-                            "align": 'center',
-                            "cellComponent": 'table-number-percent'
-                        }, {
-                            "label": '份额增长(%)',
-                            "valuePath": 'share_change',
-                            "width": '100px',
-                            "align": 'center',
-                            "cellComponent": 'table-number-percent'
-                        }, {
-                            "label": '指标',
-                            "valuePath": 'target',
-                            "width": '100px',
+                            "width": '120px',
                             "align": 'center',
                             "cellComponent": 'table-number-thousands'
                         },
                         {
                             "label": '指标达成率(%)',
                             "valuePath": 'achieve_rate',
-                            "width": '100px',
+                            "width": '120px',
                             "align": 'center',
                             "cellComponent": 'table-number-percent'
                         },
                         {
-                            "label": '销售贡献率(%)',
-                            "valuePath": 'contri_rate',
-                            "width": '100px',
+                            "label": '预算比例(%)',
+                            "valuePath": 'budget_rate',
+                            "width": '120px',
                             "align": 'center',
                             "cellComponent": 'table-number-percent'
-                        }
+                        },
+
+                        {
+                            "label": '销售贡献率(%)',
+                            "valuePath": 'contri_rate',
+                            "width": '120px',
+                            "align": 'center',
+                            "cellComponent": 'table-number-percent'
+                        }, {
+                            "label": '工作天数',
+                            "valuePath": 'workdays',
+                            "width": '120px',
+                            "align": 'center',
+                        }, {
+                            "label": '奖金',
+                            "valuePath": 'target',
+                            "width": '180px',
+                            "align": 'center',
+                            "cellComponent": 'table-number-thousands'
+                        },
+
                     ],
                     "columnsValue": [{
-                        "brand_name": "aaaa",
-                        "potential": 1349755,
-                        "market_growth": 0.2,
-                        "sales": 5861795,
-                        "sales_growth": 0.66,
-                        "ev_value": 0.1,
-                        "share": 0.56,
-                        "share_change": 0.1,
-                        "target": 56874486,
-                        "achieve_rate": 1,
-                        "contri_rate": 0.2
-                    }],
+                            "brand_name": "代表1",
+                            "potential": 30178,
+                            "sales": 26045,
+                            "achieve_rate": 0.1,
+                            "budget_rate": 0.23,
+                            "contri_rate": 0.1,
+                            "workdays": 21,
+
+                            "target": 11709,
+
+                        },
+                        {
+                            "brand_name": "代表2",
+                            "potential": 17803,
+                            "sales": 48850,
+                            "achieve_rate": 0.2,
+                            "budget_rate": 0.53,
+
+                            "contri_rate": 0.2,
+                            "workdays": 21,
+
+                            "target": 37416,
+
+                        },
+                        {
+                            "brand_name": "代表3",
+                            "potential": 16415,
+                            "sales": 4032,
+                            "achieve_rate": 0.3,
+                            "budget_rate": 0.13,
+
+                            "contri_rate": 0.3,
+                            "workdays": 21,
+
+                            "target": 561318,
+
+                        },
+                        {
+                            "brand_name": "代表4",
+                            "potential": 42369,
+                            "sales": 26549,
+                            "achieve_rate": 0.4,
+                            "budget_rate": 0.29,
+
+                            "contri_rate": 0.4,
+                            "workdays": 21,
+
+                            "target": 26299,
+
+                        },
+                        {
+                            "brand_name": "代表4",
+                            "potential": 34563,
+                            "sales": 236572,
+                            "achieve_rate": 0.6,
+                            "budget_rate": 0.2,
+
+                            "contri_rate": 0.7,
+                            "workdays": 21,
+
+                            "target": 56621,
+
+                        }
+                    ],
                 }
             }, ],
 

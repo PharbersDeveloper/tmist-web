@@ -20,30 +20,54 @@ export default Route.extend({
                 "key": "data-show-card",
                 "values": [{
                     "index": 1,
-                    "title": "总销售额",
-                    "type": "sales",
-                    "value": 6039535
+                    "title": "表现最佳",
+                    "type": "info",
+                    "value": "医院1-产品1",
+                    "ext": {
+                        "sub": {
+                            "title": "份额",
+                            "type": "percent",
+                            "value": 0.12,
+                            "ext": {
+                                "type": "percent",
+                                "change": "up",
+                                "value": 0.07
+                            }
+                        }
+                    },
                 }, {
                     "index": 2,
-                    "title": "整体销售增长",
-                    "type": "percent",
-                    "value": 12,
+                    "title": "贡献度最高",
+                    "type": "info",
+                    "value": "医院3-产品3",
                     "ext": {
-                        "change": "up"
-                    }
+                        "sub": {
+                            "type": "title",
+                            "value": 658432,
+                            "ext": {
+                                "type": "percent",
+                                "change": "none",
+                                "value": 0.11
+                            }
+                        }
+                    },
                 }, {
                     "index": 3,
                     "title": "平均指标达成",
                     "type": "percent",
                     "value": 0.6,
-                    // "ext": {
-                    //     "change": "up"
-                    // }
                 }, ]
             }, {
                 "key": "result-table",
                 "values": {
                     "columns": [{
+                            "label": '代表名称',
+                            "valuePath": 'rep_name',
+                            "width": '120px',
+                            "align": 'center',
+                            "sorted": false,
+
+                        }, {
                             "label": '产品名称',
                             "valuePath": 'brand_name',
                             "width": '100px',
@@ -82,18 +106,6 @@ export default Route.extend({
                             "align": 'center',
                             "cellComponent": 'table-number-percent'
                         }, {
-                            "label": '份额(%)',
-                            "valuePath": 'share',
-                            "width": '80px',
-                            "align": 'center',
-                            "cellComponent": 'table-number-percent'
-                        }, {
-                            "label": '份额增长(%)',
-                            "valuePath": 'share_change',
-                            "width": '100px',
-                            "align": 'center',
-                            "cellComponent": 'table-number-percent'
-                        }, {
                             "label": '指标',
                             "valuePath": 'target',
                             "width": '100px',
@@ -110,24 +122,76 @@ export default Route.extend({
                         {
                             "label": '销售贡献率(%)',
                             "valuePath": 'contri_rate',
-                            "width": '100px',
+                            "width": '120px',
                             "align": 'center',
                             "cellComponent": 'table-number-percent'
                         }
                     ],
                     "columnsValue": [{
-                        "brand_name": "aaaa",
-                        "potential": 1349755,
-                        "market_growth": 0.2,
-                        "sales": 5861795,
-                        "sales_growth": 0.66,
-                        "ev_value": 0.1,
-                        "share": 0.56,
-                        "share_change": 0.1,
-                        "target": 56874486,
-                        "achieve_rate": 1,
-                        "contri_rate": 0.2
-                    }],
+                            "rep_name": "代表01",
+                            "brand_name": "测试产品1",
+                            "potential": 30178,
+                            "market_growth": 0.1,
+                            "sales": 26045,
+                            "sales_growth": 0.11,
+                            "ev_value": 0.1,
+                            "target": 11709,
+                            "achieve_rate": 0.1,
+                            "contri_rate": 0.1
+                        },
+                        {
+                            "rep_name": "代表02",
+
+                            "brand_name": "测试产品2",
+                            "potential": 17803,
+                            "market_growth": 0.2,
+                            "sales": 48850,
+                            "sales_growth": 0.22,
+                            "ev_value": 0.2,
+                            "target": 37416,
+                            "achieve_rate": 0.2,
+                            "contri_rate": 0.2
+                        },
+                        {
+                            "rep_name": "代表03",
+
+                            "brand_name": "测试产品3",
+                            "potential": 16415,
+                            "market_growth": 0.3,
+                            "sales": 4032,
+                            "sales_growth": 0.33,
+                            "ev_value": 0.3,
+                            "target": 561318,
+                            "achieve_rate": 0.3,
+                            "contri_rate": 0.3
+                        },
+                        {
+                            "rep_name": "代表04",
+
+                            "brand_name": "测试产品4",
+                            "potential": 42369,
+                            "market_growth": 0.4,
+                            "sales": 26549,
+                            "sales_growth": 0.44,
+                            "ev_value": 0.4,
+                            "target": 26299,
+                            "achieve_rate": 0.4,
+                            "contri_rate": 0.4
+                        },
+                        {
+                            "rep_name": "代表05",
+
+                            "brand_name": "测试产品5",
+                            "potential": 42369,
+                            "market_growth": 0.4,
+                            "sales": 26549,
+                            "sales_growth": 0.44,
+                            "ev_value": 0.4,
+                            "target": 26299,
+                            "achieve_rate": 0.4,
+                            "contri_rate": 0.4
+                        }
+                    ],
                 }
             }, ],
 
