@@ -235,10 +235,56 @@
 			color: #FFF;
 			background-image: linear-gradient(110deg, #4D608F 0%, #8F9CC3 100%);
 			box-shadow: 0 1px 3px 0 rgba(134,134,134,0.50);
-
+			.circle-left {
+				width: 20px;
+				height: 20px;
+				border-radius: 50%;
+				background: #eef1fa;
+				position: relative;
+				top: 90px;
+				left: -30px;
+			}
+			.circle-right {
+				width: 20px;
+				height: 20px;
+				border-radius: 50%;
+				background: #eef1fa;
+				position: relative;
+				top: 70px;
+				left: 240px;
+			}
+			.tag {
+				margin-top: 10px;
+				font-family: PingFangTC-Regular;
+				font-size: 12px;
+				color: #FFFFFF;
+				letter-spacing: 1.5px;
+				text-align: center;
+				.tag-title {
+					text-align: left;
+				}
+				.blue p{
+					background: #75A9E5;
+				}
+				.green p{
+					background: #6CD5BD;
+				}
+				.tag-card {
+					display: flex;
+					justify-content: flex-start;
+					p {
+						width: 70px;
+						line-height: 20px;
+						padding: 1px 3px;
+						margin: 2px;
+						border-radius: 1px;
+					}
+				}
+			}
 			.basic-info {
-				margin-bottom: 10px;
-
+				margin-bottom: 30px;
+				margin-top: -30px;
+				vertical-align: top;
 				.avatar,
 				.name {
 					display: inline-block;
