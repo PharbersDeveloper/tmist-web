@@ -11,7 +11,7 @@ export default Route.extend({
 
     setupController(controller, model) {
         this._super(controller, model);
-        // console.log(model)
+        // this.logger.log(model)
         controller.queryList(model.uuid);
 
     },

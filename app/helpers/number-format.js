@@ -3,8 +3,6 @@ import { helper } from '@ember/component/helper';
 export function numberFormat(params /*, hash*/ ) {
 	let p = params.toString().replace(/[,，、]/g, "");
 	if (isNaN(p)) {
-		// throw new TypeError("num is not a number");
-		// console.warn("input is not a number")
 		return p;
 	} else {
 		let zznf = /([-+]?)(\d*)(\.\d+)?/g

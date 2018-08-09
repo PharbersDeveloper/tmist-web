@@ -20,7 +20,7 @@ export default DS.Store.extend({
 	// adapter:'pharbers-adapter',
 	init() {
 		this._super(...arguments)
-		window.console.info("The Custom DS.Store Init()")
+		this.logger.log("The Custom DS.Store Init()")
 	},
 	queryObject(modelName, jsonObject) {
 		let normalizedModelName = normalizeModelName(modelName);

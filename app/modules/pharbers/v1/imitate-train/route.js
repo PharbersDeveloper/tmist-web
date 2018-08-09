@@ -1,5 +1,8 @@
 import Route from '@ember/routing/route';
 import { inject } from '@ember/service';
+import { later } from '@ember/runloop';
+
+const { keys } = Object;
 
 export default Route.extend({
     ajax: inject(),
@@ -22,7 +25,7 @@ export default Route.extend({
                 "type": "checkpoints",
                 "condition": {}
             }
-        }
+        };
         return this.get('ajax').request('/api/proposal/lst', this.getAjaxOpt(condition))
             .then(({ status, result, error }) => {
                 if (status === "ok") {
