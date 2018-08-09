@@ -1,0 +1,141 @@
+<div local-class="talent-container">
+    <div local-class="title-bar">
+        <span local-class="date">{{currentMonth}}月份计划部署</span>
+        <span local-class="setting"> <img src="/assets/images/hosp-setting.png" alt=""> </span>
+    </div>
+    <div local-class="menu-bar">
+        <div local-class="menu menu-left">
+            <span>通知</span>
+            <span>信息库</span>
+            <span>当前部署分析</span>
+        </div>
+        <div local-class="menu menu-right">
+            {{#bs-dropdown tagName="span" local-class="budget" as |bb|}}
+                {{#bb.toggle}}预算 <span class="caret"></span>{{/bb.toggle}}
+                {{#bb.menu local-class='tips-container' as |menu|}}
+                    {{#menu.item local-class='budget-tip' }}
+                        <div local-class="triangle"></div>
+                        <div local-class="rectangle">
+                            <p local-class="budget-text"> <span>预算</span> <span>{{number-format budget.used}}/{{number-format budget.total}}</span> <span>{{budgetPerc}}%</span> </p>
+                            <div local-class="self-progress" class="progress">
+                                {{#bs-progress as |p|}}
+                                    {{p.bar value=budgetPerc local-class="self-progress-bar"}}
+                                {{/bs-progress}}
+                            </div>
+                        </div>
+                    {{/menu.item}}
+                {{/bb.menu}}
+            {{/bs-dropdown}}
+            {{#bs-dropdown tagName="span" local-class="human" as |dd|}}
+                {{#dd.toggle}}人力 <span class="caret"></span>{{/dd.toggle}}
+                {{#dd.menu local-class='tips-container' as |menu|}}
+                    {{#menu.item local-class='human-tip' }}
+                        <div local-class="triangle"></div>
+                        <div local-class="rectangle">
+                            {{#each manpowerPerc as |item|}}
+                                <p local-class="human-text"> <span>{{item.name}}</span> <span>{{item.used}}/{{item.total}}天</span> <span>{{item.percent}}%</span> </p>
+                                <div local-class="self-progress" class="progress">
+                                    {{#bs-progress as |p|}}
+                                        {{p.bar value=item.percent local-class="self-progress-bar"}}
+                                    {{/bs-progress}}
+                                </div>
+                            {{/each}}
+
+                        </div>
+                    {{/menu.item}}
+                {{/dd.menu}}
+            {{/bs-dropdown}}
+            <span local-class="btn-submit">提交执行 <span class="glyphicon glyphicon-menu-right"></span> </span>
+        </div>
+    </div>
+
+    <div local-class="content container" class="container">
+        <div local-class="close">
+            <img src="/assets/images/talent-close.jpg" alt="">
+        </div>
+        <div class="row" local-class="contain">
+            <div class="col-md-3 col-sm-3 col-xs-3" local-class="lump">
+                <div local-class="con-left">
+                    <p local-class="title">经理时间分配</p>
+                    <div local-class="left-lump-input">
+                    </div>
+                    <div local-class="left-lump-input">
+                    </div>
+                    <div local-class="left-lump-input">
+                    </div>
+                    <div local-class="left-lump-show">
+                    </div>
+                    <div local-class="left-lump-show">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9 col-sm-9 col-xs-9" local-class="lump">
+                <div local-class="con-right">
+                    <p local-class="title"> <span class="glyphicon glyphicon-chevron-left"></span>返回</p>
+                    <div local-class="lump-left" class="col-md-8 col-sm-8 col-xs-8">
+                        <div local-class="message">
+                            <div local-class="head" class="center-block">
+                                <img src="/assets/images/logo_login.png" alt="" local-class="head-img" class="img-circle center-block">
+                                <p local-class="head-name">小松</p>
+                            </div>
+                            <div local-class="word" class="center-block">
+                                <p>
+                                    {{!-- <span>28歲 </span>/ <span>研究生</span>/ <span>英語專業</span> / <span>3年工作經驗 </span>/ <span>入職1年</span> --}}
+                                 </p>
+                            </div>
+                            <div local-class="describe">
+                                <div local-class="des-list">
+                                    {{!-- <p local-class="list-title">业务经验&nbsp;：
+                                        <span local-class="label experience">心血管类</span>
+                                        <span local-class="label experience">抗生素类</span>
+                                    </p> --}}
+                                </div>
+                                <div local-class="des-list">
+                                    {{!-- <p local-class="list-title">优&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;势&nbsp;：
+                                        <span local-class="label advantage">学习能力</span>
+                                        <span local-class="label advantage">演讲能力</span>
+                                    </p> --}}
+                                    {{!-- <p local-class="advan-value"></p> --}}
+                                </div>
+                                <div local-class="des-list">
+                                    {{!-- <p local-class="list-title">待&nbsp;提&nbsp;&nbsp;高&nbsp;：
+                                        <span local-class="label short">产品知识</span>
+                                        <span local-class="label short">科室会</span>
+                                        <span local-class="label short">专业性的拜访</span>
+
+                                    </p> --}}
+                                    {{!-- <p local-class="short-value"></p> --}}
+                                </div>
+                            </div>
+                        </div>
+                        <div local-class="grade">
+                            <div local-class="grade-list" class="col-md-4 col-sm-4 col-xs-4">
+                            </div>
+                            <div local-class="grade-list" class="col-md-4 col-sm-4 col-xs-4">
+                            </div>
+                            <div local-class="grade-list" class="col-md-4 col-sm-4 col-xs-4">
+                            </div>
+                            <div local-class="grade-list" class="col-md-4 col-sm-4 col-xs-4">
+                            </div>
+                            <div local-class="grade-list" class="col-md-4 col-sm-4 col-xs-4">
+                            </div>
+                        </div>
+                    </div>
+                    {{!-- <div local-class="dashed-line">
+                    </div> --}}
+                    <div local-class="lump-right" class="col-md-4 col-sm-4 col-xs-4">
+                        <div local-class="left-lump-input" class="center-block">
+                        </div>
+                        <div local-class="left-lump-input">
+                        </div>
+                        <div local-class="left-lump-input">
+                        </div>
+                        <div local-class="left-lump-show">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,78 @@
+.hosp-container {
+	display: flex;
+	flex-direction: column;
+	min-width: 1200px;
+	height: 100%;
+	background: #EEF1FA;
+
+	.title-bar {
+		flex: 0 0 40px;
+		height: 40px;
+		line-height: 40px;
+		color: #FFF;
+		background-image: linear-gradient(90deg, #4B6693 0%, #8F9CC3 100%);
+	}
+
+	.menu-bar {
+		position: relative;
+		flex: 0 0 40px;
+		padding: 0 35px;
+		height: 40px;
+		line-height: 40px;
+		background: #FDFDFD;
+		box-shadow: 0 2px 4px 0 rgba(162,162,162,0.50);
+	}
+
+	.content {
+		flex: 1;
+		padding: 10px 20px;
+		width: 100%;
+		overflow-x: scroll;
+		overflow-y: hidden;
+		white-space: nowrap;
+		min-height: 650px;
+
+		.hosp-item {
+			position: relative;
+			display: inline-block;
+			margin-right: 20px;
+			width: 260px;
+			height: 100%;
+			border-radius: $default-radius;
+			background-color: #fff;
+
+			.hosp-intro {
+				height: 230px;
+				width: 260px;
+				border-radius: 5px 5px 0 0;
+				color: #FFF;
+				background-image: linear-gradient(110deg, #4D608F 0%, #8F9CC3 100%);
+				box-shadow: 0 1px 3px 0 rgba(134,134,134,0.50);
+			}
+
+			.medicine-container {
+				position: absolute;
+				top: 230px;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				// margin-top: 230px;
+				// padding: 15px;
+				// height: 100%;
+				overflow-y: auto;
+				// overflow: hidden;
+				.medicine-item {
+					margin: 15px auto;
+					padding: 7px 15px;
+					width: 230px;
+					height: 140px;
+					font-size: 0;
+					border-radius: $default-radius + 2px;
+					color: #FFF;
+					background-image: linear-gradient(108deg, #4D608F 0%, #93A2CF 100%);
+					box-shadow: 0 1px 2px 0 rgba(91,91,91,0.50);
+				}
+			}
+		}
+	}
+}

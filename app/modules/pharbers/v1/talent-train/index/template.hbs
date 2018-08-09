@@ -1,0 +1,68 @@
+<div local-class="talent-container">
+    {{!-- <div local-class="title-bar">
+        <span local-class="date">{{currentMonth}}月份计划部署</span>
+        <span local-class="setting"> <img src="/assets/images/hosp-setting.png" alt=""> </span>
+    </div> --}}
+    {{nav-title data=month}}
+    {{nav-tool data=dropdownData submit=(action 'submitRun')}}
+    <div local-class="content container" class="container">
+        <div local-class="close">
+            <img src="/assets/images/talent-close.jpg" {{action "backPrev"}} alt="">
+        </div>
+        <div class="row" local-class="contain">
+            {{manager-times }}
+            {{all-rep model isShowList showDetail=(action "showDetail") hideDetail=(action 'hideDetail') }}
+            {{!-- <div class="col-md-3 col-sm-3 col-xs-3" local-class="lump">
+                <div local-class="con-left">
+                    <p local-class="title">经理时间分配</p>
+                    <div local-class="left-lump-input">
+                    </div>
+                    <div local-class="left-lump-input">
+                    </div>
+                    <div local-class="left-lump-input">
+                    </div>
+                    <div local-class="left-lump-show">
+                    </div>
+                    <div local-class="left-lump-show">
+                    </div>
+                </div>
+            </div> --}}
+            {{!-- <div class="col-md-9 col-sm-9 col-xs-9" local-class="lump">
+                <div local-class="con-right">
+                    <p local-class="title">成员能力概况</p>
+                    <div local-class="right-lump">
+                    </div>
+                    <div local-class="right-lump">
+                    </div>
+                    <div local-class="right-lump">
+                    </div>
+                    <div local-class="right-lump">
+                    </div>
+                    <div local-class="right-lump">
+                    </div>
+                    <div local-class="right-lump">
+                    </div>
+                    <div local-class="right-lump">
+                    </div>
+                    <div local-class="right-lump">
+                    </div>
+                    <div local-class="right-lump">
+                    </div>
+                    <div local-class="right-lump">
+                    </div>
+                    <div local-class="right-lump">
+                    </div>
+                    <div local-class="right-lump">
+                    </div>
+                    <div local-class="right-lump">
+                    </div>
+                    <div local-class="right-lump">
+                    </div>
+                    <div local-class="right-lump">
+                    </div>
+                </div>
+            </div> --}}
+        </div>
+
+    </div>
+</div>

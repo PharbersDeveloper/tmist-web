@@ -15,9 +15,13 @@
     <div local-class="content">
         {{#if checkpoints}}
             {{#each checkpoints as |item|}}
+            {{log item}}
                 <div local-class="checkpoint">
                     <span local-class="title">{{item.proposal_name}}</span>
-                    <span local-class="btn-simulation" {{action 'simulation' item.proposal_id item.uuid}}>进入模拟<span class="glyphicon glyphicon-menu-right"></span></span>
+
+                    {{!-- <span local-class="btn-simulation" {{action 'simulation' item.id item.uuid}}>进入模拟<span class="glyphicon glyphicon-menu-right"></span></span> --}}
+                    <span local-class="btn-simulation" {{action 'simulation' item.uuid}}>进入模拟<span class="glyphicon glyphicon-menu-right"></span></span>
+
                 </div>
             {{/each}}
         {{else}}
