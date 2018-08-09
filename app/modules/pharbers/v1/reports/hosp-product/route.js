@@ -127,7 +127,7 @@ export default Route.extend({
                             "sorted": false,
 
                         }, {
-                            "label": '市场销售额',
+                            "label": '市场潜力',
                             "valuePath": 'potential',
                             "width": '100px',
                             "align": 'center',

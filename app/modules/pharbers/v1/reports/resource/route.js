@@ -102,33 +102,32 @@ export default Route.extend({
                             "sorted": false,
 
                         }, {
-                            "label": '市场销售额',
-                            "valuePath": 'potential',
+                            "label": '分配代表',
+                            "valuePath": 'rep',
                             "width": '100px',
                             "align": 'center',
-                            "cellComponent": 'table-number-thousands'
                         }, {
-                            "label": '市场增长(%)',
-                            "valuePath": 'market_growth',
+                            "label": '时间分配',
+                            "valuePath": 'time',
                             "width": '100px',
                             "align": 'center',
                             "cellComponent": 'table-number-percent'
 
                         }, {
-                            "label": '当期销售额',
-                            "valuePath": 'sales',
+                            "label": '预算分配',
+                            "valuePath": 'budget',
                             "width": '100px',
                             "align": 'center',
                             "cellComponent": 'table-number-thousands'
                         }, {
-                            "label": '销售增长(%)',
-                            "valuePath": 'sales_growth',
+                            "label": '市场潜力(%)',
+                            "valuePath": 'qianli',
                             "width": '100px',
                             "align": 'center',
                             "cellComponent": 'table-number-percent'
                         }, {
-                            "label": 'EV值(%)',
-                            "valuePath": 'ev_value',
+                            "label": '潜力增长(%)',
+                            "valuePath": 'qianli_growth',
                             "width": '80px',
                             "align": 'center',
                             "cellComponent": 'table-number-percent'
@@ -145,8 +144,8 @@ export default Route.extend({
                             "align": 'center',
                             "cellComponent": 'table-number-percent'
                         }, {
-                            "label": '指标',
-                            "valuePath": 'target',
+                            "label": '销售额',
+                            "valuePath": 'sales',
                             "width": '100px',
                             "align": 'center',
                             "cellComponent": 'table-number-thousands'
@@ -163,56 +162,56 @@ export default Route.extend({
                     "columnsValue": [{
                             "hosp_name": "医院001",
                             "brand_name": "测试产品1",
-                            "potential": 30178,
-                            "market_growth": 0.1,
-                            "sales": 26045,
-                            "sales_growth": 0.11,
-                            "ev_value": 0.1,
+                            "rep": "小赵",
+                            "time": 0.1,
+                            "budget": 26045,
+                            "qianli": 0.11,
+                            "qianli_growth": 0.1,
                             "share": 0.11,
                             "share_change": 0.1,
-                            "target": 11709,
+                            "sales": 11709,
                             "contri_rate": 0.1
                         },
                         {
                             "hosp_name": "医院002",
 
                             "brand_name": "测试产品2",
-                            "potential": 17803,
-                            "market_growth": 0.2,
-                            "sales": 48850,
-                            "sales_growth": 0.22,
-                            "ev_value": 0.2,
+                            "rep": "小钱",
+                            "time": 0.2,
+                            "budget": 48850,
+                            "qianli": 0.22,
+                            "qianli_growth": 0.2,
                             "share": 0.22,
                             "share_change": 0.2,
-                            "target": 37416,
+                            "sales": 37416,
                             "contri_rate": 0.2
                         },
                         {
                             "hosp_name": "医院003",
 
                             "brand_name": "测试产品3",
-                            "potential": 16415,
-                            "market_growth": 0.3,
-                            "sales": 4032,
-                            "sales_growth": 0.33,
-                            "ev_value": 0.3,
+                            "rep": "小孙",
+                            "time": 0.3,
+                            "budget": 4032,
+                            "qianli": 0.33,
+                            "qianli_growth": 0.3,
                             "share": 0.33,
                             "share_change": 0.3,
-                            "target": 561318,
+                            "sales": 561318,
                             "contri_rate": 0.3
                         },
                         {
                             "hosp_name": "医院004",
 
                             "brand_name": "测试产品4",
-                            "potential": 42369,
-                            "market_growth": 0.4,
-                            "sales": 26549,
-                            "sales_growth": 0.44,
-                            "ev_value": 0.4,
+                            "rep": "小李",
+                            "time": 0.4,
+                            "budget": 26549,
+                            "qianli": 0.44,
+                            "qianli_growth": 0.4,
                             "share": 0.44,
                             "share_change": 0.4,
-                            "target": 26299,
+                            "sales": 26299,
                             "contri_rate": 0.4
                         }
                     ],
