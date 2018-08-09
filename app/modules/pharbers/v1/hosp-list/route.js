@@ -8,12 +8,11 @@ export default Route.extend({
         talentController.set('previousTransition', transition);
     },
 
-
     setupController(controller, model) {
         this._super(controller, model);
         // this.logger.log(model)
         controller.queryList(model.uuid);
 
-    },
+    }
 
 });
