@@ -75,14 +75,11 @@ export default Controller.extend({
     },
     actions: {
         linkPage(hospid) {
-            // console.log("------------");
-            // console.log(hospid);
             let params = this.get('model');
-            // console.log(params)
             this.transitionToRoute('pharbers.v1.hosp-list-detail', params.pid, params.uuid, hospid)
         },
         submitRun(text) {
-            console.log(text);
+            this.logger.log(text);
             alert('请先进行数据处理')
         },
         talent() {

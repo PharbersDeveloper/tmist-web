@@ -1,6 +1,9 @@
+body > :global(.ember-view) {
+    height: 100%;
+}
+
 .login-container {
 	height: 100%;
-	// background-image: url("../assets/images/login_bg.png");
 	background-size: cover;
 }
 

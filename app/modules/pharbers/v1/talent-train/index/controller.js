@@ -53,7 +53,7 @@ export default Controller.extend({
         },
         backPrev() {
             let previousTransition = this.get('previousTransition');
-            console.log(previousTransition);
+            this.logger.log(previousTransition);
             // this.transitionToRoute(previousTransition.intent.url);
             if (previousTransition.intent.url) {
                 this.transitionToRoute(previousTransition.intent.url);
