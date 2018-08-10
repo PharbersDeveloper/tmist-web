@@ -1,8 +1,11 @@
-import Route from '@ember/routing/route';
+import Controller from '@ember/controller';
+import { inject } from '@ember/service';
 
-export default Route.extend({
-    model() {
-        return {
+export default Controller.extend({
+    decisionInfo: inject('decision-info-service'),
+    isShowList: true,
+    init() {
+        this.repList = {
             "id": "thisisAllRepre",
             "title": "成员能力概况",
             "reps": [{
@@ -84,7 +87,21 @@ export default Route.extend({
             }],
             "detail": {}
         };
-        // return allRep;
     },
-
+    actions: {
+        showDetail(id) {
+            this.set('isShowList', false);
+            this.get('repList.reps').forEach((ele) => {
+                if (ele.id === id) {
+                    this.set('repList.detail', ele);
+                }
+            })
+        },
+        hideDetail() {
+            this.set('isShowList', true);
+        },
+        backPrev() {
+            this.get('decisionInfo').hide()
+        }
+    }
 });

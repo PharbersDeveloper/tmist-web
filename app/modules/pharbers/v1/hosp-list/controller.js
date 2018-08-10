@@ -2,6 +2,7 @@ import Controller from '@ember/controller';
 import { inject } from '@ember/service';
 
 export default Controller.extend({
+    decisionInfo: inject('decision-info-service'),
     ajax: inject(),
     getAjaxOpt(data) {
         return {
@@ -83,7 +84,8 @@ export default Controller.extend({
             alert('请先进行数据处理')
         },
         talent() {
-            this.transitionToRoute('pharbers.v1.talent-train')
+            this.get('decisionInfo').show()
+            // this.transitionToRoute('pharbers.v1.talent-train')
         }
     }
 });

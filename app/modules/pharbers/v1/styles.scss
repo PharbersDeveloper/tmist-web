@@ -1,0 +1,33 @@
+.mcontent {
+    flex: 1;
+    position: absolute;
+    z-index: 2;
+    top: 85px;
+    bottom: 0;
+    display: none;
+    padding: 10px 20px 0;
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    min-height: 650px;
+        .close {
+            height: 50px;
+            img {
+                margin-top: 10px;
+                display: block;
+                float: right;
+                width: 30px;
+                height: 30px;
+                cursor: pointer;
+            }
+        }
+        .content {
+            height: 100%;
+        }
+}
+.show {
+    display: block;
+    background-color: #EBEFF9;
+}
+

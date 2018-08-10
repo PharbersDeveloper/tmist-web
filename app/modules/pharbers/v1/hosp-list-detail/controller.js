@@ -2,6 +2,7 @@ import Controller from '@ember/controller';
 import { inject } from '@ember/service';
 
 export default Controller.extend({
+    decisionInfo: inject('decision-info-service'),
     ajax: inject(),
     init() {
         this._super(...arguments);
@@ -42,7 +43,8 @@ export default Controller.extend({
             this.transitionToRoute('pharbers.v1.reports')
         },
         talent() {
-            this.transitionToRoute('pharbers.v1.talent-train')
+            this.get('decisionInfo').show();
+            // this.transitionToRoute('pharbers.v1.talent-train')
         },
         backH() {
             this.transitionToRoute('/pharbers/v1/tm/hosp-list/5b42fd43ed925c05565b5bdb/65ccdece-cf90-4186-aeea-b14fee19a291');
