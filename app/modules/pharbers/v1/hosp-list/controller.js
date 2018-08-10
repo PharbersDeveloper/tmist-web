@@ -77,7 +77,7 @@ export default Controller.extend({
     actions: {
         linkPage(hospid) {
             let params = this.get('model');
-            this.transitionToRoute('pharbers.v1.hosp-list-detail', params.pid, params.uuid, hospid)
+            this.transitionToRoute('pharbers.v1.hosp-list-detail', params.uuid, hospid)
         },
         submitRun(text) {
             this.logger.log(text);

@@ -87,12 +87,6 @@ export default Route.extend({
                             "align": 'center',
                             "cellComponent": 'table-number-percent'
                         }, {
-                            "label": 'EV值(%)',
-                            "valuePath": 'ev_value',
-                            "width": '130px',
-                            "align": 'center',
-                            "cellComponent": 'table-number-percent'
-                        }, {
                             "label": '指标',
                             "valuePath": 'target',
                             "width": '140px',
@@ -119,7 +113,6 @@ export default Route.extend({
                             "brand_name": "测试产品1",
                             "sales": 26045,
                             "sales_growth": 0.11,
-                            "ev_value": 0.1,
                             "target": 11709,
                             "achieve_rate": 0.1,
                             "contri_rate": 0.1
@@ -129,7 +122,6 @@ export default Route.extend({
                             "brand_name": "测试产品2",
                             "sales": 48850,
                             "sales_growth": 0.22,
-                            "ev_value": 0.2,
                             "target": 37416,
                             "achieve_rate": 0.2,
                             "contri_rate": 0.2
@@ -139,7 +131,6 @@ export default Route.extend({
                             "brand_name": "测试产品3",
                             "sales": 4032,
                             "sales_growth": 0.33,
-                            "ev_value": 0.3,
                             "target": 561318,
                             "achieve_rate": 0.3,
                             "contri_rate": 0.3
@@ -149,7 +140,6 @@ export default Route.extend({
                             "brand_name": "测试产品4",
                             "sales": 26549,
                             "sales_growth": 0.44,
-                            "ev_value": 0.4,
                             "target": 26299,
                             "achieve_rate": 0.4,
                             "contri_rate": 0.4
@@ -159,7 +149,6 @@ export default Route.extend({
                             "brand_name": "测试产品5",
                             "sales": 26549,
                             "sales_growth": 0.44,
-                            "ev_value": 0.4,
                             "target": 26299,
                             "achieve_rate": 0.4,
                             "contri_rate": 0.4

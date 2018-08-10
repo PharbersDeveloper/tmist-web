@@ -118,7 +118,6 @@ export default Route.extend({
                             "width": '100px',
                             "align": 'center',
                             "sorted": false,
-
                         }, {
                             "label": '产品名称',
                             "valuePath": 'brand_name',
@@ -135,7 +134,7 @@ export default Route.extend({
                         }, {
                             "label": '市场增长(%)',
                             "valuePath": 'market_growth',
-                            "width": '100px',
+                            "width": '80px',
                             "align": 'center',
                             "cellComponent": 'table-number-percent'
 
@@ -148,7 +147,7 @@ export default Route.extend({
                         }, {
                             "label": '销售增长(%)',
                             "valuePath": 'sales_growth',
-                            "width": '100px',
+                            "width": '80px',
                             "align": 'center',
                             "cellComponent": 'table-number-percent'
                         }, {
@@ -166,7 +165,7 @@ export default Route.extend({
                         }, {
                             "label": '份额增长(%)',
                             "valuePath": 'share_change',
-                            "width": '100px',
+                            "width": '80px',
                             "align": 'center',
                             "cellComponent": 'table-number-percent'
                         }, {
@@ -182,7 +181,13 @@ export default Route.extend({
                             "width": '100px',
                             "align": 'center',
                             "cellComponent": 'table-number-percent'
-                        },
+                        }, {
+                            "label": '销售贡献率(%)',
+                            "valuePath": 'sales_contri',
+                            "width": '100px',
+                            "align": 'center',
+                            "cellComponent": 'table-number-percent'
+                        }
                     ],
                     "columnsValue": [{
                             "hosp_name": "医院01",
@@ -196,6 +201,7 @@ export default Route.extend({
                             "share_change": 0.1,
                             "target": 11709,
                             "achieve_rate": 0.1,
+                            "sales_contri": 0.2
                         },
                         {
                             "hosp_name": "医院02",
@@ -209,6 +215,8 @@ export default Route.extend({
                             "share_change": 0.2,
                             "target": 37416,
                             "achieve_rate": 0.2,
+                            "sales_contri": 0.2
+
                         },
                         {
                             "hosp_name": "医院03",
@@ -222,6 +230,8 @@ export default Route.extend({
                             "share_change": 0.3,
                             "target": 561318,
                             "achieve_rate": 0.3,
+                            "sales_contri": 0.2
+
                         },
                         {
                             "hosp_name": "医院04",
@@ -235,6 +245,8 @@ export default Route.extend({
                             "share_change": 0.4,
                             "target": 26299,
                             "achieve_rate": 0.4,
+                            "sales_contri": 0.2
+
                         },
                         {
                             "hosp_name": "医院05",
@@ -248,6 +260,8 @@ export default Route.extend({
                             "share_change": 0.54,
                             "target": 262959,
                             "achieve_rate": 0.54,
+                            "sales_contri": 0.2
+
                         },
                         {
                             "hosp_name": "医院06",
@@ -261,6 +275,8 @@ export default Route.extend({
                             "share_change": 0.64,
                             "target": 266299,
                             "achieve_rate": 0.64,
+                            "sales_contri": 0.2
+
                         },
                         {
                             "hosp_name": "医院07",
@@ -274,6 +290,8 @@ export default Route.extend({
                             "share_change": 0.74,
                             "target": 262799,
                             "achieve_rate": 0.477,
+                            "sales_contri": 0.2
+
                         }
                     ],
                 }

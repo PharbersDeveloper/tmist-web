@@ -104,14 +104,13 @@ export default Route.extend({
                         }, {
                             "label": '分配代表',
                             "valuePath": 'rep',
-                            "width": '100px',
+                            "width": '80px',
                             "align": 'center',
                         }, {
-                            "label": '时间分配',
+                            "label": '时间分配(天)',
                             "valuePath": 'time',
-                            "width": '100px',
+                            "width": '80px',
                             "align": 'center',
-                            "cellComponent": 'table-number-percent'
 
                         }, {
                             "label": '预算分配',
@@ -121,13 +120,25 @@ export default Route.extend({
                             "cellComponent": 'table-number-thousands'
                         }, {
                             "label": '市场潜力(%)',
-                            "valuePath": 'qianli',
-                            "width": '100px',
+                            "valuePath": 'potential',
+                            "width": '80px',
                             "align": 'center',
                             "cellComponent": 'table-number-percent'
                         }, {
                             "label": '潜力增长(%)',
-                            "valuePath": 'qianli_growth',
+                            "valuePath": 'potential_growth',
+                            "width": '80px',
+                            "align": 'center',
+                            "cellComponent": 'table-number-percent'
+                        }, {
+                            "label": '销售额',
+                            "valuePath": 'sales',
+                            "width": '100px',
+                            "align": 'center',
+                            "cellComponent": 'table-number-thousands'
+                        }, {
+                            "label": '销售增长(%)',
+                            "valuePath": 'sales_growth',
                             "width": '80px',
                             "align": 'center',
                             "cellComponent": 'table-number-percent'
@@ -143,12 +154,6 @@ export default Route.extend({
                             "width": '100px',
                             "align": 'center',
                             "cellComponent": 'table-number-percent'
-                        }, {
-                            "label": '销售额',
-                            "valuePath": 'sales',
-                            "width": '100px',
-                            "align": 'center',
-                            "cellComponent": 'table-number-thousands'
                         },
 
                         {
@@ -165,53 +170,54 @@ export default Route.extend({
                             "rep": "小赵",
                             "time": 0.1,
                             "budget": 26045,
-                            "qianli": 0.11,
-                            "qianli_growth": 0.1,
+                            "potential": 0.11,
+                            "potential_growth": 0.1,
+                            "sales": 11709,
+                            "sales_growth": 0.01,
                             "share": 0.11,
                             "share_change": 0.1,
-                            "sales": 11709,
                             "contri_rate": 0.1
                         },
                         {
                             "hosp_name": "医院002",
-
                             "brand_name": "测试产品2",
                             "rep": "小钱",
                             "time": 0.2,
                             "budget": 48850,
-                            "qianli": 0.22,
-                            "qianli_growth": 0.2,
+                            "potential": 0.22,
+                            "potential_growth": 0.2,
+                            "sales": 37416,
+                            "sales_growth": 0.01,
                             "share": 0.22,
                             "share_change": 0.2,
-                            "sales": 37416,
                             "contri_rate": 0.2
                         },
                         {
                             "hosp_name": "医院003",
-
                             "brand_name": "测试产品3",
                             "rep": "小孙",
                             "time": 0.3,
                             "budget": 4032,
-                            "qianli": 0.33,
-                            "qianli_growth": 0.3,
+                            "potential": 0.33,
+                            "potential_growth": 0.3,
+                            "sales": 561318,
+                            "sales_growth": 0.01,
                             "share": 0.33,
                             "share_change": 0.3,
-                            "sales": 561318,
                             "contri_rate": 0.3
                         },
                         {
                             "hosp_name": "医院004",
-
                             "brand_name": "测试产品4",
                             "rep": "小李",
                             "time": 0.4,
                             "budget": 26549,
-                            "qianli": 0.44,
-                            "qianli_growth": 0.4,
+                            "potential": 0.44,
+                            "potential_growth": 0.4,
+                            "sales": 26299,
+                            "sales_growth": 0.01,
                             "share": 0.44,
                             "share_change": 0.4,
-                            "sales": 26299,
                             "contri_rate": 0.4
                         }
                     ],
