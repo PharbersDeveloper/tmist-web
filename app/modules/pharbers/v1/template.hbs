@@ -1,14 +1,4 @@
 <div class="{{decisionInfo.slideClassNames}}">
-    <div local-class="content" class="container">
-            <div local-class="close" class="row">
-                <img src="/assets/images/talent-close.jpg" {{action "backPrev"}} alt="">
-            </div>
-            <div class="row" local-class="content">
-                {{manager-times }}
-                {{log repList}}
-                {{all-rep repList isShowList showDetail=(action "showDetail") hideDetail=(action 'hideDetail') }}
-            </div>
-    </div>
+    {{leader-decision repList close=(action 'close')}}
 </div>
-
 {{outlet}}
