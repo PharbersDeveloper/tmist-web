@@ -1,6 +1,6 @@
 {
     "name": "tmist-web",
-    "version": "0.0.0",
+    "version": "1.0.0",
     "private": true,
     "description": "Small description for tmist-web goes here",
     "license": "MIT",
@@ -33,7 +33,7 @@
         "pharbers-tm-cards": "1.0.0",
         "pharbers-tm-hospital-detail": "1.0.0",
         "pharbers-tm-nav": "1.0.0",
-        "pharbers-tm-allrep": "1.0.0",
+        "pharbers-tm-decision": "1.0.0",
         "pharbers-tm-dropdown": "1.0.0",
         "pharbers-tm-result": "1.0.0",
         "pharbers-tm-charts": "1.0.0",
