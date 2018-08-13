@@ -4,6 +4,7 @@ import { inject } from '@ember/service';
 export default Controller.extend({
     decisionInfo: inject('decision-info-service'),
     ajax: inject(),
+    cookies: inject(),
     getAjaxOpt(data) {
         return {
             method: 'POST',
@@ -16,8 +17,7 @@ export default Controller.extend({
     },
     queryList(uuid) {
         let condition = {
-            "token": "bearera67c2dc93dfc7ff2a19baefee72034f4",
-            "timestamp": 1530689119000,
+            "token": this.get('cookies').read('user_token'),
             "version": {
                 "major": 1,
                 "minor": 0
@@ -41,10 +41,10 @@ export default Controller.extend({
     },
     init() {
         this._super(...arguments);
-        this.result = [];
-        this.month = {
-            "month": "08",
-        };
+        let today = new Date();
+        let month = (today.getMonth() + 1) < 9 ? "0" + (today.getMonth() + 1) : (today.getMonth() + 1)
+        this.month = month;
+
         this.dropdownData = {
             "text": "提交执行",
             "budget": {
@@ -77,7 +77,7 @@ export default Controller.extend({
     actions: {
         linkPage(hospid) {
             let params = this.get('model');
-            this.transitionToRoute('pharbers.v1.hosp-list-detail', params.pid, params.uuid, hospid)
+            this.transitionToRoute('pharbers.v1.hosp-list-detail', params.uuid, hospid)
         },
         submitRun(text) {
             this.logger.log(text);
@@ -85,7 +85,6 @@ export default Controller.extend({
         },
         talent() {
             this.get('decisionInfo').show()
-            // this.transitionToRoute('pharbers.v1.talent-train')
         }
     }
 });

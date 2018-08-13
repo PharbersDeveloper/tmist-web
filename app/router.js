@@ -11,11 +11,8 @@ Router.map(function() {
   this.route('pharbers', function() {
       this.route('v1', { path: 'v1/tm' }, function() {
           this.route('evaluation');
-          this.route('talent-train', function() {
-              this.route('talent-detail');
-          });
-          this.route('hosp-list', { path: "hosp-list/:pid/:uuid" });
-          this.route('hosp-list-detail', { path: "hosp-list-detail/:pid/:uuid/:hospid" });
+          this.route('hosp-list', { path: "hosp-list/:uuid" });
+          this.route('hosp-list-detail', { path: "hosp-list-detail/:uuid/:hospid" });
           this.route('imitate-train');
           this.route('reports', function() {
               this.route('hosp-product');

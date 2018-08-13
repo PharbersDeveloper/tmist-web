@@ -1,8 +1,8 @@
 <div local-class="detail-container">
-	{{nav-title data=month}}
+	{{nav-title month}}
 	{{nav-tool data=dropdownData submit=(action "submitRun") onclick=(action "talent")}}
 	<div local-class="content">
-		{{hospital-nav backHospList=(action 'backH')}}
+		{{hospital-nav backHospList=(action 'backHospList')}}
 		{{hospital-detail model}}
 	</div>
 </div>

@@ -3,14 +3,7 @@ import { inject } from '@ember/service';
 
 export default Route.extend({
     ajax: inject(),
-    beforeModel(transition) {
-        let talentController = this.controllerFor('pharbers.v1.talent-train.index');
-        talentController.set('previousTransition', transition);
-    },
-    setupController(controller, model) {
-        this._super(controller, model);
-    },
-
+    cookies: inject(),
     getAjaxOpt(data) {
         return {
             method: 'POST',
@@ -22,9 +15,9 @@ export default Route.extend({
         }
     },
     model(params) {
+        this.controllerFor('pharbers.v1.hosp-list-detail').set('uuid', params.uuid)
         let condition = {
-            "token": "bearera67c2dc93dfc7ff2a19baefee72034f4",
-            "timestamp": 1530689119000,
+            "token": this.get('cookies').read('user_token'),
             "version": {
                 "major": 1,
                 "minor": 0
@@ -42,9 +35,7 @@ export default Route.extend({
             .request('/api/proposal/hospital/detail', this.getAjaxOpt(condition))
             .then((res) => {
                 if (res.status === "ok") {
-                    // return res.result.data.attribute;
-                    let results = res.result.data.attribute;
-                    return results;
+                    return res.result.data.attribute;
                 } else {
                     this.set('errorMes', res.error.message)
                 }

@@ -6,9 +6,11 @@ export default Controller.extend({
     ajax: inject(),
     init() {
         this._super(...arguments);
-        this.month = {
-            "month": 12
-        };
+        
+        let today = new Date();
+        let month = (today.getMonth() + 1) < 9 ? "0" + (today.getMonth() + 1) : (today.getMonth() + 1)
+        this.month = month;
+
         this.dropdownData = {
             "text": "提交执行",
             "budget": {
@@ -44,10 +46,9 @@ export default Controller.extend({
         },
         talent() {
             this.get('decisionInfo').show();
-            // this.transitionToRoute('pharbers.v1.talent-train')
         },
-        backH() {
-            this.transitionToRoute('/pharbers/v1/tm/hosp-list/5b42fd43ed925c05565b5bdb/65ccdece-cf90-4186-aeea-b14fee19a291');
+        backHospList() {
+            this.transitionToRoute('pharbers.v1.hosp-list', this.uuid);
         }
     }
 });

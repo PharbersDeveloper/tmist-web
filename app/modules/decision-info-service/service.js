@@ -7,11 +7,9 @@ export default Service.extend({
     slideClassNames: computed('isShown', function () {
         const isShown = this.get('isShown');
         let baseClass = styles.mcontent;
-        this.logger.log(baseClass)
         return isShown ? `${baseClass} ${styles.show}` : baseClass;
     }),
     show() {
-        this.logger.log(1234)
         this.set('isShown', true);
     },
     hide() {
