@@ -29,19 +29,17 @@ export default Route.extend({
             }
         };
 
-         return this.get('ajax')
-            .request('/api/proposal/budget/info', this.getAjaxOpt(condition))
-            .then((res) => {
-                if (res.status === "ok") {
-                    let val = res.result.data.attribute;
-                    val.text = "提交执行";
-                    val.uuid = param.uuid;
-                    return val
-                } else {
-                    return res.error.message
-                }
-            })
-
+        let budgetInfo = this.get('ajax').request('/api/proposal/budget/info', this.getAjaxOpt(condition));
+        let managerRep = this.get('ajax').request('/api/proposal/rep/info', this.getAjaxOpt(condition));
+        return Promise.all([budgetInfo, managerRep]).then(function(values) {
+            let val = values[0].result.data.attribute;
+            val.text = "提交执行";
+            return {
+                budgetInfo: val,
+                managerRep: values[1].result.data.attribute,
+                uuid: param.uuid
+            }
+        });
     },
     afterModel(model, transition) {
         this._super(...arguments);

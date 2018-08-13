@@ -1,5 +1,9 @@
 <div local-class="container">
 	{{nav-title month}}
-	{{nav-tool data=model submit=(action "submitRun") onclick=(action "talent")}}
+	{{nav-tool data=model.budgetInfo submit=(action "submitRun") onclick=(action "talent")}}
 	{{outlet}}
+</div>
+
+<div class="{{decisionInfo.slideClassNames}}">
+    {{leader-decision model.managerRep close=(action 'close')}}
 </div>
