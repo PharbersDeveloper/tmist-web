@@ -3,10 +3,8 @@ import { inject } from '@ember/service';
 
 export default Controller.extend({
     decisionInfo: inject('decision-info-service'),
-    ajax: inject(),
     init() {
         this._super(...arguments);
-        
         let today = new Date();
         let month = (today.getMonth() + 1) < 9 ? "0" + (today.getMonth() + 1) : (today.getMonth() + 1)
         this.month = month;
@@ -42,13 +40,13 @@ export default Controller.extend({
     },
     actions: {
         submitRun(text) {
-            this.transitionToRoute('pharbers.v1.reports')
+            this.logger.log(text);
+            alert('请先进行数据处理')
         },
         talent() {
-            this.get('decisionInfo').show();
-        },
-        backHospList() {
-            this.transitionToRoute('pharbers.v1.hosp-list', this.uuid);
+            this.get('decisionInfo').show()
         }
     }
+
+
 });

@@ -9,11 +9,14 @@ const Router = EmberRouter.extend({
 Router.map(function() {
   this.route('page-not-found', { path: '/*path' });
   this.route('pharbers', function() {
-      this.route('v1', { path: 'v1/tm' }, function() {
-          this.route('evaluation');
-          this.route('hosp-list', { path: "hosp-list/:uuid" });
-          this.route('hosp-list-detail', { path: "hosp-list-detail/:uuid/:hospid" });
+      this.route('v1', function() {
+          this.route('index', { path: '/' }, function(){
+              this.route('hosp-list', { path: "hosp-list/:uuid" });
+              this.route('hosp-list-detail', { path: "hosp-list-detail/:uuid/:hospid" });
+
+          });
           this.route('imitate-train');
+          this.route('evaluation');
           this.route('reports', function() {
               this.route('hosp-product');
               this.route('represent-product');
