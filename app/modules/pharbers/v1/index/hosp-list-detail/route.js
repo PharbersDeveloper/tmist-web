@@ -15,7 +15,8 @@ export default Route.extend({
         }
     },
     model(params) {
-        this.controllerFor('pharbers.v1.index.hosp-list-detail').set('uuid', params.uuid)
+        let model = this.modelFor('pharbers.v1.index')
+        this.controllerFor('pharbers.v1.index.hosp-list-detail').set('uuid', model.uuid)
         let condition = {
             "token": this.get('cookies').read('user_token'),
             "version": {
@@ -25,7 +26,7 @@ export default Route.extend({
             "data": {
                 "type": "hospital",
                 "condition": {
-                    "uuid": params.uuid,
+                    "uuid": model.uuid,
                     "hospital_id": params.hospid
                 }
             }

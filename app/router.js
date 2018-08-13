@@ -10,9 +10,9 @@ Router.map(function() {
   this.route('page-not-found', { path: '/*path' });
   this.route('pharbers', function() {
       this.route('v1', function() {
-          this.route('index', { path: '/' }, function(){
-              this.route('hosp-list', { path: "hosp-list/:uuid" });
-              this.route('hosp-list-detail', { path: "hosp-list-detail/:uuid/:hospid" });
+          this.route('index', { path: '/:uuid' }, function(){
+              this.route('hosp-list', { path: "hosp-list" });
+              this.route('hosp-list-detail', { path: "hosp-list-detail/:hospid" });
 
           });
           this.route('imitate-train');

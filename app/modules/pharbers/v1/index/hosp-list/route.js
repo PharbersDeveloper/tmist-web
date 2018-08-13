@@ -5,7 +5,6 @@ export default Route.extend({
     ajax: inject(),
     setupController(controller, model) {
         this._super(controller, model);
-        // this.logger.log(model)
         controller.queryList(model.uuid);
 
     }

@@ -37,7 +37,7 @@ export default Route.extend({
     },
     actions: {
         simulation(uuid) {
-            this.transitionTo('pharbers.v1.index.hosp-list', uuid)
+            this.transitionTo('pharbers.v1.index', uuid)
         },
         logut() {
             keys(this.get('cookies').read()).forEach(item => {
