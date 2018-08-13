@@ -1,6 +1,6 @@
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('controller:pharbers/v1/talent-train/index', 'Unit | Controller | pharbers/v1/talent train/index', {
+moduleFor('controller:pharbers/v1/index', 'Unit | Controller | pharbers/v1/index', {
   // Specify the other units that are required for this test.
   // needs: ['controller:foo']
 });

@@ -14,7 +14,7 @@ export default Route.extend({
             Accpt: 'application/json'
         }
     },
-    model() {
+    model(param) {
         let condition = {
             "token": this.get('cookies').read('user_token'),
             "version": {
@@ -22,20 +22,32 @@ export default Route.extend({
                 "minor": 0
             },
             "data": {
-                "type": "rep_list",
+                "type": "hosp_lst",
                 "condition": {
-                    "uuid": "65ccdece-cf90-4186-aeea-b14fee19a291"
+                    "uuid": param.uuid
                 }
             }
         };
-        return this.get('ajax')
-            .request('/api/proposal/rep/info', this.getAjaxOpt(condition))
+
+         return this.get('ajax')
+            .request('/api/proposal/budget/info', this.getAjaxOpt(condition))
             .then((res) => {
                 if (res.status === "ok") {
-                    return res.result.data.attribute;
+                    let val = res.result.data.attribute;
+                    val.text = "提交执行";
+                    val.uuid = param.uuid;
+                    return val
                 } else {
                     return res.error.message
                 }
             })
-    }
+
+    },
+    afterModel(model, transition) {
+        this._super(...arguments);
+        if(transition.targetName === 'pharbers.v1.index.index') {
+            this.transitionTo('pharbers.v1.index.hosp-list')
+        }
+    },
+
 });

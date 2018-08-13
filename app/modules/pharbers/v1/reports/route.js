@@ -1,10 +1,6 @@
 import Route from '@ember/routing/route';
 
 export default Route.extend({
-    beforeModel(transition) {
-        let talentController = this.controllerFor('pharbers.v1.talent-train.index');
-        talentController.set('previousTransition', transition);
-    },
     model() {
         return {
             "month": {
