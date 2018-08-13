@@ -5,6 +5,7 @@ export default Controller.extend({
     decisionInfo: inject('decision-info-service'),
     isShowList: true,
     init() {
+        this._super(...arguments);
         this.repList = {
             "id": "暂定UUID",
             "component_data": [
