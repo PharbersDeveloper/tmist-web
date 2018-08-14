@@ -6,7 +6,6 @@ export default Route.extend({
     setupController(controller, model) {
         this._super(controller, model);
         controller.queryList(model.uuid);
-
     }
 
 });
