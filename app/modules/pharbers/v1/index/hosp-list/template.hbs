@@ -1,11 +1,4 @@
-{{!-- <div local-class="hosp-container">
-	{{nav-title month}}
-	{{nav-tool data=dropdownData submit=(action "submitRun") onclick=(action "talent")}}
-	<div local-class="content">
-        {{hospital-list result linkPage=(action 'linkPage')}}
-	</div>
-</div> --}}
 <div local-class="content">
-	{{hospital-list result linkPage=(action 'linkPage')}}
+	{{hospital-list model linkPage=(action 'linkPage')}}
 </div>
 {{outlet}}

@@ -38,7 +38,7 @@ export default Route.extend({
                 if (res.status === "ok") {
                     return res.result.data.attribute;
                 } else {
-                    this.set('errorMes', res.error.message)
+                    return res.error.message
                 }
             })
     }
