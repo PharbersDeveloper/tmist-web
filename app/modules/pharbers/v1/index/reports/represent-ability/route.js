@@ -53,7 +53,7 @@ export default Route.extend({
                 }
             }
         }
-        return this.get('ajax').request('/api/report/repre_ability', this.getAjaxOpt(condi))
+        return this.get('ajax').request('/api/report/rep_ability', this.getAjaxOpt(condi))
             .then((res) => {
                 if (res.status === "ok") {
                     let card = res.result.data.attribute;
