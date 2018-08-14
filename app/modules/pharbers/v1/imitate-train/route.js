@@ -29,6 +29,7 @@ export default Route.extend({
         return this.get('ajax').request('/api/proposal/lst', this.getAjaxOpt(condition))
             .then(({ status, result, error }) => {
                 if (status === "ok") {
+                    console.log(result.data.attribute);
                     return result.data.attribute
                 } else {
                     this.set('errorMessage', error.message);
