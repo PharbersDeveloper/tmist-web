@@ -8,7 +8,7 @@
 </div> --}}
 
 <div local-class="content">
-	{{hospital-nav backHospList=(action 'backHospList')}}
+	{{hospital-nav current=hospid  data=hospIdList backHospList=(action 'backHospList') preHosp=(action 'preHosp') nextHosp=(action 'nextHosp')}}
 	{{hospital-detail model}}
 </div>
 

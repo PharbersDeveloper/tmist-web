@@ -14,8 +14,11 @@ export default Route.extend({
             Accpt: 'application/json'
         }
     },
+
     model(params) {
-        let model = this.modelFor('pharbers.v1.index')
+        let model = this.modelFor('pharbers.v1.index');
+        let hospids = JSON.parse(localStorage.getItem('hospList'));
+        this.controllerFor('pharbers.v1.index.hosp-list-detail').set('hospIdList', hospids.list)
         this.controllerFor('pharbers.v1.index.hosp-list-detail').set('uuid', model.uuid)
         this.controllerFor('pharbers.v1.index.hosp-list-detail').set('hospid', params.hospid)
 

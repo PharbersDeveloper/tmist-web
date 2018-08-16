@@ -15,7 +15,9 @@ export default Controller.extend({
             this.logger.log(text);
             alert('请先进行数据处理')
         },
-        talent() {
+        talent(id) {
+            console.log(id)
+            this.set('navid', id)
             this.get('decisionInfo').show()
         },
         close() {

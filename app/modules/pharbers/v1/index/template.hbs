@@ -5,5 +5,13 @@
 </div>
 
 <div class="{{decisionInfo.slideClassNames}}">
-    {{leader-decision model.managerRep model.uuid close=(action 'close')}}
+	{{#if (eq navid 'decision')}}
+		{{leader-decision model.managerRep model.uuid close=(action 'close')}}
+	{{else if (eq navid 'notice')}}
+		<div class="">
+			<h2>ddddddd</h2>
+		</div>
+	{{else}}
+		<h2>cccccccc</h2>
+	{{/if}}
 </div>
