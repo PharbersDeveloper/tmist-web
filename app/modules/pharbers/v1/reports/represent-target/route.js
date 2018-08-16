@@ -135,7 +135,7 @@ export default Route.extend({
                         }, {
                             "label": '奖金',
                             "valuePath": 'target',
-                            "width": '180px',
+                            "width": '160px',
                             "align": 'center',
                             "cellComponent": 'table-number-thousands'
                         },

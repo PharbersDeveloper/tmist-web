@@ -88,39 +88,7 @@ export default Route.extend({
                             "width": '180px',
                             "align": 'center',
                         },
-                        //  {
-                        //     "label": '份额(%)',
-                        //     "valuePath": 'share',
-                        //     "width": '80px',
-                        //     "align": 'center',
-                        //     "cellComponent": 'table-number-percent'
-                        // }, {
-                        //     "label": '份额增长(%)',
-                        //     "valuePath": 'share_change',
-                        //     "width": '100px',
-                        //     "align": 'center',
-                        //     "cellComponent": 'table-number-percent'
-                        // }, {
-                        //     "label": '指标',
-                        //     "valuePath": 'target',
-                        //     "width": '100px',
-                        //     "align": 'center',
-                        //     "cellComponent": 'table-number-thousands'
-                        // },
-                        // {
-                        //     "label": '指标达成率(%)',
-                        //     "valuePath": 'achieve_rate',
-                        //     "width": '100px',
-                        //     "align": 'center',
-                        //     "cellComponent": 'table-number-percent'
-                        // },
-                        // {
-                        //     "label": '销售贡献率(%)',
-                        //     "valuePath": 'contri_rate',
-                        //     "width": '100px',
-                        //     "align": 'center',
-                        //     "cellComponent": 'table-number-percent'
-                        // }
+
                     ],
                     "columnsValue": [{
                             "rep_name": "代表1",
@@ -129,11 +97,7 @@ export default Route.extend({
                             "sales": 56,
                             "sales_growth": 4,
                             "work_activity": 88,
-                            // "share": 0.11,
-                            // "share_change": 0.1,
-                            // "target": 11709,
-                            // "achieve_rate": 0.1,
-                            // "contri_rate": 0.1
+
                         },
                         {
                             "rep_name": "代表2",
@@ -142,11 +106,7 @@ export default Route.extend({
                             "sales": 87,
                             "sales_growth": 5,
                             "work_activity": 45,
-                            // "share": 0.22,
-                            // "share_change": 0.2,
-                            // "target": 37416,
-                            // "achieve_rate": 0.2,
-                            // "contri_rate": 0.2
+
                         },
                         {
                             "rep_name": "代表3",
@@ -155,11 +115,7 @@ export default Route.extend({
                             "sales": 89,
                             "sales_growth": 5,
                             "work_activity": 21,
-                            // "share": 0.33,
-                            // "share_change": 0.3,
-                            // "target": 561318,
-                            // "achieve_rate": 0.3,
-                            // "contri_rate": 0.3
+
                         },
                         {
                             "rep_name": "代表4",
@@ -168,11 +124,7 @@ export default Route.extend({
                             "sales": 68,
                             "sales_growth": 2,
                             "work_activity": 74,
-                            // "share": 0.44,
-                            // "share_change": 0.4,
-                            // "target": 26299,
-                            // "achieve_rate": 0.4,
-                            // "contri_rate": 0.4
+
                         },
                         {
                             "rep_name": "代表5",
@@ -181,11 +133,7 @@ export default Route.extend({
                             "sales": 62,
                             "sales_growth": 6,
                             "work_activity": 19,
-                            // "share": 0.44,
-                            // "share_change": 0.4,
-                            // "target": 26299,
-                            // "achieve_rate": 0.4,
-                            // "contri_rate": 0.4
+
                         }
                     ],
                 }

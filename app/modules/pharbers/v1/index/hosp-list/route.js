@@ -39,6 +39,18 @@ export default Route.extend({
                     return res.error.message;
                 }
             })
-    }
+    },
+    afterModel(model, transition) {
+        let list = model;
+        let hosps = list.map((ele) => {
+            return ele.id
+        })
+        let hospIdList = {
+            "uuid": this.modelFor('pharbers.v1.index').uuid,
+            "list": hosps
+        }
+        localStorage.setItem('hospList', JSON.stringify(hospIdList));
+    },
+
 
 });

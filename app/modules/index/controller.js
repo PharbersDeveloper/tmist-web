@@ -18,6 +18,7 @@ export default Controller.extend({
     actions: {
         response(data) {
             if (data.status === "ok") {
+                // console.log(data)
                 this.get('cookies').write('user_token', data.result.data.attribute, { path: '/' });
                 this.transitionToRoute('pharbers.v1.imitate-train');
             } else {
