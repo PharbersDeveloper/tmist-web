@@ -34,6 +34,7 @@ Router.map(function() {
         });
         this.route('v2', { path: 'v2/tm' });
     });
+  this.route('demo');
 });
 
 export default Router;

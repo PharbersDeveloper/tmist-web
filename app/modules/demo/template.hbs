@@ -1,0 +1,20 @@
+<center>
+    {{#each arrayDemo.values as |item|}}
+        {{input value=item.id}}
+        {{#each item.attrs as |item2|}}
+            {{input value=item2.name}}
+        {{/each}}
+    {{/each}}
+    {{!-- {{#each arrayDemo as |item|}}
+      {{input value=item.id}}
+
+    {{/each}}
+    {{#each names as |item2|}}
+      {{input value=item2.name}}
+    {{/each}} --}}
+    <br/>
+    <button type="button" name="button" {{action 'test'}}>Test</button>
+    {{!-- {{watchData}} --}}
+</center>
+
+{{outlet}}
