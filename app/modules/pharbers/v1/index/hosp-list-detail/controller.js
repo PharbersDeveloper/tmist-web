@@ -25,6 +25,10 @@ export default Controller.extend({
             // console.log(nextHospid);
             if (nextHospid != null)
                 this.transitionToRoute('pharbers.v1.index.hosp-list-detail', nextHospid)
+        },
+        chooseRep(name) {
+            console.log('chooserep');
+            console.log(name)
         }
     },
 });

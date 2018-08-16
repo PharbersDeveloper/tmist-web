@@ -17,6 +17,7 @@ export default Route.extend({
     model() {
         this._super(...arguments);
         let model = this.modelFor('pharbers.v1.index');
+        this.controllerFor('pharbers.v1.index.hosp-list').set('uuid', model.uuid);
         let condition = {
             "token": this.get('cookies').read('user_token'),
             "version": {

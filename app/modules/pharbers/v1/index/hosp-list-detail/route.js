@@ -19,6 +19,7 @@ export default Route.extend({
         let model = this.modelFor('pharbers.v1.index');
         let hospids = JSON.parse(localStorage.getItem('hospList'));
         this.controllerFor('pharbers.v1.index.hosp-list-detail').set('hospIdList', hospids.list)
+        this.controllerFor('pharbers.v1.index.hosp-list-detail').set('allBudget', model.budgetInfo.budget.total)
         this.controllerFor('pharbers.v1.index.hosp-list-detail').set('uuid', model.uuid)
         this.controllerFor('pharbers.v1.index.hosp-list-detail').set('hospid', params.hospid)
 
