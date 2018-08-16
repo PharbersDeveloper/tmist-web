@@ -9,7 +9,7 @@
 
 <div local-class="content">
 	{{hospital-nav current=hospid  data=hospIdList backHospList=(action 'backHospList') preHosp=(action 'preHosp') nextHosp=(action 'nextHosp')}}
-	{{hospital-detail model}}
+	{{hospital-detail model uuid=uuid}}
 </div>
 
 {{outlet}}
