@@ -28,7 +28,7 @@ export default Route.extend({
                 }
             }
         };
-
+        this.controllerFor('pharbers.v1.index').set('cookies', this.get('cookies').read('user_token'));
         let budgetInfo = this.get('ajax').request('/api/proposal/budget/info', this.getAjaxOpt(condition));
         let managerRep = this.get('ajax').request('/api/proposal/rep/info', this.getAjaxOpt(condition));
         return Promise.all([budgetInfo, managerRep]).then(function(values) {
@@ -43,7 +43,7 @@ export default Route.extend({
     },
     afterModel(model, transition) {
         this._super(...arguments);
-        if(transition.targetName === 'pharbers.v1.index.index') {
+        if (transition.targetName === 'pharbers.v1.index.index') {
             this.transitionTo('pharbers.v1.index.hosp-list')
         }
     },

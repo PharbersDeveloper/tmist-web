@@ -1,6 +1,6 @@
 <div local-class="container">
 	{{nav-title month}}
-	{{nav-tool data=model.budgetInfo submit=(action "submitRun") onclick=(action "talent")}}
+	{{nav-tool data=model.budgetInfo cookies=cookies uuid=model.uuid submit=(action "submitRun") onclick=(action "talent")}}
 	{{outlet}}
 </div>
 
