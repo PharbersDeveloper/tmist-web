@@ -1,0 +1,105 @@
+.detail-container {
+	display: flex;
+	flex-direction: column;
+	min-width: 1200px;
+	height: 100%;
+	background: #EEF1FA;
+
+	.content {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		padding: 0 40px;
+
+		.hosp-nav {
+			flex: 0 0 40px;
+			line-height: 40px;
+			margin: 0 auto;
+			min-width: 1120px;
+			max-width: 1400px;
+			font-size: 0;
+			color: #676767;
+		}
+
+		.hosp-detail {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			margin: 35px auto 0;
+			padding-bottom: 100px;
+			bottom: 30px;
+			min-width: 1120px;
+			max-width: 1400px;
+			min-height: 610px;
+			border-radius: 2*$default-radius;
+
+			.basic-info {
+				height: 180px;
+				// flex: 0 0 125px;
+				margin: 0;
+				padding: 15px 20px;
+				border-radius: 6px 6px 0 0;
+				background-image: linear-gradient(110deg, #4D608F 0%, #8F9CC3 100%);
+				box-shadow: 0 3px 14px 0 rgba(166,166,166,0.50);
+
+				.select {
+					color: #fff;
+					cursor: pointer;
+
+					.title {
+						display: inline-block;
+						background: rgba(255,255,255,0.10);
+						border: 1px solid rgba(255,255,255,0.30);
+						border-radius: 5px;
+						width: 160px;
+						height: 29px;
+						line-height: 29px;
+						text-align: center;
+						margin-right: 20px;
+					}
+				}
+
+				.overview {
+					text-align: center;
+
+					.block {
+						position: relative;
+						top: 70px;
+						z-index: 2;
+						display: inline-block;
+						margin: 0 8px;
+						width: 200px;
+						height: 100px;
+						border-radius: 5px;
+						font-family: PingFangTC-Regular;
+						background: #FFFFFF;
+						box-shadow: 0 4px 6px 0 rgba(161,161,161,0.56);
+					}
+				}
+			}
+		}
+
+		.table {
+			padding: 50px 20px;
+			margin: 0 auto;
+			overflow-y: auto;
+			flex: 1;
+			width: 100%;
+			min-height: 485px;
+			border-radius: 0 0 6px 6px;
+			background: #FFFFFF;
+			box-shadow: 0 3px 14px 0 rgba(184,184,184,0.50);
+			font-family: PingFangTC-Regular;
+			font-size: 0;
+
+			.table-info {
+				margin: 50px auto 0;
+				width: 100%;
+				height: 360px;
+				text-align: center;
+				border-radius: 3*$default-radius;
+				background: #ff3;
+			}
+		}
+	}
+}

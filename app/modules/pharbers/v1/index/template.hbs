@@ -1,38 +1,17 @@
-<div local-class="login-container">
-    <div local-class="login-content">
-        <div local-class="login-left">
-            <img src="/assets/images/logo_login.png" alt="">
-            <p local-class="login-title">铁马区域管理模拟平台</p>
-            <p local-class="login-title-en">Territory Management Interactive Simulation</p>
-        </div>
-        <div local-class="login-right">
-            <p>登入/Login</p>
-            <form action="#">
-                {{input type="text" name="accout" value=accout placeholder="帐号" autofocus="true"}}
-                {{input type="text" name="password" value=password placeholder="密码"}}
-                <p local-class="foget-password">忘记密码？</p>
-                <button type="button" name="button" {{action 'sbtInfo'}}>登入</button>
-            </form>
-        </div>
-    </div>
+<div local-class="container">
+	{{nav-title month}}
+	{{nav-tool data=model.budgetInfo cookies=cookies uuid=model.uuid submit=(action "submitRun") onclick=(action "talent")}}
+	{{outlet}}
 </div>
 
-{{!-- <div local-class="">
-  <div local-class="one">
-    1
-  </div>
-  <div local-class="tow">
-    2
-  </div>
-  <div local-class="three">
-    3
-  </div>
-  <div local-class="four">
-    4
-  </div>
-</div> --}}
-{{!-- {{outlet}}
-<br>
-{{#link-to 'pharbers.v1.report'}}
-  pharbers.v1.report
-{{/link-to}} --}}
+<div class="{{decisionInfo.slideClassNames}}">
+	{{#if (eq navid 'decision')}}
+		{{leader-decision model.managerRep model.uuid close=(action 'close')}}
+	{{else if (eq navid 'notice')}}
+		<div class="">
+			<h2>ddddddd</h2>
+		</div>
+	{{else}}
+		<h2>cccccccc</h2>
+	{{/if}}
+</div>

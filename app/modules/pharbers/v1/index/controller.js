@@ -1,73 +1,27 @@
-// import Controller from '@ember/controller';
-//
-// export default Controller.extend({
-//
-// });
-//
 import Controller from '@ember/controller';
-import {
-	inject
-} from '@ember/service';
-import rsvp from 'rsvp';
-import {
-	later
-} from '@ember/runloop';
+import { inject } from '@ember/service';
 
 export default Controller.extend({
-	cookies: inject(),
-	ajax: inject(),
-	webIm: inject('xmpp-service'),
-
-	getAjaxOpt(data) {
-		return {
-			method: 'POST',
-			dataType: "json",
-			cache: false,
-			data: JSON.stringify(data),
-			contentType: "application/json,charset=utf-8",
-			Accpt: "application/json,charset=utf-8",
-		}
-	},
-	actions: {
-		sbtInfo() {
-            console.info("111");
-			// let condition = {
-			// 	// "condition": {
-			// 	// 	"email": this.get('account'),
-			// 	// 	"password": this.get('password')
-			// 	// }
-            //     "condition" : {
-		    //       "email":"zyqi@pharbers.com",
-		    //       "password":"zyqi@pharbers.com"
-		    //     }
-			// };
-			// new rsvp.Promise((resolve, reject) => {
-			// 	return this.get('ajax').request('api/user/login',
-			// 		this.getAjaxOpt(condition)).then((response) => {
-			// 			if (response.status === "ok") {
-			// 				this.get('cookies').write('uid', response.result.uid, {
-			// 					path: '/'
-			// 				});
-			// 				this.get('cookies').write('user_token', response.result.user_token, {
-			// 					path: '/'
-			// 				});
-			// 				let con = {
-			// 					"condition": {
-			// 						"user_id": response.result.uid
-			// 					}
-			// 				}
-			// 			} else {
-			// 				alert('帐号或密码错误。');
-			// 			}
-			// 			return resolve({
-			// 				result: response
-			// 			});
-			// 		},
-			// 		() => {
-			// 			return reject("Access Error");
-			// 		}
-			// 	);
-			// });
-		}
-	}
-})
+    decisionInfo: inject('decision-info-service'),
+    isShowList: true,
+    init() {
+        this._super(...arguments);
+        let today = new Date();
+        let month = (today.getMonth() + 1) < 9 ? "0" + (today.getMonth() + 1) : (today.getMonth() + 1)
+        this.month = month;
+    },
+    actions: {
+        submitRun(text) {
+            this.logger.log(text);
+            alert('请先进行数据处理')
+        },
+        talent(id) {
+            console.log(id)
+            this.set('navid', id)
+            this.get('decisionInfo').show()
+        },
+        close() {
+            this.get('decisionInfo').hide()
+        }
+    }
+});

@@ -10,6 +10,5 @@ test('it renders', function(assert) {
 	this.set('inputValue', '12345，678.11');
 
 	this.render(hbs `{{number-format inputValue}}`);
-	window.console.info(this.$().text())
 	assert.equal(this.$().text().trim(), '12,345,678.11');
 });
