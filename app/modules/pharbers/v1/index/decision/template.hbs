@@ -1,23 +1,57 @@
 {{!-- {{outlet}} --}}
-{{!-- <div local-class="header">#header</div> --}}
+<div local-class="header navbar">#header</div>
 
 <div local-class="container">
     <div local-class="column center">
         {{accordion-hospital hospital=model.hospitals}}
     </div>
     <div local-class="column left">
-        <h2>药品card</h2>
+        {{!-- <h2>药品card</h2>
         {{#each model.medicines as |item|}}
             {{drug-item data=item}}
         {{/each}}
         <h2>通知</h2>
-        {{#each model.medicines as |item|}}
+        {{#each model.notices as |item|}}
             {{drug-item data=item}}
-        {{/each}}
+        {{/each}} --}}
+
+        {{#bs-tab customTabs=true tagName="" as |tab| }}
+            {{#bs-nav type="pills" local-class="left-tabs" stacked=true as |nav|}}
+                {{#nav.item local-class="tab" active=(bs-eq tab.activeId "medicineid")}}
+                    <a local-class="tabsa" href="medicineid" class="nav-link" role="tab" {{action tab.select "medicineid"}}>
+                    <span class="badge">M</span>
+                </a>
+                {{/nav.item}}
+                {{#nav.item local-class="tab" active=(bs-eq tab.activeId "notice")}}
+                    <a local-class="tabsa" href="medicineid" class="nav-link" role="tab" {{action tab.select "notice"}}>
+                    <span class="badge">N</span>
+                </a>
+                {{/nav.item}}
+            {{/bs-nav}}
+            <div class="tab-content" local-class="right-content">
+                {{#tab.pane local-class="medicine-detail" elementId="medicineid" title="Tab 1" }}
+                    <h2>药品card</h2>
+                    {{#each model.medicines as |item|}}
+                        {{drug-item data=item}}
+                    {{/each}}
+                {{/tab.pane}}
+
+                {{#tab.pane local-class="medicine-detail" elementId="notice" title="Tab 2" }}
+                    <h2>通知</h2>
+                    {{#each model.notices as |item|}}
+                        {{drug-item data=item}}
+                    {{/each}}
+                {{/tab.pane}}
+            </div>
+        {{/bs-tab}}
     </div>
     <div local-class="column right">
         <h2>经理时间分配</h2>
     </div>
 </div>
 
-{{!-- <div local-class="footer">#footer</div> --}}
+<div local-class="footer navbar">
+    {{#bs-progress as |p|}}
+        {{p.bar value=1 minValue=0 maxValue=12 showLabel=true type=info striped=true animate=true}}
+    {{/bs-progress}}
+</div>
