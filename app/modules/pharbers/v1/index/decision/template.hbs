@@ -2,16 +2,23 @@
 {{!-- <div local-class="header">#header</div> --}}
 
 <div local-class="container">
-  <div local-class="column center" >
-      {{accordion-hospital hospital=model}}
+    <div local-class="column center">
+        {{accordion-hospital hospital=model.hospitals}}
 
-  </div>
-  <div local-class="column left" >
-      <h2>药品card</h2>
-  </div>
-  <div local-class="column right" >
-      <h2>经理时间分配</h2>
-  </div>
+    </div>
+    <div local-class="column left">
+        <h2>药品card</h2>
+        {{#each model.medicines as |item|}}
+            {{drug-item data=item}}
+        {{/each}}
+        <h2>通知</h2>
+        {{#each model.medicines as |item|}}
+            {{drug-item data=item}}
+        {{/each}}
+    </div>
+    <div local-class="column right">
+        <h2>经理时间分配</h2>
+    </div>
 </div>
 
 {{!-- <div local-class="footer">#footer</div> --}}
