@@ -105,19 +105,19 @@ export default Route.extend({
                                     "label": "负责代表",
                                     "valuePath": "rep_name",
                                     "align": "left",
-                                    "sortable":false,
+                                    "sortable": false,
                                 },
                                 {
                                     "label": "时间分配(天)",
                                     "valuePath": "use_day",
                                     "align": "left",
-                                    "sortable":false,
+                                    "sortable": false,
                                 },
                                 {
                                     "label": "预算(元)/比例",
                                     "valuePath": "use_budget",
                                     "align": "left",
-                                    "sortable":false,
+                                    "sortable": false,
                                 },
                                 // {
                                 //     "label": "预算比例",
@@ -128,7 +128,7 @@ export default Route.extend({
                                     "label": "指标/增长/达成率",
                                     "valuePath": "target",
                                     "align": "left",
-                                    "sortable":false,
+                                    "sortable": false,
                                 },
                                 // {
                                 //     "label": "指标增长",
@@ -540,5 +540,6 @@ export default Route.extend({
             ]
         }
         // return
-    }
+    },
+
 });

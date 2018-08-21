@@ -75,6 +75,65 @@
     .right {
         width: 280px;
         margin-right: -280px;
+
+        .title {
+            height: 20px;
+            line-height: 20px;
+            font-size: 14px;
+            color: #4A90E2;
+            letter-spacing: 2px;
+        }
+
+        .input-area {
+            margin-bottom: 15px;
+            //display: inline-block;
+            padding: 15px 20px;
+            width: 220px;
+            height: 80px;
+            border-radius: 1px;
+            background-color: #F0F2FF;
+            box-shadow: 0 2px 4px 0 rgba(174,174,174,0.50);
+
+            p:first-child {
+                height: 20px;
+                font-size: 12px;
+                color: #474747;
+                letter-spacing: 1.5px;
+            }
+
+            p.input-text {
+                vertical-align: bottom;
+
+                input {
+                    border: 0;
+                    padding: 5px 10px;
+                    width: 120px;
+                    height: 30px;
+                    line-height: 20px;
+                    text-align: center;
+                    font-size: 24px;
+                    color: #474747;
+                }
+
+                span.day {
+                    margin-left: 5px;
+                    padding-top: 5px;
+                    font-size: 12px;
+                    color: #474747;
+                    letter-spacing: 0.67px;
+                }
+
+                span.daysnum {
+                    display: inline-block;
+                    width: 120px;
+                    font-size: 24px;
+                    text-align: center;
+                    color: #474747;
+                    letter-spacing: 1.5px;
+                    text-align: center;
+                }
+            }
+        }
     }
 }
 
