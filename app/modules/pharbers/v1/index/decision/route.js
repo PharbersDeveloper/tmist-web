@@ -97,71 +97,75 @@ export default Route.extend({
                                     "label": "时间",
                                     "valuePath": "time",
                                     "align": "center",
-                                    "sortable": true,
+                                    "sortable": false,
                                     "sorted": true,
                                     "minResizeWidth": '70px',
                                 },
                                 {
                                     "label": "负责代表",
                                     "valuePath": "rep_name",
-                                    "align": "center"
+                                    "align": "left",
+                                    "sortable":false,
                                 },
                                 {
-                                    "label": "时间分配",
+                                    "label": "时间分配(天)",
                                     "valuePath": "use_day",
-                                    "align": "center"
+                                    "align": "left",
+                                    "sortable":false,
                                 },
                                 {
-                                    "label": "预算分配",
+                                    "label": "预算(元)/比例",
                                     "valuePath": "use_budget",
-                                    "align": "center"
+                                    "align": "left",
+                                    "sortable":false,
                                 },
+                                // {
+                                //     "label": "预算比例",
+                                //     "valuePath": "budget_proportion",
+                                //     "align": "center"
+                                // },
                                 {
-                                    "label": "预算比例",
-                                    "valuePath": "budget_proportion",
-                                    "align": "center"
-                                },
-                                {
-                                    "label": "指标设定",
+                                    "label": "指标/增长/达成率",
                                     "valuePath": "target",
-                                    "align": "center"
+                                    "align": "left",
+                                    "sortable":false,
                                 },
-                                {
-                                    "label": "指标增长",
-                                    "valuePath": "target_growth",
-                                    "align": "center"
-                                },
-                                {
-                                    "label": "指标达成率",
-                                    "valuePath": "achieve_rate",
-                                    "align": "center"
-                                }
+                                // {
+                                //     "label": "指标增长",
+                                //     "valuePath": "target_growth",
+                                //     "align": "center"
+                                // },
+                                // {
+                                //     "label": "指标达成率",
+                                //     "valuePath": "achieve_rate",
+                                //     "align": "center"
+                                // }
                             ],
                             "columnsValue": [{
-                                    "use_budget": 25,
-                                    "budget_proportion": 0.22,
+                                    "use_budget": "25天/0.22",
+                                    // "budget_proportion": 0.22,
                                     "rep_name": "小宋",
-                                    "target": 23,
-                                    "target_growth": 0.24,
-                                    "achieve_rate": 0.06,
+                                    "target": "23 / 0.24 / 0.06",
+                                    // "target_growth": 0.24,
+                                    // "achieve_rate": 0.06,
                                     "time": "周期4",
                                     "use_day": 21
                                 },
                                 {
-                                    "use_budget": 0,
+                                    "use_budget": "0 / 0",
                                     "budget_proportion": 0,
                                     "rep_name": "小宋",
-                                    "target": 0,
+                                    "target": "0 / 0 / 0",
                                     "target_growth": 0,
                                     "achieve_rate": 0,
                                     "time": "周期3",
                                     "use_day": 0
                                 },
                                 {
-                                    "use_budget": 0,
+                                    "use_budget": "0 / 0",
                                     "budget_proportion": 0,
                                     "rep_name": "小宋",
-                                    "target": 0,
+                                    "target": "0 / 0 / 0",
                                     "target_growth": 0,
                                     "achieve_rate": 0,
                                     "time": "周期2",
@@ -204,16 +208,16 @@ export default Route.extend({
                                     "sortable": false,
                                     // "sorted": true
                                 },
-                                {
-                                    "label": "类别",
-                                    "valuePath": "prod_category",
-                                    "align": "center"
-                                },
-                                {
-                                    "label": "治疗领域",
-                                    "valuePath": "therapeutic_field",
-                                    "align": "center"
-                                },
+                                // {
+                                //     "label": "类别",
+                                //     "valuePath": "prod_category",
+                                //     "align": "center"
+                                // },
+                                // {
+                                //     "label": "治疗领域",
+                                //     "valuePath": "therapeutic_field",
+                                //     "align": "center"
+                                // },
                                 {
                                     "label": "上市时间",
                                     "valuePath": "launch_time",
@@ -241,14 +245,14 @@ export default Route.extend({
                                     "prod_features": "降血压效果持久稳定，毒副作用小",
                                     "research_type": "原研",
                                     "prod_image": "https://pharbers-images.oss-cn-beijing.aliyuncs.com/pharbers-tm-hospital-list-ember-addon/hosp_avatar.png",
-                                    "therapeutic_field": "心血管",
+                                    // "therapeutic_field": "心血管",
                                     "id": "5b435533ed925c05565b5c2c",
                                     "insure_type": "非医保药",
                                     "target_department": "心血管内科",
                                     "launch_time": 2015,
                                     "type": "med",
                                     "corp_name": "King‘s Cross",
-                                    "prod_category": "降压药",
+                                    // "prod_category": "降压药",
                                     "prod_name": "卢卡"
                                 },
                                 {
@@ -257,14 +261,14 @@ export default Route.extend({
                                     "prod_features": "上市时间久，临床经验稳定，疗效好",
                                     "research_type": "原研",
                                     "prod_image": "https://pharbers-images.oss-cn-beijing.aliyuncs.com/pharbers-tm-hospital-list-ember-addon/hosp_avatar.png",
-                                    "therapeutic_field": "心血管",
+                                    // "therapeutic_field": "心血管",
                                     "id": "5b6d4d9ceeefcc037639300a",
                                     "insure_type": "非医保药",
                                     "target_department": "心血管内科",
                                     "launch_time": 2003,
                                     "type": "med",
                                     "corp_name": "Euston",
-                                    "prod_category": "降压药",
+                                    // "prod_category": "降压药",
                                     "prod_name": "海德薇"
                                 },
                                 {
@@ -273,14 +277,14 @@ export default Route.extend({
                                     "prod_features": "价格便宜，降压效果还可以",
                                     "research_type": "仿制",
                                     "prod_image": "https://pharbers-images.oss-cn-beijing.aliyuncs.com/pharbers-tm-hospital-list-ember-addon/hosp_avatar.png",
-                                    "therapeutic_field": "心血管",
+                                    // "therapeutic_field": "心血管",
                                     "id": "5b6d4da0eeefcc037639300b",
                                     "insure_type": "非医保药",
                                     "target_department": "心血管内科",
                                     "launch_time": 2006,
                                     "type": "med",
                                     "corp_name": "Piccadily",
-                                    "prod_category": "降压药",
+                                    // "prod_category": "降压药",
                                     "prod_name": "韦斯莱"
                                 }
                             ]
