@@ -1,11 +1,16 @@
 {{!-- {{outlet}} --}}
 <div local-class="header navbar">
-    <img src="https://pharbers-images.oss-cn-beijing.aliyuncs.com/pharbers-tm-accordion-ember-addon/logo_login.png" alt="logo">
-    <h1>TMIST</h1>
-    {{#bs-button-group value=whichpag type="radio" onChange=(action (mut whichpag)) as |bg|}}
-        {{#bg.button value="hospital"}}填写医院{{/bg.button}}
-        {{#bg.button value="manager"}}填写经理{{/bg.button}}
-    {{/bs-button-group}}
+    <div local-class="head-left">
+        <img src="https://pharbers-images.oss-cn-beijing.aliyuncs.com/pharbers-tm-accordion-ember-addon/logo_login.png" alt="logo">
+        <h1>TMIST</h1>
+    </div>
+    <div local-class="head-right">
+        {{#bs-button-group value=whichpag type="radio"  onChange=(action (mut whichpag)) as |bg|}}
+            {{#bg.button value="hospital"}}填写医院{{/bg.button}}
+            {{#bg.button value="manager"}}填写经理{{/bg.button}}
+        {{/bs-button-group}}
+    </div>
+
 </div>
 
 {{!-- <div local-class="container"> --}}
