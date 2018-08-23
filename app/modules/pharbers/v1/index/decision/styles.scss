@@ -38,26 +38,16 @@
     &.header {
         top: 0;
     }
-
-    &.footer {
-        clear: both;
-        height: 20px;
-        line-height: 20px;
-        padding-top: 10px;
-        bottom: 0;
-
-        :global(.progress) {
-            margin: 0 auto;
-            width: 80%;
-        }
-    }
 }
 
 .footer {
+    padding-top: 10px;
+    bottom: 0;
     clear: both;
     display: flex;
     justify-content: center;
     background: none !important;
+
     .footer-tab {
         margin-left: 280px;
         margin-right: 280px;
@@ -70,23 +60,14 @@
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
+
         p {
             justify-content: center;
         }
     }
+
     .footer-button {
         height: 30px;
         line-height: 30px;
     }
-}
-/*** IE6 Fix ***/
-* html .left {
-    left: 150px;
-    /* RC width */
-}
-
-.percent {
-    width: 20px;
-    height: 20px;
-    color: red;
 }
