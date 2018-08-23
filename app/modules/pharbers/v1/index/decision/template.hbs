@@ -14,66 +14,13 @@
 
 </div>
 
-{{!-- <div local-class="container"> --}}
-    {{#if (eq whichpag "hospital")}}
-        {{hospital-decision model}}
-    {{else}}
-        {{manager-decision manager}}
-    {{/if}}
-    {{!-- <div local-class="column center">
-        {{accordion-hospital data=model.hospitals}}
-    </div>
-    <div local-class="column left">
-        {{#bs-tab customTabs=true tagName="" as |tab| }}
-            {{#bs-nav type="pills" local-class="left-tabs" stacked=true as |nav|}}
-                {{#nav.item local-class="tab" active=(bs-eq tab.activeId "medicineid")}}
-                    <a local-class="tabsa" href="medicineid" class="nav-link" role="tab" {{action tab.select "medicineid"}}>
-                        <span class="badge">M</span>
-                    </a>
-                {{/nav.item}}
-                {{#nav.item local-class="tab" active=(bs-eq tab.activeId "notice")}}
-                    <a local-class="tabsa" href="medicineid" class="nav-link" role="tab" {{action tab.select "notice"}}>
-                        <span class="badge">N</span>
-                    </a>
-                {{/nav.item}}
-            {{/bs-nav}}
-            <div class="tab-content" local-class="right-content">
-                {{#tab.pane local-class="medicine-detail" elementId="medicineid" title="Tab 1" }}
-                    <h2>药品card</h2>
-                    {{drug-item data=model.medicines}}
-                {{/tab.pane}}
+{{#if (eq whichpag "manager")}}
+    {{manager-decision manager}}
+{{else}}
+    {{hospital-decision model}}
 
-                {{#tab.pane local-class="medicine-detail" elementId="notice" title="Tab 2" }}
-                    <h2>通知</h2>
-                    {{drug-item data=model.notices}}
-                {{/tab.pane}}
-            </div>
-        {{/bs-tab}}
-    </div>
-    <div local-class="column right">
-        <p local-class="title">经理时间分配</p>
-        <div local-class="input-area">
-            <p>KPI分析</p>
-            <p local-class="input-text">{{input type="text" local-class="t-input" value=item.value}}<span local-class="day">天</span></p>
-        </div>
-        <div local-class="input-area">
-            <p>团建/例会</p>
-            <p local-class="input-text">{{input type="text" local-class="t-input" value=item.value}}<span local-class="day">天</span></p>
-        </div>
-        <div local-class="input-area">
-            <p>行政事务</p>
-            <p local-class="input-text">{{input type="text" local-class="t-input" value=item.value}}<span local-class="day">天</span></p>
-        </div>
-        <div local-class="input-area">
-            <p>1V1能力辅导</p>
-            <p local-class="input-text"><span local-class="daysnum">0</span><span local-class="day">天</span></p>
-        </div>
-        <div local-class="input-area">
-            <p>协助拜访</p>
-            <p local-class="input-text"><span local-class="daysnum">0</span><span local-class="day">天</span></p>
-        </div>
-    </div> --}}
-{{!-- </div> --}}
+{{/if}}
+
 
 <div local-class="footer navbar">
     {{#bs-progress as |p|}}
