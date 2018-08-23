@@ -1,142 +1,3 @@
-.container {
-    padding-left: 280px;
-    padding-right: 280px;
-    min-width: 1200px !important;
-    height: 100%;
-}
-
-.container {
-    .column {
-        position: relative;
-        padding-top: 40px;
-        float: left;
-        height: 100%;
-    }
-
-    .center {
-        width: 100%;
-        background-color: #e9e9e9;
-    }
-
-    .left {
-        margin-left: -100%;
-        width: 280px;
-        right: 280px;
-        background-color: #F9F9F9;
-
-        .left-tabs {
-            display: inline-block;
-            vertical-align: top;
-            height: 100%;
-            width: 45px;
-            padding-top: 16px;
-            text-align: center;
-            border-radius: 4px 0 0 4px;
-            background-image: linear-gradient(137deg, #4060AE 0%, #8F9CC3 100%);
-
-            .tab {
-                display: inline-block;
-                margin-bottom: 14px;
-                width: 30px;
-                height: 30px;
-                border-radius: 6px;
-                background-color: #FFFFFF;
-                opacity: 0.56;
-                cursor: pointer;
-
-                .tabsa {
-                    padding: 0;
-                    height: 30px;
-                    line-height: 30px;
-                    text-align: center;
-                    font-size: 18px;
-                    border-radius: 5px;
-                    color: #EEE;
-                }
-            }
-
-            .medicine-tab-active {
-                background-color: #4D8DD8;
-            }
-        }
-
-        .right-content {
-            display: inline-block;
-            vertical-align: top;
-            height: 100%;
-            width: 230px;
-            padding: 20px 5px 0;
-            border-radius: 0 4px 4px 0;
-            background-color: #FFF;
-            font-size: 14px;
-        }
-    }
-
-    .right {
-        width: 280px;
-        margin-right: -280px;
-
-        .title {
-            height: 20px;
-            line-height: 20px;
-            font-size: 14px;
-            color: #4A90E2;
-            letter-spacing: 2px;
-        }
-
-        .input-area {
-            margin-bottom: 15px;
-            //display: inline-block;
-            padding: 15px 20px;
-            width: 220px;
-            height: 80px;
-            border-radius: 1px;
-            background-color: #F0F2FF;
-            box-shadow: 0 2px 4px 0 rgba(174,174,174,0.50);
-
-            p:first-child {
-                height: 20px;
-                font-size: 12px;
-                color: #474747;
-                letter-spacing: 1.5px;
-            }
-
-            p.input-text {
-                vertical-align: bottom;
-
-                input {
-                    border: 0;
-                    padding: 5px 10px;
-                    width: 120px;
-                    height: 30px;
-                    line-height: 20px;
-                    text-align: center;
-                    font-size: 24px;
-                    color: #474747;
-                }
-
-                span.day {
-                    margin-left: 5px;
-                    padding-top: 5px;
-                    font-size: 12px;
-                    color: #474747;
-                    letter-spacing: 0.67px;
-                }
-
-                span.daysnum {
-                    display: inline-block;
-                    width: 120px;
-                    font-size: 24px;
-                    text-align: center;
-                    color: #474747;
-                    letter-spacing: 1.5px;
-                    text-align: center;
-                }
-            }
-        }
-    }
-}
-
 .navbar {
     position: fixed;
     left: 0;
@@ -148,37 +9,47 @@
     z-index: 2;
     overflow: hidden;
     background-image: linear-gradient(137deg, #4060AE 0%, #8F9CC3 100%);
-
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+
     .head-left {
         display: flex;
         flex-direction: row;
         align-items: center;
     }
+
     img {
         margin: 0;
         width: 45px;
         height: 45px;
     }
+
     h1 {
         color: #fff;
         font-size: 20px;
         margin-left: 10px;
         margin-bottom: 20px;
-        font-family: 'cursive','Font Name','Tangerine',serif;
+        font-family: "cursive","Font Name","Tangerine",serif;
         text-shadow: 2px 4px 5px #aaa;
-
     }
+
     &.header {
         top: 0;
     }
 
     &.footer {
+        clear: both;
+        height: 20px;
+        line-height: 20px;
         padding-top: 10px;
         bottom: 0;
+
+        :global(.progress) {
+            margin: 0 auto;
+            width: 80%;
+        }
     }
 }
 
