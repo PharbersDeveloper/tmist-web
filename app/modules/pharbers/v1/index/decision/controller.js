@@ -119,7 +119,7 @@ export default Controller.extend({
                     "service_year": 8
                 }, {
                     "rep_image": "https://pharbers-images.oss-cn-beijing.aliyuncs.com/pharbers-tm-hospital-list-ember-addon/hosp_seller.png",
-                    "intro": "贵州医学院临床专业毕业,最近由于同事得到提升而为同事高兴，希望通过自己的努力租的起北京的房子",
+                    "intro": "是贵州医学院临床专业毕业,最近由于同事得到提升而为同事高兴，希望通过自己的努力租的起北京的房子",
                     "motivation_val": 85,
                     "overall_val": 79,
                     "entry_time": 3,
@@ -136,7 +136,6 @@ export default Controller.extend({
                     "prod_knowledge_val": 84,
                     "service_year": 8
                 }]
-
             }, {
                 "key": "vertical-right-tabs",
                 "values": {
