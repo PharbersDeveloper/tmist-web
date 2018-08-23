@@ -23,7 +23,11 @@
 
 
 <div local-class="footer navbar">
-    {{#bs-progress as |p|}}
+    {{!-- {{#bs-progress as |p|}}
         {{p.bar value=1 minValue=0 maxValue=12 showLabel=true type=info striped=true animate=true}}
-    {{/bs-progress}}
+    {{/bs-progress}} --}}
+    <div class="alert alert-success" role="alert" local-class="footer-tab">
+      <p>This is a success alert—check it out!</p>
+      <button type="button" name="button" local-class="footer-button">执行计算</button>
+    </div>
 </div>
