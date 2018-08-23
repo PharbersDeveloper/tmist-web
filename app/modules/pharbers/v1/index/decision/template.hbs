@@ -6,9 +6,10 @@
     </div>
     <div local-class="head-right">
         {{#bs-button-group value=whichpag type="radio"  onChange=(action (mut whichpag)) as |bg|}}
-            {{#bg.button value="hospital"}}填写医院{{/bg.button}}
-            {{#bg.button value="manager"}}填写经理{{/bg.button}}
+            {{#bg.button value="hospital"}}资源分配{{/bg.button}}
+            {{#bg.button value="manager"}}时间分配{{/bg.button}}
         {{/bs-button-group}}
+        <img src="https://pharbers-images.oss-cn-beijing.aliyuncs.com/pharbers-tm-accordion-ember-addon/avatar.png" alt="person">
     </div>
 
 </div>
