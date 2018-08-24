@@ -9,21 +9,6 @@ export default Route.extend({
     },
 
     model() {
-        let condition = {
-            "token": "bearera67c2dc93dfc7ff2a19baefee72034f4",
-            "timestamp": 1530689119000,
-            "version": {
-                "major": 1,
-                "minor": 0
-            },
-            "data": {
-                "type": "which",
-                "condition": {
-                    "uuid": "65ccdece-cf90-4186-aeea-b14fee19a291"
-                }
-            }
-        }
-
         return {
             "id": "54654654231",
             "component_data": [{

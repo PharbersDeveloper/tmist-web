@@ -39,7 +39,7 @@ export default Route.extend({
                 }
             }
         };
-        console.log(condition)
+        this.logger.log(condition)
         return this.get('ajax')
             .request('/api/proposal/hospital/detail', this.getAjaxOpt(condition))
             .then((res) => {

@@ -35,7 +35,7 @@ export default Route.extend({
         }
     },
     model(params) {
-        let model = this.modelFor('pharbers.v1.index.reports');
+        // let model = this.modelFor('pharbers.v1.index.reports');
         let uuid = this.controllerFor('pharbers.v1.index.reports').get('uuid');
         let dropData = this.controllerFor('pharbers.v1.index.reports').get('dropData');
         let condi = {

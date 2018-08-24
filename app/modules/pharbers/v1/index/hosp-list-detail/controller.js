@@ -1,6 +1,5 @@
 import Controller from '@ember/controller';
 import { inject } from '@ember/service';
-import Route from '@ember/routing/route';
 
 export default Controller.extend({
     decisionInfo: inject('decision-info-service'),
@@ -17,18 +16,18 @@ export default Controller.extend({
             this.transitionToRoute('pharbers.v1.index.hosp-list', this.uuid);
         },
         preHosp(preHopsid) {
-            console.log(preHopsid)
+            this.logger.log(preHopsid)
             if (preHopsid != null)
                 this.transitionToRoute('pharbers.v1.index.hosp-list-detail', preHopsid)
         },
         nextHosp(nextHospid) {
-            // console.log(nextHospid);
+            // this.logger.log(nextHospid);
             if (nextHospid != null)
                 this.transitionToRoute('pharbers.v1.index.hosp-list-detail', nextHospid)
         },
         chooseRep(name) {
-            console.log('chooserep');
-            console.log(name)
+            this.logger.log('chooserep');
+            this.logger.log(name)
         }
     },
 });
