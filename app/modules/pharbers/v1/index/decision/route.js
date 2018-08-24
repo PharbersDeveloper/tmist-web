@@ -483,9 +483,6 @@ export default Route.extend({
 
                         },
                         "medicines": [{
-                            "compete_goods": {
-                                "value": ""
-                            },
                             "history": {
                                 "columns": [{
                                         "label": "时间",
@@ -755,6 +752,78 @@ export default Route.extend({
                             "id": "5b43564ded925c05565b5c33",
                             "education": "本科",
                             "prod_knowledge_val": 70,
+                            "service_year": 8
+                        }, {
+                            "rep_image": "https://pharbers-images.oss-cn-beijing.aliyuncs.com/pharbers-tm-hospital-list-ember-addon/hosp_seller.png",
+                            "intro": "贵州医学院临床专业毕业,最近由于同事得到提升而为同事高兴，希望通过自己的努力租的起北京的房子",
+                            "motivation_val": 85,
+                            "overall_val": 79,
+                            "entry_time": 3,
+                            "profe_bg": "贵州医学院临床专业毕业",
+                            "weakness": "最近由于同事得到提升而为同事高兴，希望通过自己的努力租的起北京的房子",
+                            "rep_name": "老张",
+                            "advantage": "善于鼓舞士气，善于探查客户心理",
+                            "age": 37,
+                            "sales_skills_val": 76,
+                            "business_exp": "抗肿瘤类;心血管类",
+                            "rep_level": "senior",
+                            "id": "5b43564ded925c05565b5c33",
+                            "education": "本科",
+                            "prod_knowledge_val": 84,
+                            "service_year": 8
+                        }, {
+                            "rep_image": "https://pharbers-images.oss-cn-beijing.aliyuncs.com/pharbers-tm-hospital-list-ember-addon/hosp_seller.png",
+                            "intro": "贵州医学院临床专业毕业,最近由于同事得到提升而为同事高兴，希望通过自己的努力租的起北京的房子",
+                            "motivation_val": 85,
+                            "overall_val": 79,
+                            "entry_time": 3,
+                            "profe_bg": "贵州医学院临床专业毕业",
+                            "weakness": "最近由于同事得到提升而为同事高兴，希望通过自己的努力租的起北京的房子",
+                            "rep_name": "老张",
+                            "advantage": "善于鼓舞士气，善于探查客户心理",
+                            "age": 37,
+                            "sales_skills_val": 76,
+                            "business_exp": "抗肿瘤类;心血管类",
+                            "rep_level": "senior",
+                            "id": "5b43564ded925c05565b5c33",
+                            "education": "本科",
+                            "prod_knowledge_val": 84,
+                            "service_year": 8
+                        }, {
+                            "rep_image": "https://pharbers-images.oss-cn-beijing.aliyuncs.com/pharbers-tm-hospital-list-ember-addon/hosp_seller.png",
+                            "intro": "贵州医学院临床专业毕业,最近由于同事得到提升而为同事高兴，希望通过自己的努力租的起北京的房子",
+                            "motivation_val": 85,
+                            "overall_val": 79,
+                            "entry_time": 3,
+                            "profe_bg": "贵州医学院临床专业毕业",
+                            "weakness": "最近由于同事得到提升而为同事高兴，希望通过自己的努力租的起北京的房子",
+                            "rep_name": "老张",
+                            "advantage": "善于鼓舞士气，善于探查客户心理",
+                            "age": 37,
+                            "sales_skills_val": 76,
+                            "business_exp": "抗肿瘤类;心血管类",
+                            "rep_level": "senior",
+                            "id": "5b43564ded925c05565b5c33",
+                            "education": "本科",
+                            "prod_knowledge_val": 84,
+                            "service_year": 8
+                        }, {
+                            "rep_image": "https://pharbers-images.oss-cn-beijing.aliyuncs.com/pharbers-tm-hospital-list-ember-addon/hosp_seller.png",
+                            "intro": "贵州医学院临床专业毕业,最近由于同事得到提升而为同事高兴，希望通过自己的努力租的起北京的房子",
+                            "motivation_val": 85,
+                            "overall_val": 79,
+                            "entry_time": 3,
+                            "profe_bg": "贵州医学院临床专业毕业",
+                            "weakness": "最近由于同事得到提升而为同事高兴，希望通过自己的努力租的起北京的房子",
+                            "rep_name": "老张",
+                            "advantage": "善于鼓舞士气，善于探查客户心理",
+                            "age": 37,
+                            "sales_skills_val": 76,
+                            "business_exp": "抗肿瘤类;心血管类",
+                            "rep_level": "senior",
+                            "id": "5b43564ded925c05565b5c33",
+                            "education": "本科",
+                            "prod_knowledge_val": 84,
                             "service_year": 8
                         }, {
                             "rep_image": "https://pharbers-images.oss-cn-beijing.aliyuncs.com/pharbers-tm-hospital-list-ember-addon/hosp_seller.png",
