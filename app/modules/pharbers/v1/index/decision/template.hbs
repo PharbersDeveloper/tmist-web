@@ -11,16 +11,13 @@
         {{/bs-button-group}}
         <img src="https://pharbers-images.oss-cn-beijing.aliyuncs.com/pharbers-tm-accordion-ember-addon/avatar.png" alt="person">
     </div>
-
 </div>
 
 {{#if (eq whichpag "manager")}}
     {{manager-decision manager}}
 {{else}}
     {{hospital-decision model}}
-
 {{/if}}
-
 
 <div local-class="footer navbar">
     {{!-- {{#bs-progress as |p|}}
