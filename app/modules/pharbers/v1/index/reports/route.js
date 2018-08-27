@@ -49,7 +49,7 @@ export default Route.extend({
         for (let i = 0, len = _drop.length; i < len; i++) {
             if (_drop[i].type === "index") {
                 _column = _drop[i].columns_id;
-            };
+            }
         }
         let condi = {
             "token": this.get('cookies').read('user_token'),
@@ -80,7 +80,6 @@ export default Route.extend({
         let drop = data;
         let index = 0;
         let current = "";
-        let selected = [];
         for (let i = 0, len = drop.length; i < len; i++) {
             if (drop[i].type === type) {
                 index = i;

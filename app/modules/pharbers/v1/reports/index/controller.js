@@ -34,7 +34,6 @@ export default Controller.extend({
                 if (res.status === "ok") {
                     let result = res.result.data.attribute;
                     // this.set('dropData',result);
-                    console.log(result)
                     return result;
                 }
             }).then((res2) => {
