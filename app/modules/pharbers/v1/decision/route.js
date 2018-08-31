@@ -8,13 +8,9 @@ export default Route.extend({
         let include = [{ id: '2', type: 'eq_cond', key: 'a', val: 'p' }];
 
         let conditions = this.Contact.joint(data, include);
-
-        return this.store.queryMultipleObject('/api/proposal/lst', 'proposal', conditions);
-
+        return this.store.queryMultipleObject('/api/layout/lst', 'alldecision', conditions)
     },
     actions: {
-        simulation(uuid) {
-            this.transitionTo('pharbers.v1.decision', uuid)
-        },
+
     }
 });
