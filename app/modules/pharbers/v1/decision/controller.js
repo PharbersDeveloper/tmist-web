@@ -6,6 +6,9 @@ export default Controller.extend({
             this.store.queryMultipleObject('/api/decision', 'alldecision', {})
                 .then((data) => {
                     component.set('total', data)
+                }, (error) => {
+                    console.log("aaaaaaaahhhhhhhhhhh")
+                    console.log(error);
                 });
         }
     }
