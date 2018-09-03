@@ -18,4 +18,7 @@ export default Route.extend({
     // "pharbers-tm-evaluation":"1.0.0",
     // "pharbers-tm-accordion":"1.0.0",
 
+
+    // "pharbers-tm-cards": "1.0.0",
+    // "pharbers-tm-accordion":"1.0.0"
 });
