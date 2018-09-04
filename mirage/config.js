@@ -643,6 +643,62 @@ export default function() {
         }
     });
 
+    this.post('/api/repinputcards', (schema, request) => {
+        return {
+            "data": [{
+                    "type": "repinputinfo",
+                    "id": "repinputinfoishere",
+                    "attributes": {
+                        "rep_image": "https://pharbers-images.oss-cn-beijing.aliyuncs.com/pharbers-tm-hospital-list-ember-addon/hosp_seller.png",
+                        "intro": "医学院校临床专业毕业,是一位善于发现客户需求，善于探查客户心理。但最近由于同事得到提升而垂头丧气，导致对个人未来发展感到茫然",
+                        "total_days": 120,
+                        "used_days": 33,
+                        "motivation_val": 45,
+                        "overall_val": 62,
+                        "entry_time": 3,
+                        "profe_bg": "医学院校临床专业毕业",
+                        "weakness": "最近由于同事得到提升而垂头丧气;对个人未来发展感到茫然",
+                        "rep_name": "小宋",
+                        "advantage": "善于发现客户需求;善于探查客户心理",
+                        "age": 37,
+                        "sales_skills_val": 70,
+                        "business_exp": "抗肿瘤类;心血管类",
+                        "rep_level": "senior",
+                        "education": "本科",
+                        "prod_knowledge_val": 70,
+                        "service_year": 8
+                    },
+                    "relationships": {}
+                },
+                {
+                    "type": "repinputinfo",
+                    "id": "repinputinfoishere02",
+                    "attributes": {
+                        "rep_image": "https://pharbers-images.oss-cn-beijing.aliyuncs.com/pharbers-tm-hospital-list-ember-addon/hosp_seller.png",
+                        "intro": "医学院校临床专业毕业,是一位善于发现客户需求，善于探查客户心理。但最近由于同事得到提升而垂头丧气，导致对个人未来发展感到茫然",
+                        "total_days": 120,
+                        "used_days": 33,
+                        "motivation_val": 45,
+                        "overall_val": 62,
+                        "entry_time": 3,
+                        "profe_bg": "医学院校临床专业毕业",
+                        "weakness": "最近由于同事得到提升而垂头丧气;对个人未来发展感到茫然",
+                        "rep_name": "小诸葛",
+                        "advantage": "善于发现客户需求;善于探查客户心理",
+                        "age": 37,
+                        "sales_skills_val": 70,
+                        "business_exp": "抗肿瘤类;心血管类",
+                        "rep_level": "senior",
+                        "education": "本科",
+                        "prod_knowledge_val": 70,
+                        "service_year": 8
+                    },
+                    "relationships": {}
+                }
+            ]
+        }
+    })
+
     this.post('/api/decision', (schema, request) => {
         window.console.info(request.requestBody);
         return {

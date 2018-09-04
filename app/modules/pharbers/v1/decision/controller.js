@@ -7,8 +7,6 @@ export default Controller.extend({
             //     .then((result) => {
             //         component.set('total', result);
             //     });
-
-
         },
         getMedicNotices(component) {
             this.store.queryObject('/api/medicsnotices', 'medicsnotices', {})
@@ -27,6 +25,18 @@ export default Controller.extend({
                 .then((randbs) => {
                     component.set('data', randbs)
                 });
-        }
+        },
+        getHospCardInfo(component) {
+            this.store.queryMultipleObject('/api/hospitalinfo', 'hospitalbaseinfo', {})
+                .then((hinfo) => {
+                    component.set('data', hinfo)
+                });
+        },
+        getInputCard(component) {
+            this.store.queryMultipleObject('/api/repinputcards', 'repinputinfo', {})
+                .then((rinfo) => {
+                    component.set('data', rinfo)
+                });
+        },
     },
 });
