@@ -11,6 +11,10 @@ export default Controller.extend({
             let include = [{ id: '2', type: 'eq_cond', key: a, val: p }];
 
             let conditions = this.Contact.joint(data, include);
+            this.store.queryObject('/login', 'auth', conditions)
+                .then((result) => {
+                    console.log(result)
+                })
             component.set('cookies', this.get('cookies'));
             component.set('result', this.store.queryObject('/login', 'auth', conditions));
             component.get('setcookies').then((result) => {

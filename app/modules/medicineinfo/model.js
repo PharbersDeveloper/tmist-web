@@ -8,6 +8,5 @@ export default DS.Model.extend({
     feature: DS.attr('string'),
     heal: DS.attr(),
     department: DS.attr(),
-    desc: DS.attr('string'),
-    medicsnotices: DS.belongsTo('medicnotices'),
+    desc: DS.attr('string')
 });
