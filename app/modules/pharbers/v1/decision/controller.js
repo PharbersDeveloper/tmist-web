@@ -4,7 +4,7 @@ export default Controller.extend({
     actions: {
         runCalc() {
             console.log('runcal ');
-            this.transitionToRoute('pharbers.v1.reports')
+            this.transitionToRoute('pharbers.v1.reports', this.get('uuid'))
         },
         queryAllDecision(component) {
             // this.store.queryMultipleObject('/api/decision', 'alldecision', {})

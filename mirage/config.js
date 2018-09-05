@@ -1,6 +1,8 @@
 export default function() {
 
-    this.post('/login', (schema, request) => {
+    this.post('/api/v1/login/0', (schema, request) => {
+        window.console.warn(request.requestBody);
+
         return {
             "data": {
                 "type": "auth",
@@ -754,4 +756,149 @@ export default function() {
         }
     })
 
+    this.post('/api/report/total', (schema, request) => {
+        return {
+            "data": [{
+                    "type": "report-overview",
+                    "id": "overview-1",
+                    "attributes": {
+                        "component_name": "which-result",
+                        "major": 1,
+                        "minor": 0
+                    },
+                    "relationships": {
+                        "dropdown": {
+                            "data": {
+                                "type": "dropdown-data",
+                                "id": "dropdown-data-total",
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "report-overview",
+                    "id": "overview-2",
+                    "attributes": {
+                        "component_name": "data-show-card",
+                        "major": 1,
+                        "minor": 0
+                    },
+                    "relationships": {
+                        "resultcard": {
+                            "data": {
+                                "type": "result-card-data",
+                                "id": "result-card-total",
+                            }
+                        },
+                    }
+                },
+                {
+                    "type": "report-overview",
+                    "id": "overview-3",
+                    "attributes": {
+                        "component_name": "result-table",
+                        "major": 1,
+                        "minor": 0
+                    },
+                    "relationships": {
+                        "resulttable": {
+                            "data": {
+                                "type": "result-table-data",
+                                "id": "result-table-data-total",
+                            }
+                        },
+                    }
+                }
+            ],
+            "included": [{
+                    "type": "dropdown-data",
+                    "id": "dropdown-data-total",
+                    "attributes": {
+                        "component_name": "which-result"
+                    }
+                },
+                {
+                    "type": "result-card",
+                    "id": "result-card-total",
+                    "attributes": {
+                        "component_name": "data-show-card"
+                    }
+                },
+                {
+                    "type": "result-table-data",
+                    "id": "result-table-data-total",
+                    "attributes": {
+                        "component_name": "result-table"
+                    }
+                },
+            ]
+        }
+    })
+
+    this.post('/api/report/which', (schema, request) => {
+        return {
+            "data": [{
+                    "type": "dropdown-data",
+                    "id": "dropdown-data-1",
+                    "attributes": {
+                        "whichpage": "index",
+                        "text": "整体销售表现",
+                        "major": 1,
+                        "minor": 0
+                    },
+                },
+                {
+                    "type": "dropdown-data",
+                    "id": "dropdown-data-2",
+                    "attributes": {
+                        "whichpage": "hosp-product",
+                        "text": "医院-产品销售报告",
+                        "major": 1,
+                        "minor": 0
+                    },
+                },
+                {
+                    "type": "dropdown-data",
+                    "id": "dropdown-data-3",
+                    "attributes": {
+                        "whichpage": "represent-product",
+                        "text": "代表-产品销售报告",
+                        "major": 1,
+                        "minor": 0
+                    },
+                },
+                {
+                    "type": "dropdown-data",
+                    "id": "dropdown-data-4",
+                    "attributes": {
+                        "whichpage": "resource",
+                        "text": "资源投入与产出",
+                        "major": 1,
+                        "minor": 0
+                    },
+                },
+                {
+                    "type": "dropdown-data",
+                    "id": "dropdown-data-5",
+                    "attributes": {
+                        "whichpage": "represent-target",
+                        "text": "代表指标与资源",
+                        "major": 1,
+                        "minor": 0
+                    },
+                },
+                {
+                    "type": "dropdown-data",
+                    "id": "dropdown-data-6",
+                    "attributes": {
+                        "whichpage": "represent-ability",
+                        "text": "代表能力",
+                        "major": 1,
+                        "minor": 0
+                    },
+                },
+            ],
+
+        }
+    })
 }

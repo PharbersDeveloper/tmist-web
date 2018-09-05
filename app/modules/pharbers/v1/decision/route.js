@@ -1,7 +1,8 @@
 import Route from '@ember/routing/route';
 
 export default Route.extend({
-    model() {
+    model(param) {
+        this.controllerFor('pharbers.v1.decision').set('uuid', param.uuid);
         let data = this.Data
         data.set('attributes.res', "tm-login")
         data.set('relationships.conditions', { data: [{ id: '2', type: 'eq_cond' }] });
