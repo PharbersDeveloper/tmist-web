@@ -9,5 +9,5 @@ export default DS.Model.extend({
     heal: DS.attr(),
     department: DS.attr(),
     desc: DS.attr('string'),
-    medicsnotices: DS.belongsTo('medicnotices'),
+    // medicsnotices: DS.belongsTo('medicsnotice'),
 });

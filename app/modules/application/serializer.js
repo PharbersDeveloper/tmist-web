@@ -15,9 +15,15 @@ export default PharbersSerializer.extend({
         this._super(...arguments);
         return payload;
     },
-    serialize(snapshot) {
-        let json = this._super(...arguments);
-        json.data.type = singularize(json.data.type)
-        return json
+    // serialize(snapshot) {
+    //     let json = this._super(...arguments);
+    //     json.data.type = singularize(json.data.type);
+    //     return json
+    // },
+    payloadKeyFromModelName(modelName) {
+        return modelName
     },
+    modelNameFromPayloadKey(modelName) {
+        return modelName
+    }
 });

@@ -73,6 +73,12 @@ export default function() {
                             "id": "medicinesinfo01",
                         }, ]
                     },
+                    "signrep": {
+                        "data": {
+                            "type": "hosprep",
+                            "id": "hospitalbaseinfo01-repid001"
+                        }
+                    }
                 }
             }, {
                 "type": "hospitalbaseinfo",
@@ -106,6 +112,12 @@ export default function() {
                             "id": "medicinesinfo11",
                         }, ]
                     },
+                    "signrep": {
+                        "data": {
+                            "type": "hosprep",
+                            "id": "hospitalbaseinfo02-repid002"
+                        }
+                    }
                 }
             }],
             "included": [{
@@ -451,7 +463,54 @@ export default function() {
                         "prod_category": "降压药"
                     }
                 },
-
+                {
+                    "type": "hosprep",
+                    "id": "hospitalbaseinfo02-repid002",
+                    "attributes": {
+                        "rep_image": "https://pharbers-images.oss-cn-beijing.aliyuncs.com/pharbers-tm-hospital-list-ember-addon/hosp_seller.png",
+                        "intro": "医学院校临床专业毕业,是一位善于发现客户需求，善于探查客户心理。但最近由于同事得到提升而垂头丧气，导致对个人未来发展感到茫然",
+                        "motivation_val": 45,
+                        "overall_val": 62,
+                        "entry_time": 3,
+                        "total_days": 30,
+                        "used_days": 22,
+                        "profe_bg": "医学院校临床专业毕业",
+                        "weakness": "最近由于同事得到提升而垂头丧气;对个人未来发展感到茫然",
+                        "rep_name": "大宋",
+                        "advantage": "善于发现客户需求;善于探查客户心理",
+                        "age": 37,
+                        "sales_skills_val": 70,
+                        "business_exp": "抗肿瘤类;心血管类",
+                        "rep_level": "senior",
+                        "education": "本科",
+                        "prod_knowledge_val": 70,
+                        "service_year": 8
+                    }
+                },
+                {
+                    "type": "hosprep",
+                    "id": "hospitalbaseinfo01-repid001",
+                    "attributes": {
+                        "rep_image": "https://pharbers-images.oss-cn-beijing.aliyuncs.com/pharbers-tm-hospital-list-ember-addon/hosp_seller.png",
+                        "intro": "医学院校临床专业毕业,是一位善于发现客户需求，善于探查客户心理。但最近由于同事得到提升而垂头丧气，导致对个人未来发展感到茫然",
+                        "motivation_val": 45,
+                        "overall_val": 62,
+                        "entry_time": 3,
+                        "total_days": 30,
+                        "used_days": 22,
+                        "profe_bg": "医学院校临床专业毕业",
+                        "weakness": "最近由于同事得到提升而垂头丧气;对个人未来发展感到茫然",
+                        "rep_name": "小张",
+                        "advantage": "善于发现客户需求;善于探查客户心理",
+                        "age": 37,
+                        "sales_skills_val": 70,
+                        "business_exp": "抗肿瘤类;心血管类",
+                        "rep_level": "senior",
+                        "education": "本科",
+                        "prod_knowledge_val": 70,
+                        "service_year": 8
+                    }
+                }
 
             ]
         }
@@ -561,7 +620,7 @@ export default function() {
         return {
             "data": {
                 "type": "medicsnotice",
-                "id": "medicesandnotices",
+                "id": "1",
                 "attributes": {
                     "major": 1,
                     "minor": 0
@@ -570,26 +629,26 @@ export default function() {
                     "medicines": {
                         "data": [{
                             "type": "medicineinfo",
-                            "id": "medicineinfos1",
+                            "id": "0",
                         }, {
                             "type": "medicineinfo",
-                            "id": "medicineinfos2",
+                            "id": "1",
                         }]
                     },
                     "notices": {
                         "data": [{
                             "type": "notice",
-                            "id": "notices1"
+                            "id": "0"
                         }, {
                             "type": "notice",
-                            "id": "notices2"
+                            "id": "1"
                         }]
                     },
                 }
             },
             "included": [{
                 "type": "medicineinfo",
-                "id": "medicineinfos1",
+                "id": "0",
                 "attributes": {
                     "avatar": "http://img.informer.com/icons_mac/png/128/422/422255.png",
                     "class": "口服抗生素",
@@ -602,7 +661,7 @@ export default function() {
                 }
             }, {
                 "type": "medicineinfo",
-                "id": "medicineinfos2",
+                "id": "1",
                 "attributes": {
                     "avatar": "http://img.informer.com/icons_mac/png/128/422/422255.png",
                     "class": "阿莫西林",
@@ -614,8 +673,8 @@ export default function() {
                     "desc": "由于国家限抗令的实施，许多医院开始作出相应处方限制，但抗生素是公司重点产品。公司下达保持份额的指标任务。由于国家限抗令的实施，许多医院开始作出相应处方限制，但抗生素是公司重点产品。公司下达保持份额的指标任务。"
                 }
             }, {
-                "type": "notices",
-                "id": "notices1",
+                "type": "notice",
+                "id": "0",
                 "attributes": {
                     "avatar": "http://img.informer.com/icons_mac/png/128/422/422255.png",
                     "class": "医院通知",
@@ -627,8 +686,8 @@ export default function() {
                     "desc": "由于国家限抗令的实施，许多医院开始作出相应处方限制，但抗生素是公司重点产品。公司下达保持份额的指标任务。由于国家限抗令的实施，许多医院开始作出相应处方限制，但抗生素是公司重点产品。公司下达保持份额的指标任务。"
                 }
             }, {
-                "type": "notices",
-                "id": "notices2",
+                "type": "notice",
+                "id": "1",
                 "attributes": {
                     "avatar": "http://img.informer.com/icons_mac/png/128/422/422255.png",
                     "class": "医院通知",
@@ -705,7 +764,6 @@ export default function() {
                     "type": "alldecision",
                     "id": "tmp_12351c38-5cfb-4175-916d-7acd180b3b0d",
                     "attributes": {
-                        "test": "hhhhhhhhhhhhhhhh",
                         "component_name": "hospital-decision",
                         "major": 1,
                         "minor": 0
@@ -723,7 +781,6 @@ export default function() {
                     "type": "alldecision",
                     "id": "tmp_2892571b-30be-46f0-b47b-db753ed38c50",
                     "attributes": {
-                        "test": "mmmmmmmmmmmmmmm",
                         "component_name": "manager-decision",
                         "major": 1,
                         "minor": 0
@@ -769,7 +826,7 @@ export default function() {
                     "relationships": {
                         "dropdown": {
                             "data": {
-                                "type": "dropdown-data",
+                                "type": "dropdowndata",
                                 "id": "dropdown-data-total",
                             }
                         }
@@ -786,7 +843,7 @@ export default function() {
                     "relationships": {
                         "resultcard": {
                             "data": {
-                                "type": "result-card-data",
+                                "type": "result-card",
                                 "id": "result-card-total",
                             }
                         },
@@ -811,10 +868,13 @@ export default function() {
                 }
             ],
             "included": [{
-                    "type": "dropdown-data",
-                    "id": "dropdown-data-total",
+                    "type": "dropdowndata",
+                    "id": "dropdown-data-1",
                     "attributes": {
-                        "component_name": "which-result"
+                        "whichpage": "index",
+                        "text": "整体销售表现",
+                        "major": 1,
+                        "minor": 0
                     }
                 },
                 {
@@ -826,7 +886,7 @@ export default function() {
                 },
                 {
                     "type": "result-table-data",
-                    "id": "result-table-data-total",
+                    "id": "result-table-data-index",
                     "attributes": {
                         "component_name": "result-table"
                     }
@@ -838,7 +898,7 @@ export default function() {
     this.post('/api/report/which', (schema, request) => {
         return {
             "data": [{
-                    "type": "dropdown-data",
+                    "type": "dropdowndata",
                     "id": "dropdown-data-1",
                     "attributes": {
                         "whichpage": "index",
@@ -848,7 +908,7 @@ export default function() {
                     },
                 },
                 {
-                    "type": "dropdown-data",
+                    "type": "dropdowndata",
                     "id": "dropdown-data-2",
                     "attributes": {
                         "whichpage": "hosp-product",
@@ -858,7 +918,7 @@ export default function() {
                     },
                 },
                 {
-                    "type": "dropdown-data",
+                    "type": "dropdowndata",
                     "id": "dropdown-data-3",
                     "attributes": {
                         "whichpage": "represent-product",
@@ -868,7 +928,7 @@ export default function() {
                     },
                 },
                 {
-                    "type": "dropdown-data",
+                    "type": "dropdowndata",
                     "id": "dropdown-data-4",
                     "attributes": {
                         "whichpage": "resource",
@@ -878,7 +938,7 @@ export default function() {
                     },
                 },
                 {
-                    "type": "dropdown-data",
+                    "type": "dropdowndata",
                     "id": "dropdown-data-5",
                     "attributes": {
                         "whichpage": "represent-target",
@@ -888,7 +948,7 @@ export default function() {
                     },
                 },
                 {
-                    "type": "dropdown-data",
+                    "type": "dropdowndata",
                     "id": "dropdown-data-6",
                     "attributes": {
                         "whichpage": "represent-ability",
@@ -901,4 +961,207 @@ export default function() {
 
         }
     })
+
+    this.post('/api/report/cards/index', (schema, request) => {
+        return {
+            "data": [{
+                    "type": "result-card",
+                    "id": "result-card-1",
+                    "attributes": {
+                        "index": 1,
+                        "title": "总销售额",
+                        "type": "sales",
+                        "value": 6039535
+                    },
+                },
+                {
+                    "type": "result-card",
+                    "id": "result-card-2",
+                    "attributes": {
+                        "index": 2,
+                        "title": "整体销售增长",
+                        "type": "percent",
+                        "value": 12,
+                        "ext": {
+                            "change": "up"
+                        }
+                    },
+                },
+                {
+                    "type": "result-card",
+                    "id": "result-card-3",
+                    "attributes": {
+                        "index": 3,
+                        "title": "平均指标达成",
+                        "type": "percent",
+                        "value": 0.6,
+                    },
+                },
+            ],
+
+        }
+    })
+
+    this.post('/api/report/table/index', (schema, request) => {
+        return {
+            "data": {
+                "type": "result-table-data",
+                "id": "result-table-data-index",
+                "attributes": {
+                    "columns": [{
+                            "label": '产品名称',
+                            "valuePath": 'brand_name',
+                            "width": '100px',
+                            "align": 'center',
+                            "sorted": false,
+
+                        }, {
+                            "label": '市场销售额',
+                            "valuePath": 'potential',
+                            "width": '100px',
+                            "align": 'center',
+                            "cellComponent": 'table-number-thousands'
+                        }, {
+                            "label": '市场增长(%)',
+                            "valuePath": 'market_growth',
+                            "width": '100px',
+                            "align": 'center',
+                            "cellComponent": 'table-number-percent'
+
+                        }, {
+                            "label": '当期销售额',
+                            "valuePath": 'sales',
+                            "width": '100px',
+                            "align": 'center',
+                            "cellComponent": 'table-number-thousands'
+                        }, {
+                            "label": '销售增长(%)',
+                            "valuePath": 'sales_growth',
+                            "width": '100px',
+                            "align": 'center',
+                            "cellComponent": 'table-number-percent'
+                        }, {
+                            "label": 'EV值(%)',
+                            "valuePath": 'ev_value',
+                            "width": '80px',
+                            "align": 'center',
+                            "cellComponent": 'table-number-percent'
+                        }, {
+                            "label": '份额(%)',
+                            "valuePath": 'share',
+                            "width": '80px',
+                            "align": 'center',
+                            "cellComponent": 'table-number-percent'
+                        }, {
+                            "label": '份额增长(%)',
+                            "valuePath": 'share_change',
+                            "width": '100px',
+                            "align": 'center',
+                            "cellComponent": 'table-number-percent'
+                        }, {
+                            "label": '指标',
+                            "valuePath": 'target',
+                            "width": '100px',
+                            "align": 'center',
+                            "cellComponent": 'table-number-thousands'
+                        },
+                        {
+                            "label": '指标达成率(%)',
+                            "valuePath": 'achieve_rate',
+                            "width": '100px',
+                            "align": 'center',
+                            "cellComponent": 'table-number-percent'
+                        },
+                        {
+                            "label": '销售贡献率(%)',
+                            "valuePath": 'contri_rate',
+                            "width": '100px',
+                            "align": 'center',
+                            "cellComponent": 'table-number-percent'
+                        }
+                    ],
+                    "columnsValue": [{
+                            "brand_name": "测试产品1",
+                            "potential": 30178,
+                            "market_growth": 0.1,
+                            "sales": 26045,
+                            "sales_growth": 0.11,
+                            "ev_value": 0.1,
+                            "share": 0.11,
+                            "share_change": 0.1,
+                            "target": 11709,
+                            "achieve_rate": 0.1,
+                            "contri_rate": 0.1
+                        },
+                        {
+                            "brand_name": "测试产品2",
+                            "potential": 17803,
+                            "market_growth": 0.2,
+                            "sales": 48850,
+                            "sales_growth": 0.22,
+                            "ev_value": 0.2,
+                            "share": 0.22,
+                            "share_change": 0.2,
+                            "target": 37416,
+                            "achieve_rate": 0.2,
+                            "contri_rate": 0.2
+                        },
+                        {
+                            "brand_name": "测试产品3",
+                            "potential": 16415,
+                            "market_growth": 0.3,
+                            "sales": 4032,
+                            "sales_growth": 0.33,
+                            "ev_value": 0.3,
+                            "share": 0.33,
+                            "share_change": 0.3,
+                            "target": 561318,
+                            "achieve_rate": 0.3,
+                            "contri_rate": 0.3
+                        },
+                        {
+                            "brand_name": "测试产品4",
+                            "potential": 42369,
+                            "market_growth": 0.4,
+                            "sales": 26549,
+                            "sales_growth": 0.44,
+                            "ev_value": 0.4,
+                            "share": 0.44,
+                            "share_change": 0.4,
+                            "target": 26299,
+                            "achieve_rate": 0.4,
+                            "contri_rate": 0.4
+                        },
+                        {
+                            "brand_name": "测试产品5",
+                            "potential": 423695,
+                            "market_growth": 0.45,
+                            "sales": 265495,
+                            "sales_growth": 0.445,
+                            "ev_value": 0.45,
+                            "share": 0.445,
+                            "share_change": 0.54,
+                            "target": 262959,
+                            "achieve_rate": 0.45,
+                            "contri_rate": 0.45
+                        },
+                        {
+                            "brand_name": "测试产品6",
+                            "potential": 423696,
+                            "market_growth": 0.46,
+                            "sales": 265469,
+                            "sales_growth": 0.464,
+                            "ev_value": 0.64,
+                            "share": 0.464,
+                            "share_change": 0.46,
+                            "target": 262969,
+                            "achieve_rate": 0.46,
+                            "contri_rate": 0.64
+                        }
+                    ],
+                }
+            }
+        }
+    })
+
 }

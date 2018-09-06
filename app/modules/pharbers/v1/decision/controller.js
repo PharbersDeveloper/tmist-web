@@ -3,7 +3,6 @@ import Controller from '@ember/controller';
 export default Controller.extend({
     actions: {
         runCalc() {
-            console.log('runcal ');
             this.transitionToRoute('pharbers.v1.reports', this.get('uuid'))
         },
         queryAllDecision(component) {

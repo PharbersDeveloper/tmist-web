@@ -13,7 +13,7 @@ export default DS.Model.extend({
     drug_intake: DS.attr('string'),
     init_time: DS.attr('number'),
     client_grade: DS.attr('string'),
-    inpatient_yearly: 30000,
+    inpatient_yearly: DS.attr('number'),
     patients_distribution_department: DS.attr('string'),
     hosp_image: DS.attr('string'),
     outpatient_yearly: DS.attr('number'),
@@ -22,4 +22,5 @@ export default DS.Model.extend({
     major: DS.attr('number'),
     minor: DS.attr('number'),
     medicines: DS.hasMany('hospmedicinfo'),
+    signrep: DS.belongsTo('hosprep'),
 });
