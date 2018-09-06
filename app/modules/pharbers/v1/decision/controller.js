@@ -1,6 +1,11 @@
 import Controller from '@ember/controller';
 
 export default Controller.extend({
+    init() {
+        this._super(...arguments);
+        this.medicsnotice = {};
+        this.repinputinfo = [];
+    },
     actions: {
         runCalc() {
             this.transitionToRoute('pharbers.v1.reports', this.get('uuid'))
@@ -20,6 +25,7 @@ export default Controller.extend({
             let conditions = this.Contact.joint(data, include);
             this.store.queryObject('/api/medicsnotices', 'medicsnotice', {})
                 .then((mwithns) => {
+                    this.set('medicsnotice', mwithns);
                     component.set('data', mwithns);
                 });
         },
@@ -42,6 +48,15 @@ export default Controller.extend({
                 .then((hinfo) => {
                     component.set('data', hinfo)
                 });
+            if (this.get('repinputinfo').length > 0) {
+                component.set('totalRep', this.get('repinputinfo'));
+            } else {
+                this.store.queryMultipleObject('/api/repinputcards', 'repinputinfo', {})
+                    .then((rinfo) => {
+                        component.set('totalRep', rinfo)
+                    });
+            }
+
         },
 
         getRepBudget(component) {
