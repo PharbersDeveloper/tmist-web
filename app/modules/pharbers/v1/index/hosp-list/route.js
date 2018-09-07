@@ -35,6 +35,8 @@ export default Route.extend({
             .request('/api/proposal/hospital/lst', this.getAjaxOpt(condition))
             .then((res) => {
                 if (res.status === "ok") {
+                    this.logger.log(res.result.data.attribute);
+                    this.logger.log('from hosp-list ==========')
                     return res.result.data.attribute;
                 } else {
                     return res.error.message;

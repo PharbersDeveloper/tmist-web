@@ -221,7 +221,6 @@ export default Route.extend({
                             },
                             "prod_category": "降压药"
                         }]
-
                     }, {
                         "id": "hospid-2",
                         "overview": {
