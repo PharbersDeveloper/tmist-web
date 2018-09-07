@@ -11,6 +11,9 @@ export default PharbersSerializer.extend({
     keyForAttribute(key) {
         return key;
     },
+    keyForRelationship(key) {
+        return key;
+    },
     normalizeResponse(store, model, payload) {
         this._super(...arguments);
         return payload;

@@ -11,20 +11,19 @@ export default Controller.extend({
             });
 
             let eqValues = [
-                { type: 'eqcond', key: 'email', val: a },
-                { type: 'eqcond', key: 'password', val: p },
+                { id: 'email', type: 'eqcond', key: 'email', val: a },
+                { id: 'password', type: 'eqcond', key: 'password', val: p },
             ]
 
             eqValues.forEach((elem, index) => {
                 req.get(elem.type).pushObject(this.store.createRecord(elem.type, {
+                    id: elem.id,
                     key: elem.key,
                     val: elem.val,
                 }))
             });
-
             let conditions = this.store.object2JsonApi('request', req);
 
-            this.logger.log(conditions);
 
             component.set('cookies', this.get('cookies'));
             component.set('result', this.store.queryObject('/api/v1/login/0', 'auth', conditions));

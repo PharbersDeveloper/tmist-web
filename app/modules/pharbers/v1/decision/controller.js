@@ -16,6 +16,7 @@ export default Controller.extend({
             //         component.set('total', result);
             //     });
         },
+        /*
         getMedicNotices(component) {
             let data = this.Data
             data.set('attributes.res', "tm-login")
@@ -51,32 +52,94 @@ export default Controller.extend({
             if (this.get('repinputinfo').length > 0) {
                 component.set('totalRep', this.get('repinputinfo'));
             } else {
-                this.store.queryMultipleObject('/api/repinputcards', 'repinputinfo', {})
+                // this.store.queryMultipleObject('/api/repinputcards', 'repinputinfo', {})
+                //     .then((rinfo) => {
+                //         component.set('totalRep', rinfo)
+                //     });
+                this.store.queryMultipleObject('/api/v1/repinputcards/0', 'repinputinfo', {})
                     .then((rinfo) => {
-                        component.set('totalRep', rinfo)
+                        component.set('data', rinfo)
                     });
             }
 
         },
 
+*/
+
         getRepBudget(component) {
-            this.store.queryObject('/api/repsbudgets', 'repsbudget', {})
-                .then((randbs) => {
-                    let result = randbs;
-                    component.set('data', result)
-                });
+            // this.store.queryObject('/api/repsbudgets', 'repsbudget', {})
+            //     .then((randbs) => {
+            //         let result = randbs;
+            //         component.set('data', result)
+            //     });
+            let req = this.store.createRecord('request', {
+                res: 'scenario',
+            });
+
+            let eqValues = [
+                { type: 'eqcond', key: 'uuid', val: this.get('uuid') },
+            ]
+
+            eqValues.forEach((elem, index) => {
+                req.get(elem.type).pushObject(this.store.createRecord(elem.type, {
+                    key: elem.key,
+                    val: elem.val,
+                }))
+            });
+            let conditions = this.store.object2JsonApi('request', req);
+
+            let alreadydata = this.store.peekAll('repinputinfo');
+            if (alreadydata.length === 0) {
+                this.store.queryMultipleObject('/api/v1/repinputcards/0', 'repinputinfo', conditions)
+                    .then((rinfo) => {
+                        component.set('data', rinfo)
+                    });
+            } else {
+                component.set('data', alreadydata)
+            }
+
         },
-        getHospCardInfo(component) {
-            this.store.queryMultipleObject('/api/hospitalinfo', 'hospitalbaseinfo', {})
-                .then((hinfo) => {
-                    component.set('data', hinfo)
-                });
-        },
+        /*
+                getHospCardInfo(component) {
+                    this.store.queryMultipleObject('/api/hospitalinfo', 'hospitalbaseinfo', {})
+                        .then((hinfo) => {
+                            component.set('data', hinfo)
+                        });
+                },
+
+                */
         getInputCard(component) {
-            this.store.queryMultipleObject('/api/repinputcards', 'repinputinfo', {})
-                .then((rinfo) => {
-                    component.set('data', rinfo)
-                });
+            let req = this.store.createRecord('request', {
+                res: 'scenario',
+            });
+
+            let eqValues = [
+                { type: 'eqcond', key: 'uuid', val: this.get('uuid') },
+            ]
+
+            eqValues.forEach((elem, index) => {
+                req.get(elem.type).pushObject(this.store.createRecord(elem.type, {
+                    key: elem.key,
+                    val: elem.val,
+                }))
+            });
+            let conditions = this.store.object2JsonApi('request', req);
+            //
+            // this.store.queryMultipleObject('/api/repinputcards', 'repinputinfo', {})
+            //     .then((rinfo) => {
+            //         component.set('data', rinfo)
+            //     });
+            let alreadydata = this.store.peekAll('repinputinfo');
+            if (alreadydata.length === 0) {
+                console.log('length is o')
+                this.store.queryMultipleObject('/api/v1/repinputcards/0', 'repinputinfo', conditions)
+                    .then((rinfo) => {
+                        component.set('data', rinfo);
+                    });
+            } else {
+                console.log(alreadydata);
+                component.set('data', alreadydata)
+            }
         },
     },
 });

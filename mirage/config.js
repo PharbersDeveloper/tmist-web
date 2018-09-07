@@ -21,8 +21,6 @@ export default function() {
                 "attributes": {
                     "name": "关卡一",
                     "desc": "This is proposal first.",
-                    "scenario_id": "dddd"
-
                 },
                 "id": "5b7e454a8fb8076c3c3304p0",
                 "type": "proposal"
@@ -30,8 +28,6 @@ export default function() {
                 "attributes": {
                     "name": "关卡二",
                     "desc": "This is second proposal",
-                    "scenario_id": "cccc"
-
                 },
                 "id": "5b7e454a8fb8076c3c3304p1",
                 "type": "proposal"
