@@ -19,6 +19,4 @@ export default DS.Model.extend({
     outpatient_yearly: DS.attr('number'),
     beds: DS.attr('number'),
     featured_outpatient: DS.attr('string'),
-    // medicines: DS.hasMany('hospmedicinfo'),
-    // signrep: DS.belongsTo('hosprep'),
 });
