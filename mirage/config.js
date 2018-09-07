@@ -1011,71 +1011,71 @@ export default function() {
                     "columns": [{
                             "label": '产品名称',
                             "valuePath": 'brand_name',
-                            "width": '100px',
+                            // "width": '100px',
                             "align": 'center',
                             "sorted": false,
 
                         }, {
                             "label": '市场销售额',
                             "valuePath": 'potential',
-                            "width": '100px',
+                            // "width": '100px',
                             "align": 'center',
                             "cellComponent": 'table-number-thousands'
                         }, {
                             "label": '市场增长(%)',
                             "valuePath": 'market_growth',
-                            "width": '100px',
+                            // "width": '100px',
                             "align": 'center',
                             "cellComponent": 'table-number-percent'
 
                         }, {
                             "label": '当期销售额',
                             "valuePath": 'sales',
-                            "width": '100px',
+                            // "width": '100px',
                             "align": 'center',
                             "cellComponent": 'table-number-thousands'
                         }, {
                             "label": '销售增长(%)',
                             "valuePath": 'sales_growth',
-                            "width": '100px',
+                            // "width": '100px',
                             "align": 'center',
                             "cellComponent": 'table-number-percent'
                         }, {
                             "label": 'EV值(%)',
                             "valuePath": 'ev_value',
-                            "width": '80px',
+                            // "width": '80px',
                             "align": 'center',
                             "cellComponent": 'table-number-percent'
                         }, {
                             "label": '份额(%)',
                             "valuePath": 'share',
-                            "width": '80px',
+                            // "width": '80px',
                             "align": 'center',
                             "cellComponent": 'table-number-percent'
                         }, {
                             "label": '份额增长(%)',
                             "valuePath": 'share_change',
-                            "width": '100px',
+                            // "width": '100px',
                             "align": 'center',
                             "cellComponent": 'table-number-percent'
                         }, {
                             "label": '指标',
                             "valuePath": 'target',
-                            "width": '100px',
+                            // "width": '100px',
                             "align": 'center',
                             "cellComponent": 'table-number-thousands'
                         },
                         {
                             "label": '指标达成率(%)',
                             "valuePath": 'achieve_rate',
-                            "width": '100px',
+                            // "width": '100px',
                             "align": 'center',
                             "cellComponent": 'table-number-percent'
                         },
                         {
                             "label": '销售贡献率(%)',
                             "valuePath": 'contri_rate',
-                            "width": '100px',
+                            // "width": '100px',
                             "align": 'center',
                             "cellComponent": 'table-number-percent'
                         }
@@ -1157,6 +1157,1046 @@ export default function() {
                             "target": 262969,
                             "achieve_rate": 0.46,
                             "contri_rate": 0.64
+                        }
+                    ],
+                }
+            }
+        }
+    })
+
+    this.post('/api/report/cards/hosp-product',(schema,request) => {
+        return {
+            "data":[{
+                "type":"result-card",
+                "id":"result-card-4",
+                "attributes":{
+                            "index": 1,
+                            "title": "表现最佳",
+                            "type": "info",
+                            "value": "医院1-产品1",
+                            "ext": {
+                                "sub": {
+                                    "title": "份额",
+                                    "type": "percent",
+                                    "value": 0.12,
+                                    "ext": {
+                                        "type": "percent",
+                                        "change": "up",
+                                        "value": 0.07
+                                    }
+                                }
+                        }
+                }
+            },{
+                    "type":"result-card",
+                    "id":"result-card-5",
+                    "attributes":{
+                            "index": 2,
+                            "title": "表现最差",
+                            "type": "info",
+                            "value": "医院2-产品1",
+                            "ext": {
+                                "sub": {
+                                    "title": "份额",
+                                    "type": "percent",
+                                    "value": 0.25,
+                                    "ext": {
+                                        "type": "percent",
+                                        "change": "down",
+                                        "value": 0.1
+                                    }
+                                }
+                            },
+                    }
+                },{
+                        "type":"result-card",
+                        "id":"result-card-6",
+                        "attributes":{
+                            "index": 3,
+                            "title": "销售增长最快",
+                            "type": "info",
+                            "value": "医院2-产品3",
+                            "ext": {
+                                "sub": {
+                                    "type": "title",
+                                    "value": 658432,
+                                    "ext": {
+                                        "type": "percent",
+                                        "change": "up",
+                                        "value": 0.14
+                                    }
+                                }
+                            },
+                        }
+            },{
+                "type":"result-card",
+                "id":"result-card-7",
+                "attributes":{
+                    "index": 4,
+                    "title": "贡献度最高",
+                    "type": "info",
+                    "value": "医院3-产品3",
+                    "ext": {
+                        "sub": {
+                            "type": "title",
+                            "value": 658432,
+                            "ext": {
+                                "type": "percent",
+                                "change": "none",
+                                "value": 0.11
+                            }
+                        }
+                    },
+                }
+            },{
+                "type":"result-card",
+                "id":"result-card-8",
+                "attributes":{
+                    "index": 5,
+                    "title": "平均指标达成",
+                    "type": "percent",
+                    "value": 0.6,
+                }
+            }]
+        }
+    })
+
+    this.post('/api/report/table/hosp-product',(schema,request) => {
+        return {
+            "data":{
+                "type": "result-table-data",
+                "id": "result-table-data-hosp-product",
+                "attributes":{
+                    "columns": [{
+                        "label": '医院名称',
+                        "valuePath": 'hosp_name',
+                        // "width": '100px',
+                        "align": 'center',
+                        "sorted": false,
+                    }, {
+                        "label": '产品名称',
+                        "valuePath": 'brand_name',
+                        // "width": '100px',
+                        "align": 'center',
+                        "sorted": false,
+
+                    }, {
+                        "label": '市场潜力',
+                        "valuePath": 'potential',
+                        // "width": '100px',
+                        "align": 'center',
+                        "cellComponent": 'table-number-thousands'
+                    }, {
+                        "label": '市场增长(%)',
+                        "valuePath": 'market_growth',
+                        // "width": '80px',
+                        "align": 'center',
+                        "cellComponent": 'table-number-percent'
+
+                    }, {
+                        "label": '当期销售额',
+                        "valuePath": 'sales',
+                        // "width": '100px',
+                        "align": 'center',
+                        "cellComponent": 'table-number-thousands'
+                    }, {
+                        "label": '销售增长(%)',
+                        "valuePath": 'sales_growth',
+                        // "width": '80px',
+                        "align": 'center',
+                        "cellComponent": 'table-number-percent'
+                    }, {
+                        "label": 'EV值(%)',
+                        "valuePath": 'ev_value',
+                        // "width": '80px',
+                        "align": 'center',
+                        "cellComponent": 'table-number-percent'
+                    }, {
+                        "label": '份额(%)',
+                        "valuePath": 'share',
+                        // "width": '80px',
+                        "align": 'center',
+                        "cellComponent": 'table-number-percent'
+                    }, {
+                        "label": '份额增长(%)',
+                        "valuePath": 'share_change',
+                        // "width": '80px',
+                        "align": 'center',
+                        "cellComponent": 'table-number-percent'
+                    }, {
+                        "label": '指标',
+                        "valuePath": 'target',
+                        // "width": '100px',
+                        "align": 'center',
+                        "cellComponent": 'table-number-thousands'
+                    },
+                    {
+                        "label": '指标达成率(%)',
+                        "valuePath": 'achieve_rate',
+                        // "width": '100px',
+                        "align": 'center',
+                        "cellComponent": 'table-number-percent'
+                    }, {
+                        "label": '销售贡献率(%)',
+                        "valuePath": 'sales_contri',
+                        // "width": '100px',
+                        "align": 'center',
+                        "cellComponent": 'table-number-percent'
+                    }
+                ],
+                "columnsValue": [{
+                        "hosp_name": "医院01",
+                        "brand_name": "测试产品1",
+                        "potential": 30178,
+                        "market_growth": 0.1,
+                        "sales": 26045,
+                        "sales_growth": 0.11,
+                        "ev_value": 0.1,
+                        "share": 0.11,
+                        "share_change": 0.1,
+                        "target": 11709,
+                        "achieve_rate": 0.1,
+                        "sales_contri": 0.2
+                    },
+                    {
+                        "hosp_name": "医院02",
+                        "brand_name": "测试产品2",
+                        "potential": 17803,
+                        "market_growth": 0.2,
+                        "sales": 48850,
+                        "sales_growth": 0.22,
+                        "ev_value": 0.2,
+                        "share": 0.22,
+                        "share_change": 0.2,
+                        "target": 37416,
+                        "achieve_rate": 0.2,
+                        "sales_contri": 0.2
+
+                    },
+                    {
+                        "hosp_name": "医院03",
+                        "brand_name": "测试产品3",
+                        "potential": 16415,
+                        "market_growth": 0.3,
+                        "sales": 4032,
+                        "sales_growth": 0.33,
+                        "ev_value": 0.3,
+                        "share": 0.33,
+                        "share_change": 0.3,
+                        "target": 561318,
+                        "achieve_rate": 0.3,
+                        "sales_contri": 0.2
+
+                    },
+                    {
+                        "hosp_name": "医院04",
+                        "brand_name": "测试产品4",
+                        "potential": 42369,
+                        "market_growth": 0.4,
+                        "sales": 26549,
+                        "sales_growth": 0.44,
+                        "ev_value": 0.4,
+                        "share": 0.44,
+                        "share_change": 0.4,
+                        "target": 26299,
+                        "achieve_rate": 0.4,
+                        "sales_contri": 0.2
+
+                    },
+                    {
+                        "hosp_name": "医院05",
+                        "brand_name": "测试产品4",
+                        "potential": 42369,
+                        "market_growth": 0.54,
+                        "sales": 265459,
+                        "sales_growth": 0.45,
+                        "ev_value": 0.4,
+                        "share": 0.454,
+                        "share_change": 0.54,
+                        "target": 262959,
+                        "achieve_rate": 0.54,
+                        "sales_contri": 0.2
+
+                    },
+                    {
+                        "hosp_name": "医院06",
+                        "brand_name": "测试产品4",
+                        "potential": 42369,
+                        "market_growth": 0.64,
+                        "sales": 265649,
+                        "sales_growth": 0.64,
+                        "ev_value": 0.64,
+                        "share": 0.464,
+                        "share_change": 0.64,
+                        "target": 266299,
+                        "achieve_rate": 0.64,
+                        "sales_contri": 0.2
+
+                    },
+                    {
+                        "hosp_name": "医院07",
+                        "brand_name": "测试产品4",
+                        "potential": 423679,
+                        "market_growth": 0.47,
+                        "sales": 265479,
+                        "sales_growth": 0.47,
+                        "ev_value": 0.47,
+                        "share": 0.74,
+                        "share_change": 0.74,
+                        "target": 262799,
+                        "achieve_rate": 0.477,
+                        "sales_contri": 0.2
+
+                    }
+                ],
+                }
+
+
+            }
+        }
+    })
+
+    this.post('/api/report/cards/represent-product',(schema,request) => {
+        return {
+            "data":[{
+                "type":"result-card",
+                "id":"product-card-1",
+                "attributes":{
+                    "index": 1,
+                    "title": "表现最佳",
+                    "type": "info",
+                    "value": "医院1-产品1",
+                    "ext": {
+                        "sub": {
+                            "title": "份额",
+                            "type": "percent",
+                            "value": 0.12,
+                            "ext": {
+                                "type": "percent",
+                                "change": "up",
+                                "value": 0.07
+                            }
+                        }
+                    },
+                },
+            },{
+                "type":"result-card",
+                "id":"product-card-2",
+                "attributes":{
+                    "index": 2,
+                    "title": "贡献度最高",
+                    "type": "info",
+                    "value": "医院3-产品3",
+                    "ext": {
+                        "sub": {
+                            "type": "title",
+                            "value": 658432,
+                            "ext": {
+                                "type": "percent",
+                                "change": "none",
+                                "value": 0.11
+                            }
+                        }
+                    },
+                },
+            },{
+                "type":"result-card",
+                "id":"product-card-3",
+                "attributes":{
+                    "index": 3,
+                    "title": "平均指标达成",
+                    "type": "percent",
+                    "value": 0.6,
+                },
+            }]
+        }
+    })
+
+    this.post('/api/report/table/represent-product',(schema,request) => {
+        return {
+            "data":{
+                "type": "result-table-data",
+                "id": "result-table-data-represent-product",
+                "attributes":{
+                    "columns": [{
+                            "label": '代表名称',
+                            "valuePath": 'rep_name',
+                            // "width": '160px',
+                            "align": 'center',
+                            "sorted": false,
+
+                        }, {
+                            "label": '产品名称',
+                            "valuePath": 'brand_name',
+                            // "width": '130px',
+                            "align": 'center',
+                            "sorted": false,
+
+                        }, {
+                            "label": '当期销售额',
+                            "valuePath": 'sales',
+                            // "width": '130px',
+                            "align": 'center',
+                            "cellComponent": 'table-number-thousands'
+                        }, {
+                            "label": '销售增长(%)',
+                            "valuePath": 'sales_growth',
+                            // "width": '130px',
+                            "align": 'center',
+                            "cellComponent": 'table-number-percent'
+                        }, {
+                            "label": '指标',
+                            "valuePath": 'target',
+                            // "width": '140px',
+                            "align": 'center',
+                            "cellComponent": 'table-number-thousands'
+                        },
+                        {
+                            "label": '指标达成率(%)',
+                            "valuePath": 'achieve_rate',
+                            // "width": '100px',
+                            "align": 'center',
+                            "cellComponent": 'table-number-percent'
+                        },
+                        {
+                            "label": '销售贡献率(%)',
+                            "valuePath": 'contri_rate',
+                            // "width": '120px',
+                            "align": 'center',
+                            "cellComponent": 'table-number-percent'
+                        }
+                    ],
+                    "columnsValue": [{
+                            "rep_name": "代表01",
+                            "brand_name": "测试产品1",
+                            "sales": 26045,
+                            "sales_growth": 0.11,
+                            "target": 11709,
+                            "achieve_rate": 0.1,
+                            "contri_rate": 0.1
+                        },
+                        {
+                            "rep_name": "代表02",
+                            "brand_name": "测试产品2",
+                            "sales": 48850,
+                            "sales_growth": 0.22,
+                            "target": 37416,
+                            "achieve_rate": 0.2,
+                            "contri_rate": 0.2
+                        },
+                        {
+                            "rep_name": "代表03",
+                            "brand_name": "测试产品3",
+                            "sales": 4032,
+                            "sales_growth": 0.33,
+                            "target": 561318,
+                            "achieve_rate": 0.3,
+                            "contri_rate": 0.3
+                        },
+                        {
+                            "rep_name": "代表04",
+                            "brand_name": "测试产品4",
+                            "sales": 26549,
+                            "sales_growth": 0.44,
+                            "target": 26299,
+                            "achieve_rate": 0.4,
+                            "contri_rate": 0.4
+                        },
+                        {
+                            "rep_name": "代表05",
+                            "brand_name": "测试产品5",
+                            "sales": 26549,
+                            "sales_growth": 0.44,
+                            "target": 26299,
+                            "achieve_rate": 0.4,
+                            "contri_rate": 0.4
+                        }
+                    ],
+                }
+            }
+        }
+    })
+
+    this.post('/api/report/cards/resource',(schema,request) => {
+        return {
+            "data":[{
+                "type":"result-card",
+                "id":"resource-card-1",
+                "attributes":{
+                    "index": 1,
+                    "title": "预算投入最多",
+                    "type": "info",
+                    "value": "医院3-产品3",
+                    "ext": {
+                        "sub": {
+                            "type": "title",
+                            "value": "预算占比",
+                            "ext": {
+                                "type": "percent",
+                                "change": "none",
+                                "value": 0.41
+                            }
+                        }
+                    },
+                }
+            },{
+                "type":"result-card",
+                "id":"resource-card-2",
+                "attributes":{
+                    "index": 2,
+                    "title": "时间投入最多",
+                    "type": "info",
+                    "value": "医院1-产品3",
+                    "ext": {
+                        "sub": {
+                            "type": "title",
+                            "value": "小宋",
+                            "ext": {
+                                "type": "percent",
+                                "change": "none",
+                                "value": 0.26
+                            }
+                        }
+                    },
+                }
+            },{
+                "type":"result-card",
+                "id":"resource-card-3",
+                "attributes":{
+                    "index": 3,
+                    "title": "表现最佳",
+                    "type": "info",
+                    "value": "医院1-产品1",
+                    "ext": {
+                        "sub": {
+                            "title": "份额",
+                            "type": "percent",
+                            "value": 0.12,
+                            "ext": {
+                                "type": "percent",
+                                "change": "up",
+                                "value": 0.07
+                            }
+                        }
+                    },
+                }
+            },{
+                "type":"result-card",
+                "id":"resource-card-4",
+                "attributes":{
+                    "index": 4,
+                    "title": "贡献度最高",
+                    "type": "info",
+                    "value": "医院3-产品3",
+                    "ext": {
+                        "sub": {
+                            "type": "title",
+                            "value": 658432,
+                            "ext": {
+                                "type": "percent",
+                                "change": "none",
+                                "value": 0.11
+                            }
+                        }
+                    },
+                }
+            }]
+        }
+    })
+
+    this.post('/api/report/table/resource',(schema,request) => {
+        return {
+            "data":{
+                "type": "result-table-data",
+                "id": "result-table-data-resource",
+                "attributes":{
+                    "columns": [{
+                            "label": '医院名称',
+                            "valuePath": 'hosp_name',
+                            // "width": '100px',
+                            "align": 'center',
+                            "sorted": false,
+
+                        }, {
+                            "label": '产品名称',
+                            "valuePath": 'brand_name',
+                            // "width": '100px',
+                            "align": 'center',
+                            "sorted": false,
+
+                        }, {
+                            "label": '分配代表',
+                            "valuePath": 'rep',
+                            // "width": '80px',
+                            "align": 'center',
+                        }, {
+                            "label": '时间分配(天)',
+                            "valuePath": 'time',
+                            // "width": '80px',
+                            "align": 'center',
+
+                        }, {
+                            "label": '预算分配',
+                            "valuePath": 'budget',
+                            // "width": '100px',
+                            "align": 'center',
+                            "cellComponent": 'table-number-thousands'
+                        }, {
+                            "label": '市场潜力(%)',
+                            "valuePath": 'potential',
+                            // "width": '80px',
+                            "align": 'center',
+                            "cellComponent": 'table-number-percent'
+                        }, {
+                            "label": '潜力增长(%)',
+                            "valuePath": 'potential_growth',
+                            // "width": '80px',
+                            "align": 'center',
+                            "cellComponent": 'table-number-percent'
+                        }, {
+                            "label": '销售额',
+                            "valuePath": 'sales',
+                            // "width": '100px',
+                            "align": 'center',
+                            "cellComponent": 'table-number-thousands'
+                        }, {
+                            "label": '销售增长(%)',
+                            "valuePath": 'sales_growth',
+                            // "width": '80px',
+                            "align": 'center',
+                            "cellComponent": 'table-number-percent'
+                        }, {
+                            "label": '份额(%)',
+                            "valuePath": 'share',
+                            // "width": '80px',
+                            "align": 'center',
+                            "cellComponent": 'table-number-percent'
+                        }, {
+                            "label": '份额增长(%)',
+                            "valuePath": 'share_change',
+                            // "width": '100px',
+                            "align": 'center',
+                            "cellComponent": 'table-number-percent'
+                        },
+
+                        {
+                            "label": '销售贡献率(%)',
+                            "valuePath": 'contri_rate',
+                            "width": '100px',
+                            "align": 'center',
+                            "cellComponent": 'table-number-percent'
+                        }
+                    ],
+                    "columnsValue": [{
+                            "hosp_name": "医院001",
+                            "brand_name": "测试产品1",
+                            "rep": "小赵",
+                            "time": 0.1,
+                            "budget": 26045,
+                            "potential": 0.11,
+                            "potential_growth": 0.1,
+                            "sales": 11709,
+                            "sales_growth": 0.01,
+                            "share": 0.11,
+                            "share_change": 0.1,
+                            "contri_rate": 0.1
+                        },
+                        {
+                            "hosp_name": "医院002",
+                            "brand_name": "测试产品2",
+                            "rep": "小钱",
+                            "time": 0.2,
+                            "budget": 48850,
+                            "potential": 0.22,
+                            "potential_growth": 0.2,
+                            "sales": 37416,
+                            "sales_growth": 0.01,
+                            "share": 0.22,
+                            "share_change": 0.2,
+                            "contri_rate": 0.2
+                        },
+                        {
+                            "hosp_name": "医院003",
+                            "brand_name": "测试产品3",
+                            "rep": "小孙",
+                            "time": 0.3,
+                            "budget": 4032,
+                            "potential": 0.33,
+                            "potential_growth": 0.3,
+                            "sales": 561318,
+                            "sales_growth": 0.01,
+                            "share": 0.33,
+                            "share_change": 0.3,
+                            "contri_rate": 0.3
+                        },
+                        {
+                            "hosp_name": "医院004",
+                            "brand_name": "测试产品4",
+                            "rep": "小李",
+                            "time": 0.4,
+                            "budget": 26549,
+                            "potential": 0.44,
+                            "potential_growth": 0.4,
+                            "sales": 26299,
+                            "sales_growth": 0.01,
+                            "share": 0.44,
+                            "share_change": 0.4,
+                            "contri_rate": 0.4
+                        }
+                    ],
+                }
+            }
+        }
+    })
+
+    this.post('/api/report/cards/represent-target',(schema,request) => {
+        return {
+            "data":[{
+                "type":"result-card",
+                "id":"traget-card-1",
+                "attributes":{
+                    "index": 1,
+                    "title": "指标最重",
+                    "type": "info",
+                    "value": "代表1",
+                    "ext": {
+                        "sub": {
+                            "type": "title",
+                            "value": "指标",
+                            "ext": {
+                                "type": "sales",
+                                "change": "none",
+                                "value": 5156544
+                            }
+                        }
+                    },
+                }
+            },{
+                "type":"result-card",
+                "id":"target-card-2",
+                "attributes": {
+                    "index": 2,
+                    "title": "资源最多",
+                    "type": "info",
+                    "value": "代表2",
+                    "ext": {
+                        "sub": {
+                            "type": "title",
+                            "value": "预算占比",
+                            "ext": {
+                                "type": "percent",
+                                "change": "none",
+                                "value": 0.15
+                            }
+                        }
+                    },
+                }
+            },{
+                "type":"result-card",
+                "id":"target-card-3",
+                "attributes":{
+                    "index": 3,
+                    "title": "达成率最高",
+                    "type": "info",
+                    "value": "代表3",
+                    "ext": {
+                        "sub": {
+                            "type": "title",
+                            "value": "达成率",
+                            "ext": {
+                                "type": "percent",
+                                "change": "none",
+                                "value": 0.27
+                            }
+                        }
+                    },
+                }
+            },{
+                "type":"result-card",
+                "id":"target-card-4",
+                "attributes":{
+                    "index": 4,
+                    "title": "贡献度最高",
+                    "type": "info",
+                    "value": "代表5",
+                    "ext": {
+                        "sub": {
+                            "type": "title",
+                            "value": "贡献度",
+                            "ext": {
+                                "type": "percent",
+                                "change": "none",
+                                "value": 0.07
+                            }
+                        }
+                    },
+                },
+            }]
+        }
+    })
+
+    this.post('/api/report/table/represent-target',(schema,request) => {
+        return {
+            "data":{
+                "type": "result-table-data",
+                "id": "result-table-data-target",
+                "attributes":{
+                    "columns": [{
+                            "label": '代表名称',
+                            "valuePath": 'brand_name',
+                            // "width": '180px',
+                            "align": 'center',
+                            "sorted": false,
+
+                        }, {
+                            "label": '负责指标',
+                            "valuePath": 'potential',
+                            // "width": '120px',
+                            "align": 'center',
+                            "cellComponent": 'table-number-thousands'
+                        }, {
+                            "label": '当期销售额',
+                            "valuePath": 'sales',
+                            // "width": '120px',
+                            "align": 'center',
+                            "cellComponent": 'table-number-thousands'
+                        },
+                        {
+                            "label": '指标达成率(%)',
+                            "valuePath": 'achieve_rate',
+                            // "width": '120px',
+                            "align": 'center',
+                            "cellComponent": 'table-number-percent'
+                        },
+                        {
+                            "label": '预算比例(%)',
+                            "valuePath": 'budget_rate',
+                            // "width": '120px',
+                            "align": 'center',
+                            "cellComponent": 'table-number-percent'
+                        },
+                        {
+                            "label": '销售贡献率(%)',
+                            "valuePath": 'contri_rate',
+                            // "width": '120px',
+                            "align": 'center',
+                            "cellComponent": 'table-number-percent'
+                        }, {
+                            "label": '工作天数',
+                            "valuePath": 'workdays',
+                            // "width": '120px',
+                            "align": 'center',
+                        }, {
+                            "label": '奖金',
+                            "valuePath": 'target',
+                            // "width": '160px',
+                            "align": 'center',
+                            "cellComponent": 'table-number-thousands'
+                        },
+
+                    ],
+                    "columnsValue": [{
+                            "brand_name": "代表1",
+                            "potential": 30178,
+                            "sales": 26045,
+                            "achieve_rate": 0.1,
+                            "budget_rate": 0.23,
+                            "contri_rate": 0.1,
+                            "workdays": 21,
+
+                            "target": 11709,
+
+                        },
+                        {
+                            "brand_name": "代表2",
+                            "potential": 17803,
+                            "sales": 48850,
+                            "achieve_rate": 0.2,
+                            "budget_rate": 0.53,
+
+                            "contri_rate": 0.2,
+                            "workdays": 21,
+
+                            "target": 37416,
+
+                        },
+                        {
+                            "brand_name": "代表3",
+                            "potential": 16415,
+                            "sales": 4032,
+                            "achieve_rate": 0.3,
+                            "budget_rate": 0.13,
+
+                            "contri_rate": 0.3,
+                            "workdays": 21,
+
+                            "target": 561318,
+
+                        },
+                        {
+                            "brand_name": "代表4",
+                            "potential": 42369,
+                            "sales": 26549,
+                            "achieve_rate": 0.4,
+                            "budget_rate": 0.29,
+
+                            "contri_rate": 0.4,
+                            "workdays": 21,
+
+                            "target": 26299,
+
+                        },
+                        {
+                            "brand_name": "代表4",
+                            "potential": 34563,
+                            "sales": 236572,
+                            "achieve_rate": 0.6,
+                            "budget_rate": 0.2,
+
+                            "contri_rate": 0.7,
+                            "workdays": 21,
+
+                            "target": 56621,
+
+                        }
+                    ],
+                }
+            }
+        }
+    })
+
+    this.post('/api/report/cards/represent-ability',(schema,request) => {
+        return {
+            "data":[{
+                "type":"result-card",
+                "id":"ability-card-1",
+                "attributes": {
+                        "index": 1,
+                        "title": "综合能力最强",
+                        "type": "info",
+                        "value": "代表3",
+                        "ext": {
+                            "sub": {
+                                "type": "title",
+                                "value": "指标",
+                                "ext": {
+                                    "type": "sales",
+                                    "change": "none",
+                                    "value": 2547835
+                                }
+                            }
+                        },
+            },
+        },{
+                "type":"result-card",
+                "id":"ability-card-2",
+                "attributes":{
+                    "index": 2,
+                    "title": "成长最快",
+                    "type": "info",
+                    "value": "代表5",
+                    "ext": {
+                        "sub": {
+                            "type": "title",
+                            "value": "预算占比",
+                            "ext": {
+                                "type": "percent",
+                                "change": "none",
+                                "value": 0.09
+                            }
+                        }
+                    },
+                }
+        }]
+        }
+    })
+
+    this.post('/api/report/table/represent-ability',(schema,request) => {
+        return {
+            "data":{
+                "type": "result-table-data",
+                "id": "result-table-data-ability",
+                "attributes":{
+                    "columns": [{
+                            "label": '代表名称',
+                            "valuePath": 'rep_name',
+                            // "width": '180px',
+                            "align": 'center',
+                            "sorted": false,
+
+                        }, {
+                            "label": '总能力值',
+                            "valuePath": 'ability',
+                            // "width": '200px',
+                            "align": 'center',
+                            "cellComponent": 'table-number-thousands'
+                        }, {
+                            "label": '产品知识',
+                            "valuePath": 'prod_know',
+                            // "width": '200px',
+                            "align": 'center',
+                        }, {
+                            "label": '销售技巧',
+                            "valuePath": 'sales',
+                            // "width": '150px',
+                            "align": 'center',
+                        }, {
+                            "label": '增长',
+                            "valuePath": 'sales_growth',
+                            // "width": '150px',
+                            "align": 'center',
+                        }, {
+                            "label": '工作积极性',
+                            "valuePath": 'work_activity',
+                            // "width": '180px',
+                            "align": 'center',
+                        },
+
+                    ],
+                    "columnsValue": [{
+                            "rep_name": "代表1",
+                            "ability": 45,
+                            "prod_know": 65,
+                            "sales": 56,
+                            "sales_growth": 4,
+                            "work_activity": 88,
+
+                        },
+                        {
+                            "rep_name": "代表2",
+                            "ability": 65,
+                            "prod_know": 35,
+                            "sales": 87,
+                            "sales_growth": 5,
+                            "work_activity": 45,
+
+                        },
+                        {
+                            "rep_name": "代表3",
+                            "ability": 34,
+                            "prod_know": 62,
+                            "sales": 89,
+                            "sales_growth": 5,
+                            "work_activity": 21,
+
+                        },
+                        {
+                            "rep_name": "代表4",
+                            "ability": 55,
+                            "prod_know": 23,
+                            "sales": 68,
+                            "sales_growth": 2,
+                            "work_activity": 74,
+
+                        },
+                        {
+                            "rep_name": "代表5",
+                            "ability": 46,
+                            "prod_know": 55,
+                            "sales": 62,
+                            "sales_growth": 6,
+                            "work_activity": 19,
+
                         }
                     ],
                 }
