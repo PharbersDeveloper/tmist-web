@@ -11,8 +11,8 @@ export default Controller.extend({
             });
 
             let eqValues = [
-                { id: 'email', type: 'eqcond', key: 'email', val: a },
-                { id: 'password', type: 'eqcond', key: 'password', val: p },
+                { type: 'eqcond', key: 'email', val: a },
+                { type: 'eqcond', key: 'password', val: p },
             ]
 
             eqValues.forEach((elem, index) => {

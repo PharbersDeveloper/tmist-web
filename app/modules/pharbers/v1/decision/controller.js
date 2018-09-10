@@ -8,13 +8,12 @@ export default Controller.extend({
         runCalc() {
             this.transitionToRoute('pharbers.v1.reports', this.get('uuid'))
         },
-        queryAllDecision(component) {
-            // this.store.queryMultipleObject('/api/decision', 'alldecision', {})
-            //     .then((result) => {
-            //         component.set('total', result);
-            //     });
-        },
-
+        // queryAllDecision(component) {
+        //     this.store.queryMultipleObject('/api/decision', 'alldecision', {})
+        //         .then((result) => {
+        //             component.set('total', result);
+        //         });
+        // },
         getMedicNotices(component) {
             let req = this.store.createRecord('request', {
                 res: 'scenario',
@@ -31,32 +30,18 @@ export default Controller.extend({
                 }))
             });
             let conditions = this.store.object2JsonApi('request', req);
-
+            console.log('this is from decision routes getMedicNotices function');
             let alreadydata = this.store.peekAll('medicsnotice');
-            if (alreadydata.length === 0) {
-                this.store.queryObject('/api/v1/medicsnotices/0', 'medicsnotice', conditions)
-                    .then((mwithns) => {
-                        component.set('data', mwithns);
-                    });
-            } else {
-                component.set('data', alreadydata);
-            }
-        },
-        /*
-        //  获取manager 决策页面的药品与通知信息。
-        getManagerMedicNotices(component) {
-            let data = this.Data
-            data.set('attributes.res', "tm-login")
-            data.set('relationships.conditions', { data: [{ id: '2', type: 'eq_cond' }] });
-            let include = [{ id: '2', type: 'eq_cond', key: 'a', val: 'p' }];
-
-            let conditions = this.Contact.joint(data, include);
-            this.store.queryObject('/api/medicsnotices', 'medicsnotice', {})
+            console.log(alreadydata.length);
+            // if (alreadydata.length === 0) {
+            this.store.queryObject('/api/v1/medicsnotices/0', 'medicsnotice', conditions)
                 .then((mwithns) => {
                     component.set('data', mwithns);
                 });
+            // } else {
+            //     component.set('data', alreadydata);
+            // }
         },
-*/
         getHospInfo(component) {
             let req = this.store.createRecord('request', {
                 res: 'scenario',
@@ -84,28 +69,10 @@ export default Controller.extend({
                 component.set('data', alreadydata);
             }
 
-            // this.store.queryMultipleObject('/api/hospitalinfo', 'hospitalbaseinfo', {})
-            //     .then((hinfo) => {
-            //         component.set('data', hinfo)
-            //     });
-            // if (this.get('repinputinfo').length > 0) {
-            //     component.set('totalRep', this.get('repinputinfo'));
-            // } else {
-            //     this.store.queryMultipleObject('/api/v1/repinputcards/0', 'repinputinfo', {})
-            //         .then((rinfo) => {
-            //             component.set('data', rinfo)
-            //         });
-            // }
-
         },
 
 
         getRepBudget(component) {
-            // this.store.queryObject('/api/repsbudgets', 'repsbudget', {})
-            //     .then((randbs) => {
-            //         let result = randbs;
-            //         component.set('data', result)
-            //     });
             let req = this.store.createRecord('request', {
                 res: 'scenario',
             });
@@ -133,15 +100,6 @@ export default Controller.extend({
             }
 
         },
-        /*
-                getHospCardInfo(component) {
-                    this.store.queryMultipleObject('/api/hospitalinfo', 'hospitalbaseinfo', {})
-                        .then((hinfo) => {
-                            component.set('data', hinfo)
-                        });
-                },
-
-                */
         getInputCard(component) {
             let req = this.store.createRecord('request', {
                 res: 'scenario',
@@ -158,20 +116,14 @@ export default Controller.extend({
                 }))
             });
             let conditions = this.store.object2JsonApi('request', req);
-            //
-            // this.store.queryMultipleObject('/api/repinputcards', 'repinputinfo', {})
-            //     .then((rinfo) => {
-            //         component.set('data', rinfo)
-            //     });
+
             let alreadydata = this.store.peekAll('repinputinfo');
             if (alreadydata.length === 0) {
-                console.log('length is o')
                 this.store.queryMultipleObject('/api/v1/repinputcards/0', 'repinputinfo', conditions)
                     .then((rinfo) => {
                         component.set('data', rinfo);
                     });
             } else {
-                console.log(alreadydata);
                 component.set('data', alreadydata)
             }
         },
