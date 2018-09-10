@@ -3,6 +3,7 @@ import DS from 'ember-data';
 export default DS.Model.extend({
     rep_name: DS.attr('string'),
     rep_image: DS.attr('string'),
+    rep_describe: DS.attr('string'),
     rep_level: DS.attr('string'),
     age: DS.attr('number'),
     education: DS.attr('string'),

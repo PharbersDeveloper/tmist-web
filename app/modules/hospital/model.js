@@ -19,4 +19,5 @@ export default DS.Model.extend({
     outpatient_yearly: DS.attr('number'),
     beds: DS.attr('number'),
     featured_outpatient: DS.attr('string'),
+    hosp_describe: DS.attr('string')
 });
