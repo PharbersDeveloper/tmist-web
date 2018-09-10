@@ -4,10 +4,7 @@ import { inject } from '@ember/service';
 export default Route.extend({
     ajax: inject(),
     cookies: inject(),
-    // setupController(controller, model) {
-    //     this._super(controller, model);
-    //     controller.queryTotal(model.uuid);
-    // },
+
     getAjaxOpt(data) {
         return {
             method: 'POST',

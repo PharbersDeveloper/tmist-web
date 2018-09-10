@@ -1,2 +1,13 @@
 {{outlet}}
-{{all-decision model queryDecision=(action 'queryAllDecision')}}
+{{all-decision model
+    getMedicNotices=(action 'getMedicNotices')
+    getHospInfo=(action 'getHospInfo')
+    getInputCard=(action 'getInputCard')
+    getRepBudget=(action 'getRepBudget')
+    runCalc=(action 'runCalc')}}
+
+    {{!-- queryDecision=(action 'queryAllDecision')
+
+
+    getHospCardInfo=(action 'getHospCardInfo')
+    getManagerMedicNotices=(action 'getManagerMedicNotices') --}}

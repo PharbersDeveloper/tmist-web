@@ -13,7 +13,6 @@ Router.map(function() {
             this.route('index', { path: '/:uuid' }, function() {
                 this.route('hosp-list', { path: "hosp-list" });
                 this.route('hosp-list-detail', { path: "hosp-list-detail/:hospid" });
-
                 this.route('reports', function() {
                     this.route('hosp-product', { path: "hosp-product/:id" });
                     this.route('represent-product', { path: "represent-product/:id" });
@@ -25,14 +24,14 @@ Router.map(function() {
             });
             this.route('imitate-train');
             this.route('evaluation');
-            this.route('reports', function() {
+            this.route('reports', { path: 'reports/:uuid' }, function() {
                 this.route('hosp-product');
                 this.route('represent-product');
                 this.route('resource');
                 this.route('represent-target');
                 this.route('represent-ability');
             });
-            this.route('decision', { path: "decision/:id" });
+            this.route('decision', { path: "decision/:uuid" });
         });
         this.route('v2', { path: 'v2/tm' });
     });
