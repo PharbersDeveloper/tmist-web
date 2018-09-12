@@ -22,7 +22,9 @@ Router.map(function() {
                 });
                 this.route('decision');
             });
-            this.route('imitate-train');
+            this.route('imitate-train', function() {
+                this.route('decision', { path: "decision/:uuid" });
+            });
             this.route('evaluation');
             this.route('reports', { path: 'reports/:uuid' }, function() {
                 this.route('hosp-product');

@@ -35,8 +35,8 @@ export default Route.extend({
                 }
             }
         }
-        return model;
-        // this.logger.log(model);
+        // return model;
+
         return this.get('ajax').request('/api/report/total', this.getAjaxOpt(condi))
             .then((res) => {
                 if (res.status === "ok") {
