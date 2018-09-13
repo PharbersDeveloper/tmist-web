@@ -15,6 +15,7 @@ export default Controller.extend({
         });
         this.set('HospStorageData', storageData);
     },
+
     recoveryRepresentativeModelRelationship(totalRepInputInfo, localType, localArray) {
         let uuid = this.get('uuid');
         let storageData = [];
@@ -27,11 +28,13 @@ export default Controller.extend({
         });
         this.set(localArray, storageData);
     },
+
     init() {
         this._super(...arguments);
         this.HospStorageData = [];
         this.repStorageData = [];
     },
+
     setManagersTime(data) {
         let totalUsedBudget = 0;
         let totalManagerUsedDay = 0;
@@ -42,22 +45,20 @@ export default Controller.extend({
         });
         this.get('verticalRightComponent').set('budget', totalUsedBudget);
         this.get('verticalRightComponent').set('totalUsedDays', totalManagerUsedDay);
-            
+        return totalManagerUsedDay;
     },
+
     asyncHospInputAlreadyData: observer('HospStorageData.@each', function() {
         let data = this.get('HospStorageData');
-        let totalUsedBudget = 0;
-        let totalManagerUsedDay = 0;
 
-        data.map((hosp) => {
-            totalUsedBudget = totalUsedBudget + (Number(hosp.data.attributes.budget) || 0);
-            totalManagerUsedDay = totalManagerUsedDay + (Number(hosp.data.attributes.managerwith) || 0);
-        });
         if (!this.get('verticalRightComponent').get('isDestroyed') ||
             !this.get('verticalRightComponent').get('isDestroying')) {
-           this.setManagersTime(data)
+            let totalManUesdDay = this.setManagersTime(data);
+            let managerinputinfo = this.store.peekAll('managerinputinfo').firstObject;
+            managerinputinfo.set('used_day', totalManUesdDay);
         }
         let repInputRecords = this.store.peekAll('repinputinfo');
+
         repInputRecords.map((rep) => {
             let useday = 0;
             data.map((hosp) => {
@@ -70,6 +71,7 @@ export default Controller.extend({
                 });
             });
             rep.set('used_days', useday);
+
         });
     }),
 
@@ -77,16 +79,18 @@ export default Controller.extend({
         let data = this.get('repStorageData');
         let managerTotalSalesTrain = 0;
         let repInputRecords = this.store.peekAll('repinputinfo');
-        let managerInputRecord = this.store.peekAll('managerinputinfo');
+        let managerInputRecord = this.store.peekAll('managerinputinfo').firstObject;
         repInputRecords.forEach((rep) => {
             data.forEach((localRep) => {
                 if (rep.id == localRep.data.id) {
                     rep.set('product_train', Number(localRep.data.attributes.product_train) || 0);
                     rep.set('sales_train', Number(localRep.data.attributes.sales_train) || 0);
                 };
-                managerTotalSalesTrain = localRep + (Number(localRep.data.attributes.sales_train) || 0)
+                managerTotalSalesTrain = managerTotalSalesTrain + (Number(localRep.data.attributes.sales_train) || 0);
             });
         });
+        debugger
+        console.log(managerTotalSalesTrain);
         managerInputRecord.set('sales_train', managerTotalSalesTrain);
     }),
 
@@ -186,14 +190,25 @@ export default Controller.extend({
 
             let alreadydata = this.store.peekAll('repinputinfo');
 
+            let malreadydata = this.store.peekAll('managerinputinfo');
             if (alreadydata.length === 0) {
                 this.store.queryMultipleObject('/api/v1/repinputcards/0', 'repinputinfo', conditions)
                     .then((rinfo) => {
                         component.set('data', rinfo)
                     });
             } else {
-                component.set('data', alreadydata)
+                component.set('data', alreadydata);
+            };
+            if (malreadydata.length == 0) {
+                this.store.queryObject('/api/v1/managerInputInfo/0', 'managerinputinfo', conditions)
+                    .then((minfo) => {
+                        component.set('mdata', minfo)
+                    });
+            } else {
+                component.set('mdata', malreadydata);
+
             }
+
         },
 
         getInputCard(component) {
@@ -309,14 +324,15 @@ export default Controller.extend({
         },
 
         getManagerTime(component) {
-            this.store.peekAll('managerinputinfo').forEach((item) => {
-                item.deleteRecord();
-            });
-            let managerTimeAsign = this.store.peekAll('managerinputinfo');
-            this.store.createRecord('managerinputinfo', {
-                product_train: "",
-            })
-            console.log(managerTimeAsign);
+            let malreadydata = this.store.peekAll('managerinputinfo').firstObject;
+            if (malreadydata.length == 0) {
+                this.store.queryObject('/api/v1/managerInputInfo/0', 'managerinputinfo', conditions)
+                    .then((minfo) => {
+                        component.set('mdata', minfo)
+                    });
+            } else {
+                component.set('mdata', malreadydata);
+            }
         },
     },
 });
