@@ -32,7 +32,18 @@ export default Controller.extend({
         this.HospStorageData = [];
         this.repStorageData = [];
     },
+    setManagersTime(data) {
+        let totalUsedBudget = 0;
+        let totalManagerUsedDay = 0;
 
+        data.map((hosp) => {
+            totalUsedBudget = totalUsedBudget + (Number(hosp.data.attributes.budget) || 0);
+            totalManagerUsedDay = totalManagerUsedDay + (Number(hosp.data.attributes.managerwith) || 0);
+        });
+        this.get('verticalRightComponent').set('budget', totalUsedBudget);
+        this.get('verticalRightComponent').set('totalUsedDays', totalManagerUsedDay);
+            
+    },
     asyncHospInputAlreadyData: observer('HospStorageData.@each', function() {
         let data = this.get('HospStorageData');
         let totalUsedBudget = 0;
@@ -44,8 +55,7 @@ export default Controller.extend({
         });
         if (!this.get('verticalRightComponent').get('isDestroyed') ||
             !this.get('verticalRightComponent').get('isDestroying')) {
-            this.get('verticalRightComponent').set('budget', totalUsedBudget);
-            this.get('verticalRightComponent').set('totalUsedDays', totalManagerUsedDay);
+           this.setManagersTime(data)
         }
         let repInputRecords = this.store.peekAll('repinputinfo');
         repInputRecords.map((rep) => {
@@ -154,7 +164,9 @@ export default Controller.extend({
         },
 
         getRepBudget(component) {
+            let data = this.get('HospStorageData');
             this.set('verticalRightComponent', component);
+            this.setManagersTime(data)
             let req = this.store.createRecord('request', {
                 res: 'scenario',
             });
