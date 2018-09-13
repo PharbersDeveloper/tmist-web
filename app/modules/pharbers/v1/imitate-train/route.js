@@ -4,9 +4,5 @@ export default Route.extend({
     model() {
         return this.store.queryMultipleObject('/api/v1/proposalLst/0', 'proposal', {});
     },
-    actions: {
-        simulation(uuid) {
-            this.transitionTo('pharbers.v1.decision', uuid)
-        },
-    }
+
 });

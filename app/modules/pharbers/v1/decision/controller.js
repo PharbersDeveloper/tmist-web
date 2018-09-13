@@ -1,24 +1,16 @@
 import Controller from '@ember/controller';
 
 export default Controller.extend({
-    init() {
-        this._super(...arguments);
-    },
+
     actions: {
         runCalc() {
             this.transitionToRoute('pharbers.v1.reports', this.get('uuid'))
         },
-        // queryAllDecision(component) {
-        //     this.store.queryMultipleObject('/api/decision', 'alldecision', {})
-        //         .then((result) => {
-        //             component.set('total', result);
-        //         });
-        // },
+
         getMedicNotices(component) {
             let req = this.store.createRecord('request', {
                 res: 'scenario',
             });
-
             let eqValues = [
                 { type: 'eqcond', key: 'uuid', val: this.get('uuid') },
             ]
@@ -30,9 +22,7 @@ export default Controller.extend({
                 }))
             });
             let conditions = this.store.object2JsonApi('request', req);
-            console.log('this is from decision routes getMedicNotices function');
-            let alreadydata = this.store.peekAll('medicsnotice');
-            console.log(alreadydata.length);
+            // let alreadydata = this.store.peekAll('medicsnotice');
             // if (alreadydata.length === 0) {
             this.store.queryObject('/api/v1/medicsnotices/0', 'medicsnotice', conditions)
                 .then((mwithns) => {
@@ -42,6 +32,7 @@ export default Controller.extend({
             //     component.set('data', alreadydata);
             // }
         },
+
         getHospInfo(component) {
             let req = this.store.createRecord('request', {
                 res: 'scenario',
@@ -71,7 +62,6 @@ export default Controller.extend({
 
         },
 
-
         getRepBudget(component) {
             let req = this.store.createRecord('request', {
                 res: 'scenario',
@@ -98,8 +88,8 @@ export default Controller.extend({
             } else {
                 component.set('data', alreadydata)
             }
-
         },
+
         getInputCard(component) {
             let req = this.store.createRecord('request', {
                 res: 'scenario',

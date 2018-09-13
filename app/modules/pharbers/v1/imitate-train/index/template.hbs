@@ -1,0 +1,26 @@
+<div local-class="train-container">
+    <div local-class="menu">
+        <div local-class="title">
+            <img src="/assets/images/logo_train.png" alt="">
+            <span>铁马模拟平台</span>
+        </div>
+        <div local-class="user">
+            <p> ALex Guo<span class="glyphicon glyphicon-triangle-bottom"></span></p>
+        </div>
+        <ul>
+            <li><span class="glyphicon glyphicon-th-large"></span> 模拟训练</li>
+            <li><span class="glyphicon glyphicon-tasks"></span> 历史报告</li>
+        </ul>
+    </div>
+    <div local-class="content">
+        {{#each model as |item|}}
+            <div local-class="checkpoint">
+                <span local-class="title">{{item.proposal_name}}</span>
+                <span local-class="btn-simulation" {{action 'simulation' '0542e4c6-b5a8-4518-b7e3-9867c19f22db'}}>进入模拟<span class="glyphicon glyphicon-menu-right"></span></span>
+            </div>
+        {{else}}
+            <h2>正在加载数据...</h2>
+        {{/each}}
+    </div>
+</div>
+{{!-- {{outlet}} --}}
