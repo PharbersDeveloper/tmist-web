@@ -3,38 +3,91 @@ import { isEmpty } from '@ember/utils';
 import { computed, observer } from '@ember/object';
 
 export default Controller.extend({
+    recoveryModelRelationship(totalHospBaseInfoRecovery) {
+        let uuid = this.get('uuid');
+        let storageData = [];
+        totalHospBaseInfoRecovery.map((hosp) => {
+            let object = {};
+            object = JSON.parse(localStorage.getItem('hospinput_' + uuid + "_" + hosp.id));
+            if (object) {
+                storageData.pushObject(object.hospinfo);
+            }
+        });
+        this.set('HospStorageData', storageData);
+    },
+    recoveryRepresentativeModelRelationship(totalRepInputInfo, localType, localArray) {
+        let uuid = this.get('uuid');
+        let storageData = [];
+        totalRepInputInfo.map((item) => {
+            let object = {};
+            object = JSON.parse(localStorage.getItem(localType + '_' + uuid + "_" + item.id));
+            if (object) {
+                storageData.pushObject(object[localType]);
+            }
+        });
+        this.set(localArray, storageData);
+    },
     init() {
         this._super(...arguments);
-        this.storageData = [];
+        this.HospStorageData = [];
+        this.repStorageData = [];
     },
-    asyncRepDays: observer('storageData.@each', function() {
-        let data = this.get('storageData');
+
+    asyncHospInputAlreadyData: observer('HospStorageData.@each', function() {
+        let data = this.get('HospStorageData');
         let totalUsedBudget = 0;
+        let totalManagerUsedDay = 0;
+
         data.map((hosp) => {
-            totalUsedBudget = totalUsedBudget + Number(hosp.data.attributes.budget);
-        })
+            totalUsedBudget = totalUsedBudget + (Number(hosp.data.attributes.budget) || 0);
+            totalManagerUsedDay = totalManagerUsedDay + (Number(hosp.data.attributes.managerwith) || 0);
+        });
+        if (!this.get('verticalRightComponent').get('isDestroyed') ||
+            !this.get('verticalRightComponent').get('isDestroying')) {
+            this.get('verticalRightComponent').set('budget', totalUsedBudget);
+            this.get('verticalRightComponent').set('totalUsedDays', totalManagerUsedDay);
+        }
         let repInputRecords = this.store.peekAll('repinputinfo');
-        let perRep = {};
         repInputRecords.map((rep) => {
             let useday = 0;
             data.map((hosp) => {
                 hosp.included.map((inc) => {
                     if (inc.type == "representative") {
                         if (inc.id == rep.id) {
-                            useday = useday + Number(hosp.data.attributes.asignday);
+                            useday = useday + (Number(hosp.data.attributes.asignday) || 0);
                         }
                     }
                 });
             });
             rep.set('used_days', useday);
-        })
-        let totalManagerUsedDay = 0;
-        data.map((hosp) => {
-            totalManagerUsedDay = totalManagerUsedDay + Number(hosp.data.attributes.managerwith);
         });
-        console.log(totalManagerUsedDay);
-
     }),
+
+    asyncRepInputDays: observer('repStorageData.@each', function() {
+        let data = this.get('repStorageData');
+        let managerTotalSalesTrain = 0;
+        let repInputRecords = this.store.peekAll('repinputinfo');
+        let managerInputRecord = this.store.peekAll('managerinputinfo');
+        repInputRecords.forEach((rep) => {
+            data.forEach((localRep) => {
+                if (rep.id == localRep.data.id) {
+                    rep.set('product_train', Number(localRep.data.attributes.product_train) || 0);
+                    rep.set('sales_train', Number(localRep.data.attributes.sales_train) || 0);
+                };
+                managerTotalSalesTrain = localRep + (Number(localRep.data.attributes.sales_train) || 0)
+            });
+        });
+        managerInputRecord.set('sales_train', managerTotalSalesTrain);
+    }),
+
+    //更新localstorage数组数据
+    updateLocalStorageArray(uuid, id, newdata, dataType) {
+        let arrayObject = this.get(dataType).filter((item) => {
+            return item.data.id != id
+        });
+        arrayObject.pushObject(newdata);
+        this.set(dataType, arrayObject);
+    },
     actions: {
         runCalc() {
             this.transitionToRoute('pharbers.v1.reports', this.get('uuid'))
@@ -83,9 +136,11 @@ export default Controller.extend({
                 this.store.queryMultipleObject('/api/v1/hospitalinfo/0', 'hospitalbaseinfo', conditions)
                     .then((hinfo) => {
                         component.set('data', hinfo);
+                        this.recoveryModelRelationship(hinfo);
                     });
             } else {
                 component.set('data', alreadydata);
+                this.recoveryModelRelationship(alreadydata);
             }
 
             if (allrepresent.length === 0) {
@@ -99,6 +154,7 @@ export default Controller.extend({
         },
 
         getRepBudget(component) {
+            this.set('verticalRightComponent', component);
             let req = this.store.createRecord('request', {
                 res: 'scenario',
             });
@@ -144,14 +200,19 @@ export default Controller.extend({
 
             let alreadydata = this.store.peekAll('repinputinfo');
 
+
+
             if (alreadydata.length === 0) {
                 this.store.queryMultipleObject('/api/v1/repinputcards/0', 'repinputinfo', conditions)
                     .then((rinfo) => {
                         component.set('data', rinfo);
+                        this.recoveryRepresentativeModelRelationship(rinfo, 'repinfo', 'repStorageData');
                     });
             } else {
-                component.set('data', alreadydata)
+                component.set('data', alreadydata);
+                this.recoveryRepresentativeModelRelationship(alreadydata, 'repinfo', 'repStorageData');
             }
+
         },
 
         recoveryHospInput(hospid) {
@@ -192,19 +253,16 @@ export default Controller.extend({
             let hospInputInfo = {
                 uuid: uuid,
                 hospinfo: recordJsonApi
-                // hosp_id: id,
-                // target: recordJsonApi.data.attributes.target,
-                // budget: recordJsonApi.data.attributes.budget,
-                // asignday: recordJsonApi.data.attributes.asignday,
-                // managerwith: recordJsonApi.data.attributes.managerwith
             };
 
             localStorage.setItem('hospinput_' + uuid + "_" + id, JSON.stringify(hospInputInfo));
-            let arrayObject = this.get('storageData').filter((item) => {
-                return item.data.id != id
-            });
-            arrayObject.pushObject(recordJsonApi);
-            this.set('storageData', arrayObject);
+            this.updateLocalStorageArray(uuid, id, recordJsonApi, 'HospStorageData');
+
+            // let arrayObject = this.get('HospStorageData').filter((item) => {
+            //     return item.data.id != id
+            // });
+            // arrayObject.pushObject(recordJsonApi);
+            // this.set('HospStorageData', arrayObject);
         },
 
         chooseRep(repid) {
@@ -220,6 +278,33 @@ export default Controller.extend({
             };
             // this.set('currentRep',repid);
             localStorage.setItem('hospinput_' + uuid + "_" + hospid, JSON.stringify(hospInputInfo));
-        }
+
+            this.updateLocalStorageArray(uuid, hospid, hospRecordJsonApi, 'HospStorageData');
+        },
+
+        repInput(rid) {
+            console.log(rid);
+            let uuid = this.get('uuid');
+            let repRecord = this.store.peekRecord('repinputinfo', rid);
+            let recordJsonApi = this.store.object2JsonApi('repinputinfo', repRecord, false);
+            let repInputInfo = {
+                uuid: uuid,
+                repinfo: recordJsonApi
+            };
+
+            localStorage.setItem('repinfo_' + uuid + "_" + rid, JSON.stringify(repInputInfo));
+            this.updateLocalStorageArray(uuid, rid, recordJsonApi, 'repStorageData');
+        },
+
+        getManagerTime(component) {
+            this.store.peekAll('managerinputinfo').forEach((item) => {
+                item.deleteRecord();
+            });
+            let managerTimeAsign = this.store.peekAll('managerinputinfo');
+            this.store.createRecord('managerinputinfo', {
+                product_train: "",
+            })
+            console.log(managerTimeAsign);
+        },
     },
 });
