@@ -1,6 +1,7 @@
 import Controller from '@ember/controller';
 import { isEmpty } from '@ember/utils';
-import { computed, observer } from '@ember/object';
+import { observer } from '@ember/object';
+import { later } from '@ember/runloop';
 
 export default Controller.extend({
     recoveryModelRelationship(totalHospBaseInfoRecovery) {
@@ -34,7 +35,9 @@ export default Controller.extend({
         this.HospStorageData = [];
         this.repStorageData = [];
     },
-
+    //@TODO 王森  首先 经理的总时间你是通过后端数据得出来的，那么剩下的分配天数，怎么能是只计算医院下的输入天数呢，经理的分配天数应该是 KPI分析 + 团建例会 + 行政事务 + 1v1能力辅导 + 协助拜访的和才是经理的分配时间
+    // 这块儿写错了，最开始我以为这边是经理的所有时间，现在从逻辑看来这边的计算都错了
+    // 代码我是改不动了，建议你明天梳理一下计算逻辑，把部分代码重新写一下
     setManagersTime(data) {
         let totalUsedBudget = 0;
         let totalManagerUsedDay = 0;
@@ -89,9 +92,10 @@ export default Controller.extend({
                 managerTotalSalesTrain = managerTotalSalesTrain + (Number(localRep.data.attributes.sales_train) || 0);
             });
         });
-        debugger
-        console.log(managerTotalSalesTrain);
-        managerInputRecord.set('sales_train', managerTotalSalesTrain);
+        // @TODO 王森，报错的原因是在，模板加载时，你同时set model的数据，导致在不可更新的状态下去修改一个属性，这种行为是非常不安全的，
+        later(this, function(){
+            managerInputRecord.set('sales_train', managerTotalSalesTrain);
+        }, 500)
     }),
 
     //更新localstorage数组数据
