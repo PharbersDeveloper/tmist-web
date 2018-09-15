@@ -3,6 +3,8 @@ import { isEmpty } from '@ember/utils';
 import { observer } from '@ember/object';
 import { later } from '@ember/runloop';
 
+import { computed, observer } from '@ember/object';
+import { isArray } from '@ember/array';
 export default Controller.extend({
     recoveryModelRelationship(totalHospBaseInfoRecovery) {
         let uuid = this.get('uuid');
@@ -20,13 +22,22 @@ export default Controller.extend({
     recoveryRepresentativeModelRelationship(totalRepInputInfo, localType, localArray) {
         let uuid = this.get('uuid');
         let storageData = [];
-        totalRepInputInfo.map((item) => {
+        if (isArray(totalRepInputInfo)) {
+            totalRepInputInfo.map((item) => {
+                let object = {};
+                object = JSON.parse(localStorage.getItem(localType + '_' + uuid + "_" + item.id));
+                if (object) {
+                    storageData.pushObject(object[localType]);
+                }
+            });
+        } else {
             let object = {};
-            object = JSON.parse(localStorage.getItem(localType + '_' + uuid + "_" + item.id));
+            object = JSON.parse(localStorage.getItem(localType + '_' + uuid + "_" + totalRepInputInfo.id));
             if (object) {
                 storageData.pushObject(object[localType]);
             }
-        });
+        }
+
         this.set(localArray, storageData);
     },
 
@@ -34,6 +45,7 @@ export default Controller.extend({
         this._super(...arguments);
         this.HospStorageData = [];
         this.repStorageData = [];
+        this.manStorageData = [];
     },
     //@TODO 王森  首先 经理的总时间你是通过后端数据得出来的，那么剩下的分配天数，怎么能是只计算医院下的输入天数呢，经理的分配天数应该是 KPI分析 + 团建例会 + 行政事务 + 1v1能力辅导 + 协助拜访的和才是经理的分配时间
     // 这块儿写错了，最开始我以为这边是经理的所有时间，现在从逻辑看来这边的计算都错了
@@ -80,22 +92,37 @@ export default Controller.extend({
 
     asyncRepInputDays: observer('repStorageData.@each', function() {
         let data = this.get('repStorageData');
-        let managerTotalSalesTrain = 0;
         let repInputRecords = this.store.peekAll('repinputinfo');
-        let managerInputRecord = this.store.peekAll('managerinputinfo').firstObject;
         repInputRecords.forEach((rep) => {
             data.forEach((localRep) => {
                 if (rep.id == localRep.data.id) {
                     rep.set('product_train', Number(localRep.data.attributes.product_train) || 0);
                     rep.set('sales_train', Number(localRep.data.attributes.sales_train) || 0);
                 };
-                managerTotalSalesTrain = managerTotalSalesTrain + (Number(localRep.data.attributes.sales_train) || 0);
             });
         });
         // @TODO 王森，报错的原因是在，模板加载时，你同时set model的数据，导致在不可更新的状态下去修改一个属性，这种行为是非常不安全的，
         later(this, function(){
             managerInputRecord.set('sales_train', managerTotalSalesTrain);
         }, 500)
+    }),
+
+    asyncManInput: observer('manStorageData.@each', function() {
+        let data = this.get('manStorageData')[0];
+        let managerTotalSalesTrain = 0;
+        let repInputRecords = this.store.peekAll('repinputinfo');
+        let managerInputRecord = this.store.peekAll('managerinputinfo').firstObject;
+
+        repInputRecords.forEach((rep) => {
+            // console.log(rep)
+            managerTotalSalesTrain = managerTotalSalesTrain + (Number(rep.sales_train) || 0);
+            rep.set('team_meet', data.data.attributes.team_meet);
+        });
+
+        managerInputRecord.set('sales_train', managerTotalSalesTrain);
+        managerInputRecord.set('team_meet', data.data.attributes.team_meet);
+        managerInputRecord.set('admin_work', data.data.attributes.admin_work);
+        managerInputRecord.set('kpi_analysi', data.data.attributes.kpi_analysi);
     }),
 
     //更新localstorage数组数据
@@ -106,25 +133,40 @@ export default Controller.extend({
         arrayObject.pushObject(newdata);
         this.set(dataType, arrayObject);
     },
+
+    queryConditions() {
+        let req = this.store.createRecord('request', { res: 'scenario' });
+        let eqValues = [{ type: 'eqcond', key: 'uuid', val: this.get('uuid') }];
+
+        eqValues.forEach((elem, index) => {
+            req.get(elem.type).pushObject(this.store.createRecord(elem.type, {
+                key: elem.key,
+                val: elem.val,
+            }))
+        });
+
+        let conditions = this.store.object2JsonApi('request', req);
+        return conditions;
+    },
+
     actions: {
         runCalc() {
-            this.transitionToRoute('pharbers.v1.reports', this.get('uuid'))
+            let repRecord = this.store.peekAll('repinputinfo');
+            let manRecord = this.store.peekAll('managerinputinfo').firstObject;
+            manRecord._internalModel.__relationships = { initializedRelationships: {} };
+            let hospRecord = this.store.peekAll('hospitalbaseinfo');
+            let hospRecordJsonApi = this.store.object2JsonApi('hospitalbaseinfo', hospRecord);
+            let manRecordJsonApi = this.store.object2JsonApi('managerinputinfo', manRecord);
+            let repRecordJsonApi = this.store.object2JsonApi('repinputinfo', repRecord);
+            console.log(hospRecordJsonApi);
+            console.log(manRecordJsonApi);
+            console.log(repRecordJsonApi);
+            // this.transitionToRoute('pharbers.v1.reports', this.get('uuid'))
         },
 
         getMedicNotices(component) {
-            let req = this.store.createRecord('request', { res: 'scenario' });
-            let eqValues = [{ type: 'eqcond', key: 'uuid', val: this.get('uuid') }];
 
-            eqValues.forEach((elem, index) => {
-                req.get(elem.type).pushObject(this.store.createRecord(elem.type, {
-                    key: elem.key,
-                    val: elem.val,
-                }))
-            });
-
-            let conditions = this.store.object2JsonApi('request', req);
-
-            this.store.queryObject('/api/v1/medicsnotices/0', 'medicsnotice', conditions)
+            this.store.queryObject('/api/v1/medicsnotices/0', 'medicsnotice', this.queryConditions())
                 .then((mwithns) => {
                     component.set('data', mwithns);
                 });
@@ -132,26 +174,12 @@ export default Controller.extend({
 
         getHospInfo(component) {
             component.set('uuid', this.get('uuid'));
-            let req = this.store.createRecord('request', {
-                res: 'scenario',
-            });
-
-            let eqValues = [{ type: 'eqcond', key: 'uuid', val: this.get('uuid') }];
-
-            eqValues.forEach((elem, index) => {
-                req.get(elem.type).pushObject(this.store.createRecord(elem.type, {
-                    key: elem.key,
-                    val: elem.val,
-                }))
-            });
-
-            let conditions = this.store.object2JsonApi('request', req);
 
             let alreadydata = this.store.peekAll('hospitalbaseinfo');
             let allrepresent = this.store.peekAll('repinputinfo');
 
             if (alreadydata.length === 0) {
-                this.store.queryMultipleObject('/api/v1/hospitalinfo/0', 'hospitalbaseinfo', conditions)
+                this.store.queryMultipleObject('/api/v1/hospitalinfo/0', 'hospitalbaseinfo', this.queryConditions())
                     .then((hinfo) => {
                         component.set('data', hinfo);
                         this.recoveryModelRelationship(hinfo);
@@ -162,7 +190,7 @@ export default Controller.extend({
             }
 
             if (allrepresent.length === 0) {
-                this.store.queryMultipleObject('/api/v1/repinputcards/0', 'repinputinfo', conditions)
+                this.store.queryMultipleObject('/api/v1/repinputcards/0', 'repinputinfo', this.queryConditions())
                     .then((rinfo) => {
                         component.set('totalRep', rinfo)
                     });
@@ -174,29 +202,14 @@ export default Controller.extend({
         getRepBudget(component) {
             let data = this.get('HospStorageData');
             this.set('verticalRightComponent', component);
-            this.setManagersTime(data)
-            let req = this.store.createRecord('request', {
-                res: 'scenario',
-            });
-
-            let eqValues = [
-                { type: 'eqcond', key: 'uuid', val: this.get('uuid') },
-            ];
-
-            eqValues.forEach((elem, index) => {
-                req.get(elem.type).pushObject(this.store.createRecord(elem.type, {
-                    key: elem.key,
-                    val: elem.val,
-                }))
-            });
-
-            let conditions = this.store.object2JsonApi('request', req);
+            this.setManagersTime(data);
 
             let alreadydata = this.store.peekAll('repinputinfo');
 
             let malreadydata = this.store.peekAll('managerinputinfo');
+
             if (alreadydata.length === 0) {
-                this.store.queryMultipleObject('/api/v1/repinputcards/0', 'repinputinfo', conditions)
+                this.store.queryMultipleObject('/api/v1/repinputcards/0', 'repinputinfo', this.queryConditions())
                     .then((rinfo) => {
                         component.set('data', rinfo)
                     });
@@ -204,7 +217,7 @@ export default Controller.extend({
                 component.set('data', alreadydata);
             };
             if (malreadydata.length == 0) {
-                this.store.queryObject('/api/v1/managerInputInfo/0', 'managerinputinfo', conditions)
+                this.store.queryObject('/api/v1/managerInputInfo/0', 'managerinputinfo', this.queryConditions())
                     .then((minfo) => {
                         component.set('mdata', minfo)
                     });
@@ -215,26 +228,35 @@ export default Controller.extend({
 
         },
 
+        getManagerTime(component) {
+            // let malreadydata = this.store.peekAll('managerinputinfo').firstObject;
+            // if (malreadydata.length == 0) {
+            //     this.store.queryObject('/api/v1/managerInputInfo/0', 'managerinputinfo', this.queryConditions())
+            //         .then((minfo) => {
+            //             console.log(minfo)
+            //             component.set('mdata', minfo)
+            //         });
+            // } else {
+            //     component.set('mdata', malreadydata);
+            // };
+            // let malreadydata = this.store.peekAll('managerinputinfo');
+            // if (malreadydata.length == 0) {
+            this.store.queryObject('/api/v1/managerInputInfo/0', 'managerinputinfo', this.queryConditions())
+                .then((minfo) => {
+                    component.set('mdata', minfo);
+                    this.recoveryRepresentativeModelRelationship(minfo, 'maninfo', 'manStorageData');
+                });
+            // } else {
+            //     component.set('mdata', malreadydata);
+            // }
+        },
+
         getInputCard(component) {
-            let req = this.store.createRecord('request', { res: 'scenario' });
-
-            let eqValues = [{ type: 'eqcond', key: 'uuid', val: this.get('uuid') }];
-
-            eqValues.forEach((elem, index) => {
-                req.get(elem.type).pushObject(this.store.createRecord(elem.type, {
-                    key: elem.key,
-                    val: elem.val,
-                }))
-            });
-
-            let conditions = this.store.object2JsonApi('request', req);
 
             let alreadydata = this.store.peekAll('repinputinfo');
 
-
-
             if (alreadydata.length === 0) {
-                this.store.queryMultipleObject('/api/v1/repinputcards/0', 'repinputinfo', conditions)
+                this.store.queryMultipleObject('/api/v1/repinputcards/0', 'repinputinfo', this.queryConditions())
                     .then((rinfo) => {
                         component.set('data', rinfo);
                         this.recoveryRepresentativeModelRelationship(rinfo, 'repinfo', 'repStorageData');
@@ -258,7 +280,6 @@ export default Controller.extend({
                     if (item.id == hospid) {
                         alreadyStorage.hospinfo.included.map((included) => {
                             if (included.type == "representative") {
-                                console.log('inside')
                                 repInStorage = included;
                                 repInStorageId = included.id;
                             }
@@ -289,11 +310,6 @@ export default Controller.extend({
             localStorage.setItem('hospinput_' + uuid + "_" + id, JSON.stringify(hospInputInfo));
             this.updateLocalStorageArray(uuid, id, recordJsonApi, 'HospStorageData');
 
-            // let arrayObject = this.get('HospStorageData').filter((item) => {
-            //     return item.data.id != id
-            // });
-            // arrayObject.pushObject(recordJsonApi);
-            // this.set('HospStorageData', arrayObject);
         },
 
         chooseRep(repid) {
@@ -307,14 +323,12 @@ export default Controller.extend({
                 uuid: uuid,
                 hospinfo: hospRecordJsonApi
             };
-            // this.set('currentRep',repid);
             localStorage.setItem('hospinput_' + uuid + "_" + hospid, JSON.stringify(hospInputInfo));
 
             this.updateLocalStorageArray(uuid, hospid, hospRecordJsonApi, 'HospStorageData');
         },
 
         repInput(rid) {
-            console.log(rid);
             let uuid = this.get('uuid');
             let repRecord = this.store.peekRecord('repinputinfo', rid);
             let recordJsonApi = this.store.object2JsonApi('repinputinfo', repRecord, false);
@@ -327,16 +341,19 @@ export default Controller.extend({
             this.updateLocalStorageArray(uuid, rid, recordJsonApi, 'repStorageData');
         },
 
-        getManagerTime(component) {
-            let malreadydata = this.store.peekAll('managerinputinfo').firstObject;
-            if (malreadydata.length == 0) {
-                this.store.queryObject('/api/v1/managerInputInfo/0', 'managerinputinfo', conditions)
-                    .then((minfo) => {
-                        component.set('mdata', minfo)
-                    });
-            } else {
-                component.set('mdata', malreadydata);
-            }
-        },
+        managerInput(mid) {
+            let uuid = this.get('uuid');
+            let manRecord = this.store.peekRecord('managerinputinfo', mid);
+            manRecord._internalModel.__relationships = { initializedRelationships: {} }
+            let recordJsonApi = this.store.object2JsonApi('managerinputinfo', manRecord, false);
+            let manInputInfo = {
+                uuid: uuid,
+                maninfo: recordJsonApi
+            };
+
+            localStorage.setItem('maninfo_' + uuid + "_" + mid, JSON.stringify(manInputInfo));
+            this.updateLocalStorageArray(uuid, mid, recordJsonApi, 'manStorageData');
+        }
+
     },
 });

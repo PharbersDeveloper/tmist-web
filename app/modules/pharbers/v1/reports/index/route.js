@@ -3,13 +3,13 @@ import Route from '@ember/routing/route';
 export default Route.extend({
 
     model() {
+
         let req = this.store.createRecord('request', {
-            res: 'user',
+            res: 'report',
         });
 
         let eqValues = [
-            { type: 'eqcond', key: 'email', val: 'a' },
-            { type: 'eqcond', key: 'password', val: 'p' },
+            { type: 'eqcond', key: "id", val: '5b643430e53d3732b00047ea' },
         ]
 
         eqValues.forEach((elem, index) => {
@@ -21,6 +21,6 @@ export default Route.extend({
 
         let conditions = this.store.object2JsonApi('request', req);
 
-        return this.store.queryMultipleObject('/api/report/total', 'report-overview', conditions)
+        return this.store.queryMultipleObject('/api/v1/reportLayout/0', 'report-layout', conditions)
     }
 });

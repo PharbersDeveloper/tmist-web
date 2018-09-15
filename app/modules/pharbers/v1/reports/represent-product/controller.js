@@ -1,79 +1,46 @@
 import Controller from '@ember/controller';
 
 export default Controller.extend({
+    queryConditions() {
+        let req = this.store.createRecord('request', {
+            res: 'report',
+        });
+
+        let eqValues = [
+            { type: 'eqcond', key: "id", val: '5b643430e53d3732b00047ea' },
+        ]
+
+        eqValues.forEach((elem, index) => {
+            req.get(elem.type).pushObject(this.store.createRecord(elem.type, {
+                key: elem.key,
+                val: elem.val,
+            }))
+        });
+
+        let conditions = this.store.object2JsonApi('request', req);
+        return conditions;
+    },
     actions: {
-        onclick(type,id) {
-            this.transitionToRoute('pharbers.v1.reports.'+type);
+        onclick(type, id) {
+            this.transitionToRoute('pharbers.v1.reports.' + type);
         },
+
         getDropdawnData(component) {
-            let req = this.store.createRecord('request', {
-                res: 'user',
-            });
-
-            let eqValues = [
-                { type: 'eqcond', key: 'email', val: 'a' },
-                { type: 'eqcond', key: 'password', val: 'p' },
-            ]
-
-            eqValues.forEach((elem, index) => {
-                req.get(elem.type).pushObject(this.store.createRecord(elem.type, {
-                    key: elem.key,
-                    val: elem.val,
-                }))
-            });
-
-            let conditions = this.store.object2JsonApi('request', req);
-
-            this.store.queryMultipleObject('/api/report/which', 'dropdowndata', conditions)
+            this.store.queryMultipleObject('/api/v1/reportWhich/0', 'dropdown-layout', this.queryConditions())
                 .then((dropdowndata) => {
                     component.set('currentRoute', 'represent-product');
                     component.set('data', dropdowndata);
                 });
         },
+
         getShowCard(component) {
-            let req = this.store.createRecord('request', {
-                res: 'user',
-            });
-
-            let eqValues = [
-                { type: 'eqcond', key: 'email', val: 'a' },
-                { type: 'eqcond', key: 'password', val: 'p' },
-            ]
-
-            eqValues.forEach((elem, index) => {
-                req.get(elem.type).pushObject(this.store.createRecord(elem.type, {
-                    key: elem.key,
-                    val: elem.val,
-                }))
-            });
-
-            let conditions = this.store.object2JsonApi('request', req);
-
-            this.store.queryMultipleObject('/api/report/cards/represent-product', 'result-card', conditions)
+            this.store.queryMultipleObject('/api/v1/cardsRepresentProduct/0', 'report-card', this.queryConditions())
                 .then((resultCardData) => {
                     component.set('data', resultCardData);
                 });
         },
         getResultTable(component) {
-            let req = this.store.createRecord('request', {
-                res: 'user',
-            });
-
-            let eqValues = [
-                { type: 'eqcond', key: 'email', val: 'a' },
-                { type: 'eqcond', key: 'password', val: 'p' },
-            ]
-
-            eqValues.forEach((elem, index) => {
-                req.get(elem.type).pushObject(this.store.createRecord(elem.type, {
-                    key: elem.key,
-                    val: elem.val,
-                }))
-            });
-
-            let conditions = this.store.object2JsonApi('request', req);
-
-            this.store.queryObject('/api/report/table/represent-product', 'result-table-data', conditions)
+            this.store.queryObject('/api/v1/tableRepresentProduct/0', 'report-table-data', this.queryConditions())
                 .then((result) => {
                     component.set('data', result);
                 });
