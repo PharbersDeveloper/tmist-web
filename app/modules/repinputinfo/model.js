@@ -5,6 +5,7 @@ export default DS.Model.extend({
     intro: DS.attr(),
     total_days: DS.attr('number'),
     used_days: DS.attr('number'),
+    team_meet: DS.attr('number'), 
     product_train: DS.attr(),
     sales_train: DS.attr(),
     team_meet: DS.attr(),
