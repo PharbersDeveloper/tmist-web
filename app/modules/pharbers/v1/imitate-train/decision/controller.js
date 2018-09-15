@@ -3,7 +3,6 @@ import { isEmpty } from '@ember/utils';
 import { observer } from '@ember/object';
 import { later } from '@ember/runloop';
 
-import { computed, observer } from '@ember/object';
 import { isArray } from '@ember/array';
 export default Controller.extend({
     recoveryModelRelationship(totalHospBaseInfoRecovery) {
