@@ -1,10 +1,10 @@
 import Controller from '@ember/controller';
 import RSVP from 'rsvp';
+import { inject as service } from '@ember/service';
 import { isEmpty } from '@ember/utils';
+
 export default Controller.extend({
-    init() {
-        this._super(...arguments);
-    },
+    stringVerification: service(),
     actions: {
         runCalc() {
             let repRecord = this.store.peekAll('repinputinfo');
@@ -24,13 +24,26 @@ export default Controller.extend({
 
             totalData.set('managerinputinfo', manRecord);
             let conditions = this.store.object2JsonApi('allotResult', totalData, false);
-            console.log(conditions);
-            this.store.queryObject('/api/v1/taskAllot/0', 'allotResult', conditions)
-                .then((res) => {
-                    if (!isEmpty(res.report_id)) {
-                        this.transitionToRoute('pharbers.v1.reports', this.get('uuid'))
-                    }
-                });
+            let verficationNull = this.stringVerification.stringIsEmpty(conditions);
+            if (verficationNull.state) {
+                console.log('ok');
+            } else {
+                console.log('not ok')
+            };
+            // conditions.included.forEach((singledata) => {
+            //     console.log(singledata);
+            //     if (this.stringVerification.stringIsEmpty(singledata).state) {
+            //         console.log('no empty')
+            //     } else {
+            //         console.log('has blankddf')
+            //     }
+            // })
+            // this.store.queryObject('/api/v1/taskAllot/0', 'allotResult', conditions)
+            //     .then((res) => {
+            //         if (!isEmpty(res.report_id)) {
+            //             this.transitionToRoute('pharbers.v1.reports', this.get('uuid'))
+            //         }
+            //     });
         },
 
         getMedicNotices(component) {
