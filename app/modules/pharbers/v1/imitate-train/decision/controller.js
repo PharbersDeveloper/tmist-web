@@ -1,24 +1,36 @@
 import Controller from '@ember/controller';
-
 import RSVP from 'rsvp';
-
+import { isEmpty } from '@ember/utils';
 export default Controller.extend({
     init() {
         this._super(...arguments);
-
     },
     actions: {
         runCalc() {
             let repRecord = this.store.peekAll('repinputinfo');
             let manRecord = this.store.peekAll('managerinputinfo').firstObject;
             let hospRecord = this.store.peekAll('hospitalbaseinfo');
-            let hospRecordJsonApi = this.store.object2JsonApi('hospitalbaseinfo', hospRecord);
-            let manRecordJsonApi = this.store.object2JsonApi('managerinputinfo', manRecord);
-            let repRecordJsonApi = this.store.object2JsonApi('repinputinfo', repRecord);
-            console.log(hospRecordJsonApi);
-            console.log(manRecordJsonApi);
-            console.log(repRecordJsonApi);
-            // this.transitionToRoute('pharbers.v1.reports', this.get('uuid'))
+
+            let totalData = this.store.createRecord('allotResult', {
+                "major": 1,
+                "minor": 0
+            });
+            hospRecord.map((hosp) => {
+                totalData.get('hospitalbaseinfo').pushObject(hosp);
+            });
+            repRecord.map((rep) => {
+                totalData.get('representative').pushObject(rep);
+            });
+
+            totalData.set('managerinputinfo', manRecord);
+            let conditions = this.store.object2JsonApi('allotResult', totalData, false);
+            console.log(conditions);
+            this.store.queryObject('/api/v1/taskAllot/0', 'allotResult', conditions)
+                .then((res) => {
+                    if (!isEmpty(res.report_id)) {
+                        this.transitionToRoute('pharbers.v1.reports', this.get('uuid'))
+                    }
+                });
         },
 
         getMedicNotices(component) {
@@ -112,29 +124,6 @@ export default Controller.extend({
                 component.set('mdata', managerInputCache.firstObject)
             }
             this.set('totalBudgetRatio', component);
-        },
-
-        getManagerTime(component) {
-            // let malreadydata = this.store.peekAll('managerinputinfo').firstObject;
-            // if (malreadydata.length == 0) {
-            //     this.store.queryObject('/api/v1/managerInputInfo/0', 'managerinputinfo', this.queryConditions())
-            //         .then((minfo) => {
-            //             console.log(minfo)
-            //             component.set('mdata', minfo)
-            //         });
-            // } else {
-            //     component.set('mdata', malreadydata);
-            // };
-            // let malreadydata = this.store.peekAll('managerinputinfo');
-            // if (malreadydata.length == 0) {
-            this.store.queryObject('/api/v1/managerInputInfo/0', 'managerinputinfo', this.queryConditions())
-                .then((minfo) => {
-                    component.set('mdata', minfo);
-                    this.recoveryRepresentativeModelRelationship(minfo, 'maninfo', 'manStorageData');
-                });
-            // } else {
-            //     component.set('mdata', malreadydata);
-            // }
         },
 
         getInputCard(component) {
