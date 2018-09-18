@@ -127,6 +127,7 @@ export default Controller.extend({
         },
 
         totalBugdetRatio(budget, defaultTotal) {
+            console.log("==============");
             this.set('totalBudget', defaultTotal);
             this.get('totalBudgetRatio').set('budget', budget);
             this.get('totalBudgetRatio').set('total', defaultTotal);
@@ -182,10 +183,6 @@ export default Controller.extend({
             }
 
         },
-
-
-
-
 
     },
 });
