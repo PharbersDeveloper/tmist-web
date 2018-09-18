@@ -6,7 +6,7 @@ import { isEmpty } from '@ember/utils';
 export default Controller.extend({
     stringVerification: service(),
     actions: {
-        runCalc() {
+        runCalc(component) {
             let repRecord = this.store.peekAll('repinputinfo');
             let manRecord = this.store.peekAll('managerinputinfo').firstObject;
             let hospRecord = this.store.peekAll('hospitalbaseinfo');
@@ -15,35 +15,47 @@ export default Controller.extend({
                 "major": 1,
                 "minor": 0
             });
-            hospRecord.map((hosp) => {
+
+            hospRecord.forEach((hosp) => {
+                console.log(hosp)
                 totalData.get('hospitalbaseinfo').pushObject(hosp);
             });
-            repRecord.map((rep) => {
+
+            repRecord.forEach((rep) => {
                 totalData.get('representative').pushObject(rep);
             });
 
             totalData.set('managerinputinfo', manRecord);
+            console.log('in component s');
+
             let conditions = this.store.object2JsonApi('allotResult', totalData, false);
-            let verficationNull = this.stringVerification.stringIsEmpty(conditions);
-            if (verficationNull.state) {
-                console.log('ok');
-            } else {
-                console.log('not ok')
-            };
-            // conditions.included.forEach((singledata) => {
-            //     console.log(singledata);
-            //     if (this.stringVerification.stringIsEmpty(singledata).state) {
-            //         console.log('no empty')
-            //     } else {
-            //         console.log('has blankddf')
-            //     }
-            // })
-            // this.store.queryObject('/api/v1/taskAllot/0', 'allotResult', conditions)
-            //     .then((res) => {
-            //         if (!isEmpty(res.report_id)) {
-            //             this.transitionToRoute('pharbers.v1.reports', this.get('uuid'))
+            console.log(conditions);
+
+
+            // let totalBudget = this.get('totalBudget');
+            // let verficationNull = this.stringVerification.stringIsEmpty(conditions, hospRecord, repRecord, manRecord);
+            // if (verficationNull.state) {
+            //     let budgetState = this.stringVerification.checkBudget(hospRecord, totalBudget);
+            //     if (budgetState.state) {
+            //         let daysState = this.stringVerification.checkDays(repRecord);
+            //         if (daysState.state) {
+            //             component.set('hintContent', '一切就绪。');
+            //             component.set('hintClass', 'alert alert-success');
+            //             // this.store.queryObject('/api/v1/taskAllot/0', 'allotResult', conditions)
+            //             //     .then((res) => {
+            //             //         if (!isEmpty(res.report_id)) {
+            //             //             this.transitionToRoute('pharbers.v1.reports', this.get('uuid'))
+            //             //         }
+            //             //     });
+            //         } else {
+            //             component.set('hintContent', daysState.hintContent);
             //         }
-            //     });
+            //     } else {
+            //         component.set('hintContent', budgetState.hintContent);
+            //     }
+            // } else {
+            //     component.set('hintContent', verficationNull.hintContent);
+            // };
         },
 
         getMedicNotices(component) {
@@ -98,7 +110,6 @@ export default Controller.extend({
                     component.set('totalRep', data[1]);
                     loadHospitallocalStorage(component.get('data'));
                 })
-
             } else {
                 component.set('data', hospitalCache);
                 component.set('totalRep', repInputCache);
@@ -107,8 +118,10 @@ export default Controller.extend({
 
         },
 
-        totalBugdetRatio(totalBudget) {
-            this.get('totalBudgetRatio').set('budget', totalBudget);
+        totalBugdetRatio(budget, defaultTotal) {
+            this.set('totalBudget', defaultTotal);
+            this.get('totalBudgetRatio').set('budget', budget);
+            this.get('totalBudgetRatio').set('total', defaultTotal);
         },
 
         getRepBudget(component) {

@@ -28,7 +28,7 @@ export default DS.Model.extend({
         } else {
             let medic = this.get('hospmedicinfos').firstObject;
             let totalBudget = medic.total_budget;
-            change = (change / totalBudget).toFixed(2);
+            change = (change * 100 / totalBudget).toFixed(2);
             return change;
         }
     }),
