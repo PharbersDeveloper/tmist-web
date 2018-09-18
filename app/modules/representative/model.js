@@ -17,5 +17,4 @@ export default DS.Model.extend({
     prod_knowledge_val: DS.attr('number'),
     motivation_val: DS.attr('number'),
     overall_val: DS.attr('number'),
-    repinputinfo: DS.belongsTo('repinputinfo', { async: false }),
 });

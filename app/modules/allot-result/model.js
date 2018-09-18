@@ -5,6 +5,6 @@ export default DS.Model.extend({
     minor: DS.attr(),
     report_id: DS.attr(),
     hospitalbaseinfo: DS.hasMany('hospitalbaseinfo', { async: false }),
-    representative: DS.hasMany('repinputinfo', { async: false }),
+    repinputinfo: DS.hasMany('repinputinfo', { async: false }),
     managerinputinfo: DS.belongsTo('managerinputinfo', { async: false }),
 });
