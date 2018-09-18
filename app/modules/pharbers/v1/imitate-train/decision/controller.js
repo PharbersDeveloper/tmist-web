@@ -17,20 +17,28 @@ export default Controller.extend({
             });
 
             hospRecord.forEach((hosp) => {
-                console.log(hosp)
                 totalData.get('hospitalbaseinfo').pushObject(hosp);
             });
 
             repRecord.forEach((rep) => {
-                totalData.get('representative').pushObject(rep);
+                totalData.get('repinputinfo').pushObject(rep);
             });
 
             totalData.set('managerinputinfo', manRecord);
             console.log('in component s');
 
-            let conditions = this.store.object2JsonApi('allotResult', totalData, false);
-            console.log(conditions);
+            let conditions = this.store.modelDeepParsing('allotResult', totalData);
+            console.log(JSON.stringify(conditions));
 
+            // let req = this.store.createRecord('request', {
+            //     res: 'scenario',
+            // });
+            // req.get('eqcond').pushObject(this.store.createRecord('eqcond', {
+            //     key: 'uuid',
+            //     val: this.get('uuid'),
+            // }))
+            // let conditions = this.store.object2JsonApi('request', req);
+            // console.info(conditions)
 
             // let totalBudget = this.get('totalBudget');
             // let verficationNull = this.stringVerification.stringIsEmpty(conditions, hospRecord, repRecord, manRecord);
