@@ -35,7 +35,7 @@
         "pharbers-tm-charts": "^1.0.0",
         "pharbers-tm-dropdown": "^1.0.0",
         "pharbers-tm-login": "^1.0.0",
-        "pharbers-tm-nav": "^1.0.0", 
+        "pharbers-tm-nav": "^1.0.0",  
         "pharbers-tm-result": "^1.0.0"
     },
     "devDependencies": {

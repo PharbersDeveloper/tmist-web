@@ -1,22 +1,7 @@
-<div local-class="evalution-container">
-    <div local-class="title-bar" class="col-md-12">
-        <span local-class="date">测评报告</span>
-        <span local-class="setting"> <img src="/assets/images/hosp-setting.png" alt=""> </span>
-    </div>
-    <div local-class="content">
-        <div class="container" local-class="container">
-            <div local-class="tab">
-                <p local-class="tab-title">多维能力分析</p>
-            </div>
-            <div local-class="radar">
-                <img src="/assets/images/leidatu.jpg" alt="">
-            </div>
-            {{#each model as |item|}}
-                {{evaluation-ability item}}
-            {{/each}}
-            <div local-class="detail">
-                <img src="/assets/images/zhexiantu.jpg" alt="">
-            </div>
-        </div>
-    </div>
-</div>
+{{outlet}}
+{{#each model as |ability|}}
+    {{evaluation-title-card data=ability}}
+{{/each}}
+
+{{capability-radio }}
+{{capability-line}}
