@@ -4,33 +4,54 @@ import { isEmpty } from '@ember/utils';
 export default Service.extend({
     stringIsEmpty(object, hospRecord, repRecord, manRecord) {
         let readyForVerficationArray = object.included;
-        let resultArray = readyForVerficationArray.map((oneitem) => {
-            let result = Object.keys(oneitem.attributes).every(function(item) {
-                return !isEmpty(oneitem.attributes[item])
-            });
-            return result;
-        });
+        let readyForVerficationArrayResult = readyForVerficationArray.filter((oneitem) => {
 
-        let firstFalseIndex = resultArray.indexOf(false);
+            if (oneitem.type == 'hospitalbaseinfo' || oneitem.type == 'repinputinfo' || oneitem.type == "managerinputinfo") {
+                let result = Object.keys(oneitem.attributes).every(function(item) {
+                    return !isEmpty(oneitem.attributes[item])
+                });
+                return result != undefined;
+            }
+        });
+        let resultArray = readyForVerficationArray.map((oneitem) => {
+
+            if (oneitem.type == 'hospitalbaseinfo' || oneitem.type == 'repinputinfo' || oneitem.type == "managerinputinfo") {
+                let result = Object.keys(oneitem.attributes).every(function(item) {
+                    return !isEmpty(oneitem.attributes[item])
+                });
+                return result;
+            }
+        });
+        console.log(resultArray);
+        let resultArrayNotUndefined = resultArray.filter((item) => {
+            return item != undefined;
+        })
+        console.log(resultArrayNotUndefined);
+        let firstFalseIndex = resultArrayNotUndefined.indexOf(false);
         let firstFalseObject = {};
         let hintContent = "请填写相关内容";
         if (firstFalseIndex >= 0) {
-            firstFalseObject = readyForVerficationArray[firstFalseIndex];
+            firstFalseObject = readyForVerficationArrayResult[firstFalseIndex];
+            console.log(firstFalseIndex);
+            console.log(firstFalseObject);
+            console.log(manRecord);
+            console.log(repRecord);
+            console.log(hospRecord);
+            if (manRecord.id == firstFalseObject.id) {
+                hintContent = '经理信息 未填写完成';
+            };
+            repRecord.map((item) => {
+                if (item.id == firstFalseObject.id) {
+                    hintContent = item.repInfo.rep_name + ' 未填写完成';
+                }
+            });
             hospRecord.map((item) => {
                 if (item.id == firstFalseObject.id) {
                     hintContent = item.hospital.hosp_name + ' 未填写完成';
                 }
             });
-            repRecord.map((item) => {
-                if (item.id == firstFalseObject.id) {
-                    hintContent = item.representative.rep_name + ' 未填写完成';
-                }
-            });
-            if (manRecord.id == firstFalseObject.id) {
-                hintContent = '经理信息 未填写完成';
-            }
         };
-        let resultBoolean = resultArray.every(function(item) {
+        let resultBoolean = resultArrayNotUndefined.every(function(item) {
             return item == true;
         });
         if (resultBoolean) {

@@ -3,10 +3,10 @@ import { computed } from '@ember/object';
 import { isEmpty } from '@ember/utils';
 
 export default DS.Model.extend({
-    target: DS.attr(),
-    budget: DS.attr(),
-    asignday: DS.attr(),
-    managerwith: DS.attr(),
+    target: DS.attr('number'),
+    budget: DS.attr('number'),
+    asignday: DS.attr('number'),
+    managerwith: DS.attr('number'),
     representative: DS.belongsTo('representative', { async: false }),
     hospmedicinfos: DS.hasMany('hospmedicinfo', { async: false }),
     hospital: DS.belongsTo('hospital', { async: false }),
@@ -17,7 +17,7 @@ export default DS.Model.extend({
         } else {
             let medic = this.get('hospmedicinfos').firstObject;
             let preTarget = medic.pre_target;
-            change = (change / preTarget).toFixed(2);
+            change = (change * 100 / preTarget).toFixed(2);
             return change;
         }
     }),

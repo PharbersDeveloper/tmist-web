@@ -1,19 +1,31 @@
 import Controller from '@ember/controller';
 
 export default Controller.extend({
+    queryConditions() {
+        let evaid = this.get('evaluationid');
+        let req = this.store.createRecord('request', {
+            res: 'assess_report',
+        });
+        req.get('eqcond').pushObject(this.store.createRecord('eqcond', {
+            key: 'id',
+            val: evaid,
+        }))
+        let conditions = this.store.object2JsonApi('request', req);
+        return conditions;
+    },
     actions: {
         getRadarData(component) {
-            let req = this.store.createRecord('request', {
-                res: 'assess_report',
-            });
-            req.get('eqcond').pushObject(this.store.createRecord('eqcond', {
-                key: 'id',
-                val: '5b9f952fe53d3735f0007497',
-            }))
-            let conditions = this.store.object2JsonApi('request', req);
+            // let req = this.store.createRecord('request', {
+            //     res: 'assess_report',
+            // });
+            // req.get('eqcond').pushObject(this.store.createRecord('eqcond', {
+            //     key: 'id',
+            //     val: '5b9f952fe53d3735f0007497',
+            // }))
+            // let conditions = this.store.object2JsonApi('request', req);
             let cache = this.get('store').peekAll('evaluation_radar_data')
             if (cache.length == 0) {
-                this.store.queryObject('/api/v1/evaluationRadar/0', 'evaluation_radar_data', conditions)
+                this.store.queryObject('/api/v1/evaluationRadar/0', 'evaluation_radar_data', this.queryConditions())
                     .then((rdata) => {
                         component.set('radarData', rdata);
                     });
@@ -24,18 +36,18 @@ export default Controller.extend({
         },
 
         getCardData(component) {
-            let req = this.store.createRecord('request', {
-                res: 'assess_report',
-            });
-            req.get('eqcond').pushObject(this.store.createRecord('eqcond', {
-                key: 'id',
-                val: '5b9f952fe53d3735f0007497',
-            }))
-            let conditions = this.store.object2JsonApi('request', req);
+            // let req = this.store.createRecord('request', {
+            //     res: 'assess_report',
+            // });
+            // req.get('eqcond').pushObject(this.store.createRecord('eqcond', {
+            //     key: 'id',
+            //     val: '5b9f952fe53d3735f0007497',
+            // }))
+            // let conditions = this.store.object2JsonApi('request', req);
 
             // let cache = this.get('store').peekAll('evaluation_card_data');
             // if (cache.length == 0) {
-            this.store.queryMultipleObject('/api/v1/evaluationCards/0', 'evaluation_card_data', conditions)
+            this.store.queryMultipleObject('/api/v1/evaluationCards/0', 'evaluation_card_data', this.queryConditions())
                 .then((cdata) => {
                     console.log(cdata);
                     console.log("===========");
@@ -47,17 +59,17 @@ export default Controller.extend({
 
         },
         getLineData(component) {
-            let req = this.store.createRecord('request', {
-                res: 'assess_report',
-            });
-            req.get('eqcond').pushObject(this.store.createRecord('eqcond', {
-                key: 'id',
-                val: '5b9f952fe53d3735f0007497',
-            }))
-            let conditions = this.store.object2JsonApi('request', req);
+            // let req = this.store.createRecord('request', {
+            //     res: 'assess_report',
+            // });
+            // req.get('eqcond').pushObject(this.store.createRecord('eqcond', {
+            //     key: 'id',
+            //     val: '5b9f952fe53d3735f0007497',
+            // }))
+            // let conditions = this.store.object2JsonApi('request', req);
             let cache = this.get('store').peekAll('evaluation_line_data')
             if (cache.length == 0) {
-                this.store.queryObject('/api/v1/evaluationLine/0', 'evaluation_line_data', conditions)
+                this.store.queryObject('/api/v1/evaluationLine/0', 'evaluation_line_data', this.queryConditions())
                     .then((ldata) => {
                         component.set('lineData', ldata);
                     });
