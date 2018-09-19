@@ -2,24 +2,15 @@ import Route from '@ember/routing/route';
 
 export default Route.extend({
     model() {
-        return [{
-                title: "3333333",
-                content: "ddddddddddddfadlkfjasldfkjasldfk",
-                ability: [
-                    { title: "aaad", level: "D", desc: [{ title: "dfjsad", content: ["dfasdfasdf", "eoruwioeruoi"] }] },
-                    { title: "erds", level: "S", desc: [{ title: "dfg", content: ["erdf", "eoruwiodfderuoi"] }] }
-                ]
-            },
-            {
-                title: "3333333",
-                content: "ddddddddddddfadlkfjasldfkjasldfk",
-                ability: [
-                    { title: "aaad", level: "D", desc: [{ title: "dfjsad", content: ["dfasdfasdf", "eoruwioeruoi"] }] },
-                    { title: "erds", level: "S", desc: [{ title: "dfg", content: ["erdf", "eoruwiodfderuoi"] }] }
-                ]
-            },
-        ]
-
+        let req = this.store.createRecord('request', {
+            res: 'assess_report',
+        });
+        req.get('eqcond').pushObject(this.store.createRecord('eqcond', {
+            key: 'id',
+            val: '5b9f952fe53d3735f0007497',
+        }))
+        let conditions = this.store.object2JsonApi('request', req);
+        return this.store.queryMultipleObject('/api/v1/assessReportLayout/0', 'evaluation_layout', conditions)
     },
     actions: {
 

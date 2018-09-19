@@ -1,7 +1,8 @@
-{{outlet}}
-{{#each model as |ability|}}
-    {{evaluation-title-card data=ability}}
-{{/each}}
-
-{{capability-radio }}
-{{capability-line}}
+{{nav-title data="09"}}
+<div local-class="title-bar">
+    <p >多维能力分析</p>
+</div>
+{{evaluation-ability model
+    getRadarData=(action 'getRadarData')
+    getCardData=(action 'getCardData')
+    getLineData=(action 'getLineData')}}

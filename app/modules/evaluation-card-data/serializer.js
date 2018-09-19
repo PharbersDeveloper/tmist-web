@@ -22,6 +22,6 @@ export default PharbersSerializer.extend({
         return modelName
     },
     modelNameFromPayloadKey(modelName) {
-        return modelName;
+        return modelName.replace(/_/g, '-')
     }
 });
