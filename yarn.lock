@@ -7662,9 +7662,9 @@ pharbers-tm-charts@^1.0.1:
     ember-font-awesome "^4.0.0-rc.4"
     ember-sass-bootstrap "^0.2.0"
 
-pharbers-tm-dropdown@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/pharbers-tm-dropdown/-/pharbers-tm-dropdown-1.0.1.tgz#76bbbf51165f2aad4212f6b4f04e52742cfbb451"
+pharbers-tm-dropdown@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/pharbers-tm-dropdown/-/pharbers-tm-dropdown-1.0.2.tgz#010a44375139d7f223499a54f2ef9fcae200d5a7"
   dependencies:
     bootstrap "3.3.7"
     bootstrap-sass "3.3.7"
