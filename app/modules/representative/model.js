@@ -11,8 +11,6 @@ export default DS.Model.extend({
     service_year: DS.attr('number'),
     entry_time: DS.attr('number'),
     business_exp: DS.attr('string'),
-    advantage: DS.attr('string'),
-    weakness: DS.attr('string'),
     sales_skills_val: DS.attr('number'),
     prod_knowledge_val: DS.attr('number'),
     motivation_val: DS.attr('number'),

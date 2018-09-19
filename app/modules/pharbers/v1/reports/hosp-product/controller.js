@@ -2,12 +2,13 @@ import Controller from '@ember/controller';
 
 export default Controller.extend({
     queryConditions() {
+        let reportid = this.get('reportid');
         let req = this.store.createRecord('request', {
             res: 'report',
         });
 
         let eqValues = [
-            { type: 'eqcond', key: "id", val: '5b643430e53d3732b00047ea' },
+            { type: 'eqcond', key: "id", val: reportid },
         ]
 
         eqValues.forEach((elem, index) => {

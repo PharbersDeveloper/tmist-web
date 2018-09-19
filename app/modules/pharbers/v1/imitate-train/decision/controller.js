@@ -10,10 +10,10 @@ export default Controller.extend({
             let repRecord = this.store.peekAll('repinputinfo');
             let manRecord = this.store.peekAll('managerinputinfo').firstObject;
             let hospRecord = this.store.peekAll('hospitalbaseinfo');
-
+            console.log(repRecord);
+            console.log(hospRecord)
             let totalData = this.store.createRecord('allotResult', {
-                "major": 1,
-                "minor": 0
+                uuid: this.get('uuid'),
             });
 
             hospRecord.forEach((hosp) => {
@@ -25,20 +25,18 @@ export default Controller.extend({
             });
 
             totalData.set('managerinputinfo', manRecord);
-            console.log('in component s');
 
             let conditions = this.store.modelDeepParsing('allotResult', totalData);
-            console.log(JSON.stringify(conditions));
+            this.store.queryObject('/api/v1/taskAllot/0', 'reportResult', conditions)
+                .then((res) => {
+                    if (!isEmpty(res.report_id[0])) {
+                        let reportId = res.report_id[0];
+                        let evaluationId = res.assess_report_id[0];
 
-            // let req = this.store.createRecord('request', {
-            //     res: 'scenario',
-            // });
-            // req.get('eqcond').pushObject(this.store.createRecord('eqcond', {
-            //     key: 'uuid',
-            //     val: this.get('uuid'),
-            // }))
-            // let conditions = this.store.object2JsonApi('request', req);
-            // console.info(conditions)
+                        // this.transitionToRoute('pharbers.v1.reports', this.get('uuid'), reportId, evaluationId)
+                        this.transitionToRoute('pharbers.v1.reports', this.get('uuid'), { queryParams: { reportid: reportId, evaluationid: evaluationId } })
+                    }
+                });
 
             // let totalBudget = this.get('totalBudget');
             // let verficationNull = this.stringVerification.stringIsEmpty(conditions, hospRecord, repRecord, manRecord);
@@ -49,12 +47,12 @@ export default Controller.extend({
             //         if (daysState.state) {
             //             component.set('hintContent', '一切就绪。');
             //             component.set('hintClass', 'alert alert-success');
-            //             // this.store.queryObject('/api/v1/taskAllot/0', 'allotResult', conditions)
-            //             //     .then((res) => {
-            //             //         if (!isEmpty(res.report_id)) {
-            //             //             this.transitionToRoute('pharbers.v1.reports', this.get('uuid'))
-            //             //         }
-            //             //     });
+            //             this.store.queryObject('/api/v1/taskAllot/0', 'allotResult', conditions)
+            //                 .then((res) => {
+            //                     if (!isEmpty(res.report_id)) {
+            //                         this.transitionToRoute('pharbers.v1.reports', this.get('uuid'))
+            //                     }
+            //                 });
             //         } else {
             //             component.set('hintContent', daysState.hintContent);
             //         }
@@ -127,7 +125,6 @@ export default Controller.extend({
         },
 
         totalBugdetRatio(budget, defaultTotal) {
-            console.log("==============");
             this.set('totalBudget', defaultTotal);
             this.get('totalBudgetRatio').set('budget', budget);
             this.get('totalBudgetRatio').set('total', defaultTotal);
@@ -159,6 +156,7 @@ export default Controller.extend({
                 component.set('mdata', managerInputCache.firstObject)
             }
             this.set('totalBudgetRatio', component);
+            console.log('getRB function')
         },
 
         getInputCard(component) {

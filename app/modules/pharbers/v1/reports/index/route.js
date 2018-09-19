@@ -3,13 +3,14 @@ import Route from '@ember/routing/route';
 export default Route.extend({
 
     model() {
-
+        let reportid = this.controllerFor('pharbers.v1.reports').get('reportid');
+        this.controllerFor('pharbers.v1.reports.index').set('reportid', reportid);
         let req = this.store.createRecord('request', {
             res: 'report',
         });
 
         let eqValues = [
-            { type: 'eqcond', key: "id", val: '5b643430e53d3732b00047ea' },
+            { type: 'eqcond', key: "id", val: reportid },
         ]
 
         eqValues.forEach((elem, index) => {
