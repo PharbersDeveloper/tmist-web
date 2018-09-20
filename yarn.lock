@@ -7646,9 +7646,9 @@ pharbers-tm-cards@^1.0.3:
     ember-sass-bootstrap "^0.2.0"
     ember-truth-helpers "^2.0.0"
 
-pharbers-tm-charts@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/pharbers-tm-charts/-/pharbers-tm-charts-1.0.1.tgz#90df759935641226add067c1924eeba62a8cd936"
+pharbers-tm-charts@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/pharbers-tm-charts/-/pharbers-tm-charts-1.0.2.tgz#4a296940f5fffc7833a9d0fb98eef6d3f2df7f72"
   dependencies:
     bootstrap "3.3.7"
     bootstrap-sass "3.3.7"
