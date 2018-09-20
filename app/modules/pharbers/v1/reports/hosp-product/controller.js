@@ -7,9 +7,7 @@ export default Controller.extend({
             res: 'report',
         });
 
-        let eqValues = [
-            { type: 'eqcond', key: "id", val: reportid },
-        ]
+        let eqValues = [{ type: 'eqcond', key: "id", val: reportid }];
 
         eqValues.forEach((elem, index) => {
             req.get(elem.type).pushObject(this.store.createRecord(elem.type, {
@@ -21,8 +19,9 @@ export default Controller.extend({
         let conditions = this.store.object2JsonApi('request', req);
         return conditions;
     },
+
     actions: {
-        onclick(type, id) {
+        changeReportPage(type, id) {
             this.transitionToRoute('pharbers.v1.reports.' + type);
         },
 
@@ -33,12 +32,14 @@ export default Controller.extend({
                     component.set('currentRoute', 'hosp-product');
                 });
         },
+
         getShowCard(component) {
             this.store.queryMultipleObject('/api/v1/cardsHospProduct/0', 'report-card', this.queryConditions())
                 .then((resultCardData) => {
                     component.set('data', resultCardData);
                 });
         },
+
         getResultTable(component) {
             this.store.queryObject('/api/v1/tableHospProduct/0', 'report-table-data', this.queryConditions())
                 .then((result) => {

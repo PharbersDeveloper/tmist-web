@@ -22,7 +22,7 @@ export default Controller.extend({
         return conditions;
     },
     actions: {
-        onclick(type, id) {
+        changeReportPage(type, id) {
             this.transitionToRoute('pharbers.v1.reports.' + type);
         },
 
@@ -42,8 +42,6 @@ export default Controller.extend({
         },
 
         getShowCard(component) {
-
-
             this.store.queryMultipleObject('/api/v1/cardsIndex/0', 'report-card', this.queryConditions())
                 .then((resultCardData) => {
                     component.set('data', resultCardData);
@@ -51,7 +49,6 @@ export default Controller.extend({
         },
 
         getResultTable(component) {
-
             this.store.queryObject('/api/v1/tableIndex/0', 'report-table-data', this.queryConditions())
                 .then((result) => {
                     component.set('data', result);
