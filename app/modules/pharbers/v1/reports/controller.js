@@ -8,12 +8,10 @@ export default Controller.extend({
     },
     init() {
         this._super(...arguments);
-
         this.title = this.getMonth() + "月部署计划";
     },
     actions: {
         checkReport() {
-            // console.log(this.get('evaluationid'));
             this.transitionToRoute('pharbers.v1.evaluation', this.get('evaluationid'));
         },
     }

@@ -10,8 +10,6 @@ export default Controller.extend({
             let repRecord = this.store.peekAll('repinputinfo');
             let manRecord = this.store.peekAll('managerinputinfo').firstObject;
             let hospRecord = this.store.peekAll('hospitalbaseinfo');
-            console.log(repRecord);
-            console.log(hospRecord)
             let totalData = this.store.createRecord('allotResult', {
                 uuid: this.get('uuid'),
             });
@@ -32,12 +30,10 @@ export default Controller.extend({
                     if (!isEmpty(res.report_id[0])) {
                         let reportId = res.report_id[0];
                         let evaluationId = res.assess_report_id[0];
-
-                        // this.transitionToRoute('pharbers.v1.reports', this.get('uuid'), reportId, evaluationId)
                         this.transitionToRoute('pharbers.v1.reports', this.get('uuid'), { queryParams: { reportid: reportId, evaluationid: evaluationId } })
                     }
                 });
-
+            // 验证逻辑is here
             // let totalBudget = this.get('totalBudget');
             // let verficationNull = this.stringVerification.stringIsEmpty(conditions, hospRecord, repRecord, manRecord);
             // if (verficationNull.state) {
@@ -47,10 +43,12 @@ export default Controller.extend({
             //         if (daysState.state) {
             //             component.set('hintContent', '一切就绪。');
             //             component.set('hintClass', 'alert alert-success');
-            //             this.store.queryObject('/api/v1/taskAllot/0', 'allotResult', conditions)
+            //             this.store.queryObject('/api/v1/taskAllot/0', 'reportResult', conditions)
             //                 .then((res) => {
-            //                     if (!isEmpty(res.report_id)) {
-            //                         this.transitionToRoute('pharbers.v1.reports', this.get('uuid'))
+            //                     if (!isEmpty(res.report_id[0])) {
+            //                         let reportId = res.report_id[0];
+            //                         let evaluationId = res.assess_report_id[0];
+            //                         this.transitionToRoute('pharbers.v1.reports', this.get('uuid'), { queryParams: { reportid: reportId, evaluationid: evaluationId } })
             //                     }
             //                 });
             //         } else {
@@ -156,7 +154,6 @@ export default Controller.extend({
                 component.set('mdata', managerInputCache.firstObject)
             }
             this.set('totalBudgetRatio', component);
-            console.log('getRB function')
         },
 
         getInputCard(component) {
