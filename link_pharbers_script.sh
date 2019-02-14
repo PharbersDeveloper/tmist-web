@@ -1,0 +1,16 @@
+cd ./
+
+yarn link "pharbers-route-addon"
+yarn link "mapping-components"
+yarn link "pharbers-tm-login"
+yarn link "pharbers-tm-hospital-list"
+yarn link "pharbers-tm-cards"
+yarn link "pharbers-tm-hospital-detail"
+yarn link "pharbers-tm-nav"
+yarn link "pharbers-tm-decision"
+yarn link "pharbers-tm-dropdown"
+yarn link "pharbers-tm-result"
+yarn link "pharbers-tm-charts"
+yarn link "pharbers-tm-evaluation"
+yarn link "pharbers-tm-accordion"
+yarn link "pharbers-tm-all-decision"

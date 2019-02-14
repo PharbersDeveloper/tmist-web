@@ -2,28 +2,35 @@ import Controller from '@ember/controller';
 import { inject } from '@ember/service';
 
 export default Controller.extend({
-    cookies: inject(),
-    ajax: inject(),
+	cookies: inject(),
+	actions: {
+		login(a, p, component) {
 
-    getAjaxOpt(data) {
-        return {
-            method: 'POST',
-            dataType: "json",
-            cache: false,
-            data: JSON.stringify(data),
-            contentType: "application/json",
-            Accpt: "application/json"
-        }
-    },
-    actions: {
-        response(data) {
-            if (data.status === "ok") {
-                // console.log(data)
-                this.get('cookies').write('user_token', data.result.data.attribute, { path: '/' });
-                this.transitionToRoute('pharbers.v1.imitate-train');
-            } else {
-                alert('帐号或密码错误。');
-            }
-        },
-    }
-})
+			let req = this.store.createRecord('request', {
+				res: 'user',
+			});
+
+			let eqValues = [
+				{ type: 'eqcond', key: 'email', val: a },
+				{ type: 'eqcond', key: 'password', val: p },
+			]
+
+			eqValues.forEach((elem, index) => {
+				req.get(elem.type).pushObject(this.store.createRecord(elem.type, {
+					id: elem.id,
+					key: elem.key,
+					val: elem.val,
+				}))
+			});
+			let conditions = this.store.object2JsonApi('request', req);
+
+			component.set('cookies', this.get('cookies'));
+			component.set('result', this.store.queryObject('/api/v1/loginTM/0', 'auth', conditions));
+			component.get('setcookies').then((result) => {
+				if (result.state === "success") {
+					this.transitionToRoute('pharbers.v1.imitate-train')
+				}
+			});
+		}
+	}
+});

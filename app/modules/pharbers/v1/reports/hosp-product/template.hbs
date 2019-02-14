@@ -1,3 +1,7 @@
 <div local-class="detail-container">
-	{{result-container model}}
+	{{result-container model
+		getDropdawnData=(action 'getDropdawnData')
+		getShowCard=(action 'getShowCard')
+		getResultTable=(action 'getResultTable')
+		changeReportPage=(action 'changeReportPage')}}
 </div>

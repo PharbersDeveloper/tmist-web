@@ -2,7 +2,8 @@
 	display: flex;
 	flex-direction: column;
 	min-width: 1200px;
-	height: 100%;
+	// height: 100%;
+	height: calc(100% - 80px);
 	background: #EEF1FA;
 
 	.content {
@@ -74,6 +75,7 @@
 						font-family: PingFangTC-Regular;
 						background: #FFFFFF;
 						box-shadow: 0 4px 6px 0 rgba(161,161,161,0.56);
+						vertical-align: top;
 					}
 				}
 			}

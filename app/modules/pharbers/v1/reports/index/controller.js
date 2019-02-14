@@ -1,46 +1,59 @@
 import Controller from '@ember/controller';
-import { inject } from '@ember/service';
 
 export default Controller.extend({
-    ajax: inject(),
-    getAjaxOpt(data) {
-        return {
-            method: 'POST',
-            dataType: 'json',
-            cache: false,
-            data: JSON.stringify(data),
-            contentType: 'application/json',
-            Accpt: 'application/json'
-        }
-    },
-    queryTotal(uuid) {
-        let condition = {
-            "token": "bearera67c2dc93dfc7ff2a19baefee72034f4",
-            "timestamp": 1530689119000,
-            "version": {
-                "major": 1,
-                "minor": 0
-            },
-            "data": {
-                "type": "which",
-                "condition": {
-                    "uuid": uuid
-                }
-            }
-        }
-        this.get('ajax')
-            .request('/api/report/which', this.getAjaxOpt(condition))
-            .then((res) => {
-                if (res.status === "ok") {
-                    let result = res.result.data.attribute;
-                    // this.set('dropData',result);
-                    console.log(result)
-                    return result;
-                }
-            }).then((res2) => {
-                this.get('ajax')
-                    .request('')
-            })
+    queryConditions() {
+        let reportid = this.get('reportid');
+        let req = this.store.createRecord('request', {
+            res: 'report',
+        });
 
+        let eqValues = [
+            { type: 'eqcond', key: "id", val: reportid },
+        ]
+
+        eqValues.forEach((elem, index) => {
+            req.get(elem.type).pushObject(this.store.createRecord(elem.type, {
+                key: elem.key,
+                val: elem.val,
+            }))
+        });
+
+        let conditions = this.store.object2JsonApi('request', req);
+        return conditions;
+    },
+    actions: {
+        changeReportPage(type, id) {
+            this.transitionToRoute('pharbers.v1.reports.' + type);
+        },
+
+        getDropdawnData(component) {
+            let alreadydata = this.store.peekAll('dropdown-layout');
+            // if (alreadydata.length == 0) {
+            this.store.queryMultipleObject('/api/v1/reportWhich/0', 'dropdown-layout', this.queryConditions())
+                .then((dropdowndata) => {
+                    component.set('data', dropdowndata);
+                    component.set('currentRoute', 'index');
+
+                });
+            // } else {
+            //     component.set('data', alreadydata);
+            //     component.set('currentRoute', '整体销售表现');
+            // }
+        },
+
+        getShowCard(component) {
+            this.store.queryMultipleObject('/api/v1/cardsIndex/0', 'report-card', this.queryConditions())
+                .then((resultCardData) => {
+                    component.set('data', resultCardData);
+                });
+        },
+
+        getResultTable(component) {
+            this.store.queryObject('/api/v1/tableIndex/0', 'report-table-data', this.queryConditions())
+                .then((result) => {
+                    component.set('data', result);
+                });
+        }
     }
+
 });
